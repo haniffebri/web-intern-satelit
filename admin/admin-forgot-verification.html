@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi Admin</title>
+    <link rel="stylesheet" href="D:\Kuliah\Kuliah\Magang\Satelit\styling\style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-forgot-verification-login-wrapper">
+        <div class="admin-forgot-verification-login-container">
+            
+            <!-- Admin Verification Card -->
+            <div class="admin-forgot-verification-login-card">
+                
+                <!-- Header -->
+                <div class="admin-forgot-verification-login-header">
+                    <div class="admin-forgot-verification-logo">
+                        <span class="admin-forgot-verification-logo-icon">🛡️</span>
+                        <h1 class="admin-forgot-verification-logo-text">SATELIT<span style="color: var(--accent-blue);">TV</span></h1>
+                        <span class="admin-forgot-verification-badge">ADMIN</span>
+                    </div>
+                </div>
+
+                <!-- Verification Icon & Title -->
+                <div class="admin-forgot-verification-reset-icon">
+                    <span class="material-icons">verified_user</span>
+                </div>
+                
+                <h2 class="admin-forgot-verification-reset-title">Verifikasi Kode Admin</h2>
+                <p class="admin-forgot-verification-reset-subtitle">
+                    Masukkan kode verifikasi 6 digit yang telah dikirim ke email satelit
+                </p>
+
+                <!-- Error/Success Messages -->
+                <div class="admin-forgot-verification-error-message" id="errorMessage"></div>
+                <div class="admin-forgot-verification-success-message" id="successMessage"></div>
+
+                <!-- Verification Code Form -->
+                <form class="admin-forgot-verification-verification-form" id="adminVerificationForm">
+                    <div class="admin-forgot-verification-code-input-section">
+                        <label class="admin-forgot-verification-code-label">Kode Verifikasi</label>
+                        <div class="admin-forgot-verification-code-inputs">
+                            <input type="text" maxlength="1" class="admin-forgot-verification-code-input" data-index="0">
+                            <input type="text" maxlength="1" class="admin-forgot-verification-code-input" data-index="1">
+                            <input type="text" maxlength="1" class="admin-forgot-verification-code-input" data-index="2">
+                            <input type="text" maxlength="1" class="admin-forgot-verification-code-input" data-index="3">
+                            <input type="text" maxlength="1" class="admin-forgot-verification-code-input" data-index="4">
+                            <input type="text" maxlength="1" class="admin-forgot-verification-code-input" data-index="5">
+                        </div>
+                    </div>
+
+                    <!-- Verify Button -->
+                    <button type="submit" class="admin-forgot-verification-login-btn" id="verifyBtn">
+                        <div class="admin-forgot-verification-spinner"></div>
+                        <span class="admin-forgot-verification-btn-text">
+                            <span class="material-icons">check_circle</span>
+                            Verifikasi Kode Admin
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Resend Section -->
+                <div class="admin-forgot-verification-resend-section">
+                    <p class="admin-forgot-verification-resend-text">Tidak menerima kode?</p>
+                    <button class="admin-forgot-verification-resend-btn" id="resendBtn">
+                        <span class="material-icons">refresh</span>
+                        Kirim Ulang Kode <span class="admin-forgot-verification-timer" id="timer"></span>
+                    </button>
+                </div>
+
+                <!-- Admin Footer -->
+                <div class="admin-forgot-verification-login-footer">
+                    <a href="admin-forgot-password.html" class="admin-forgot-verification-back-link">
+                        <span class="material-icons">arrow_back</span>
+                        Kembali ke Request Kode
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.admin-forgot-verification-code-input');
+            const form = document.getElementById('adminVerificationForm');
+            const verifyBtn = document.getElementById('verifyBtn');
+            const resendBtn = document.getElementById('resendBtn');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            let resendTimer = 60;
+
+            // Auto-focus and navigation between inputs
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', (e) => {
+                    if (e.target.value.length === 1 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                    
+                    if (e.target.value) {
+                        input.classList.add('filled');
+                    } else {
+                        input.classList.remove('filled');
+                    }
+                    
+                    checkAllInputs();
+                });
+
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+            });
+
+            function checkAllInputs() {
+                const allFilled = Array.from(inputs).every(input => input.value.length === 1);
+                verifyBtn.disabled = !allFilled;
+            }
+
+           // ✅ FORM SUBMISSION 
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const originalHTML = verifyBtn.innerHTML;
+                verifyBtn.innerHTML = `
+                    <div style="
+                        width: 20px; 
+                        height: 20px; 
+                        border: 2px solid rgba(255,255,255,0.3); 
+                        border-top: 2px solid white; 
+                        border-radius: 50%; 
+                        animation: spin 1s linear infinite;
+                        margin: 0 auto;
+                    "></div>
+                `;
+                verifyBtn.disabled = true;
+                
+                // Direct redirect after brief loading
+                setTimeout(() => {
+                    window.location.href = 'admin-forgot-new-password.html';
+                }, 800);
+            });
+
+            // Resend functionality
+            function startResendTimer() {
+                resendBtn.disabled = true;
+                const timerElement = document.getElementById('timer');
+                
+                const countdown = setInterval(() => {
+                    timerElement.textContent = `(${resendTimer}s)`;
+                    resendTimer--;
+                    
+                    if (resendTimer < 0) {
+                        clearInterval(countdown);
+                        resendBtn.disabled = false;
+                        timerElement.textContent = '';
+                        resendTimer = 60;
+                    }
+                }, 1000);
+            }
+
+            resendBtn.addEventListener('click', function() {
+                showSuccess('Kode verifikasi baru telah dikirim!');
+                startResendTimer();
+            });
+
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+
+            function showSuccess(message) {
+                successMessage.textContent = message;
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            }
+
+            // Auto-focus first input
+            inputs[0].focus();
+            
+            // Start initial timer
+            startResendTimer();
+        });
+    </script>
+</body>
+</html>

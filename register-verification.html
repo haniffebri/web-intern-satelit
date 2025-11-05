@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verifikasi Pendaftaran Akun</title>
+  <link rel="icon" type="image/png" href="styling/assets/foto/logo-satelit.png">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styling/style.css" />
+</head>
+<body class="page">
+
+  <!-- Navbar -->
+
+<nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <div class="navbar_brand">
+                    <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV" class="navbar_logo">
+                </div>
+                <div class="navbar__menu">
+                    <a href="index.html" class="menu__link">Home</a>
+                    <a href="berita.html" class="menu__link">Berita</a>
+                    <a href="foto.html" class="menu__link">Foto</a>
+                    <a href="video.html" class="menu__link">Video</a>
+                    <a href="sbdp.html" class="menu__link">SBDP</a>
+                </div>
+                <div class="navbar__right">
+                    <div class="navbar__search">
+                        <span class="material-icons navbar__search-icon">search</span>
+                        <input type="text" class="navbar__search-input" placeholder="Pencarian">
+                    </div>
+                    <div class="navbar__profile">
+    <a href="login.html" class="navbar__profile-link">
+        <span class="material-icons">account_circle</span>
+    </a>
+</div>
+
+                </div>
+                <!-- ✅ HAMBURGER BUTTON -->
+                <button class="navbar__toggle" id="hamburgerBtn">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ✅ MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+    <!-- ✅ MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV" class="mobile-menu-logo">
+            <button class="mobile-menu-close" id="closeBtn">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-search">
+            <div class="mobile-search-wrapper">
+                <span class="material-icons mobile-search-icon">search</span>
+                <input type="text" class="mobile-search-input" placeholder="Cari berita...">
+            </div>
+        </div>
+        
+        <nav class="mobile-menu-nav">
+            <a href="index.html" class="mobile-menu-link">
+                <span class="material-icons">home</span>
+                Home
+            </a>
+            <a href="berita.html" class="mobile-menu-link">
+                <span class="material-icons">article</span>
+                Berita
+            </a>
+            <a href="foto.html" class="mobile-menu-link">
+                <span class="material-icons">photo_library</span>
+                Foto
+            </a>
+            <a href="video.html" class="mobile-menu-link">
+                <span class="material-icons">play_circle</span>
+                Video
+            </a>
+            <a href="sbdp.html" class="mobile-menu-link">
+                <span class="material-icons">business</span>
+                SBDP
+            </a>
+        </nav>
+        
+        <div class="mobile-menu-login">
+            <h4 class="mobile-login-title">Akun</h4>
+            <a href="login.html" class="mobile-login-btn">
+                <span class="material-icons">login</span>
+                Masuk / Daftar
+            </a>
+        </div>
+    </div>
+
+<!-- Main Content -->
+  
+<div class="register-verification-container">
+        <!-- Logo Section -->
+        <div class="register-verification-logo-section">
+            <a href="/" class="register-verification-logo">
+                <div class="register-verification-logo-icon">
+                    <span class="material-icons">tv</span>
+                </div>
+                <span>SATELIT TV</span>
+            </a>
+        </div>
+
+        <!-- Verification Icon -->
+        <div class="register-verification-icon">
+            <span class="material-icons">mark_email_read</span>
+        </div>
+
+        <!-- Title & Description -->
+        <h1 class="register-verification-title">Verifikasi Email</h1>
+        <p class="register-verification-subtitle">
+            Kami telah mengirimkan kode verifikasi 6 digit ke
+        </p>
+        <p class="register-verification-email-display" id="userEmail">example@email.com</p>
+
+        <!-- Error & Success Messages -->
+        <div class="register-verification-error-message" id="errorMessage"></div>
+        <div class="register-verification-success-message" id="successMessage"></div>
+
+        <!-- Code Input Section -->
+        <div class="register-verification-code-input-section">
+            <label class="register-verification-code-label">Masukkan Kode Verifikasi</label>
+            <div class="register-verification-code-inputs">
+                <input type="text" class="register-verification-code-input" maxlength="1" data-index="0">
+                <input type="text" class="register-verification-code-input" maxlength="1" data-index="1">
+                <input type="text" class="register-verification-code-input" maxlength="1" data-index="2">
+                <input type="text" class="register-verification-code-input" maxlength="1" data-index="3">
+                <input type="text" class="register-verification-code-input" maxlength="1" data-index="4">
+                <input type="text" class="register-verification-code-input" maxlength="1" data-index="5">
+            </div>
+        </div>
+
+        <!-- Verify Button -->
+        <button class="register-verification-verify-btn" id="verifyBtn">
+            <div class="register-verification-spinner"></div>
+            <span class="register-verification-btn-text">
+                <span class="material-icons">verified_user</span>
+                Verifikasi Akun
+            </span>
+        </button>
+
+        <!-- Resend Section -->
+        <div class="register-verification-resend-section">
+            <p class="register-verification-resend-text">Tidak menerima kode?</p>
+            <button class="register-verification-resend-btn" id="resendBtn">
+                <span class="material-icons">refresh</span>
+                <span id="resendText">Kirim Ulang Kode</span>
+            </button>
+        </div>
+
+        <!-- Back to Register -->
+        <a href="register.html" class="register-verification-back-link">
+            <span class="material-icons">arrow_back</span>
+            Kembali ke Registrasi
+        </a>
+    </div>
+
+  <!-- Footer -->
+<footer class="footer" style="margin-top: 0px;">
+        <div class="container">
+            <div class="footer__grid">
+                
+                <!-- Logo & Slogan -->
+                <div class="footer__brand">
+
+                    <!-- Social Links -->
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/SatelitTelevisiNusantara" class="social__link" aria-label="Facebook">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/satelittv_purwokerto/" class="social__link" aria-label="Instagram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SATELITTVPURWOKERTO" class="social__link" aria-label="YouTube">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="footer__links">
+                    <div class="links__col">
+                        <h3 class="links__title"></h3>
+                        <ul class="links__list">
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="links__col">
+                        <h3 class="links__title"></h3>
+                        <ul class="links__list">
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="links__col links__col--alamat">
+                        <h3 class="links__title">Satelit TV</h3>
+                        <ul class="links__list">
+                            <li><a class="links__item">Jl. Dr. Angka, Glempang, Bancarkembar, Kec. Purwokerto Utara, Kabupaten Banyumas, Jawa Tengah 53114</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="footer__bottom">
+                <p>© 2025 Satelit TV.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Get elements
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const closeBtn = document.getElementById('closeBtn');
+            const body = document.body;
+            const menuLinks = document.querySelectorAll('.mobile-menu-link');
+
+            // Check if elements exist
+            if (!hamburgerBtn || !mobileMenu || !menuOverlay || !closeBtn) {
+                console.error('Mobile menu elements not found');
+                return;
+            }
+
+            // Function to open menu
+            function openMobileMenu() {
+                mobileMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+                body.classList.add('mobile-menu-open');
+                console.log('Menu opened'); // Debug log
+            }
+
+            // Function to close menu
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                body.classList.remove('mobile-menu-open');
+                console.log('Menu closed'); // Debug log
+            }
+
+            // Event listeners
+            hamburgerBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Hamburger clicked'); // Debug log
+                openMobileMenu();
+            });
+
+            closeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Close button clicked'); // Debug log
+                closeMobileMenu();
+            });
+
+            menuOverlay.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Overlay clicked'); // Debug log
+                closeMobileMenu();
+            });
+
+            // Close menu when clicking on navigation links
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Menu link clicked'); // Debug log
+                    closeMobileMenu();
+                });
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeMobileMenu();
+                }
+            });
+
+            console.log('Mobile menu initialized'); // Debug log
+        });
+
+        // =========================================
+// REGISTER VERIFICATION FUNCTIONALITY
+// =========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const codeInputs = document.querySelectorAll('.register-verification-code-input');
+    const verifyBtn = document.getElementById('verifyBtn');
+    const resendBtn = document.getElementById('resendBtn');
+    const errorMessage = document.getElementById('errorMessage');
+    const successMessage = document.getElementById('successMessage');
+    const userEmailDisplay = document.getElementById('userEmail');
+    
+    let resendTimer = 0;
+    let resendInterval;
+
+    // Get email from URL parameters or localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const email = urlParams.get('email') || localStorage.getItem('registrationEmail') || 'example@email.com';
+    userEmailDisplay.textContent = email;
+
+    // Code input handling
+    codeInputs.forEach((input, index) => {
+        input.addEventListener('input', function(e) {
+            const value = e.target.value.replace(/[^0-9]/g, '');
+            e.target.value = value;
+
+            if (value) {
+                e.target.classList.add('filled');
+                if (index < codeInputs.length - 1) {
+                    codeInputs[index + 1].focus();
+                }
+            } else {
+                e.target.classList.remove('filled');
+            }
+
+            checkCodeComplete();
+            clearMessages();
+        });
+
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                codeInputs[index - 1].focus();
+                codeInputs[index - 1].value = '';
+                codeInputs[index - 1].classList.remove('filled');
+            }
+        });
+
+        input.addEventListener('paste', function(e) {
+            e.preventDefault();
+            const paste = e.clipboardData.getData('text').replace(/[^0-9]/g, '').slice(0, 6);
+            
+            for (let i = 0; i < paste.length && i < codeInputs.length; i++) {
+                codeInputs[i].value = paste[i];
+                codeInputs[i].classList.add('filled');
+            }
+            
+            checkCodeComplete();
+        });
+    });
+
+    function checkCodeComplete() {
+        const code = getCode();
+        verifyBtn.disabled = code.length !== 6;
+    }
+
+    function getCode() {
+        return Array.from(codeInputs).map(input => input.value).join('');
+    }
+
+    function clearMessages() {
+        errorMessage.style.display = 'none';
+        successMessage.style.display = 'none';
+        codeInputs.forEach(input => input.classList.remove('error'));
+    }
+
+    function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.style.display = 'block';
+        codeInputs.forEach(input => input.classList.add('error'));
+        
+        setTimeout(() => {
+            codeInputs.forEach(input => input.classList.remove('error'));
+        }, 500);
+    }
+
+    function showSuccess(message) {
+        successMessage.textContent = message;
+        successMessage.style.display = 'block';
+    }
+
+    // Verify button click
+    verifyBtn.addEventListener('click', function() {
+        const code = getCode();
+        
+        if (code.length !== 6) {
+            showError('Silakan masukkan kode verifikasi 6 digit');
+            return;
+        }
+
+        // Start loading
+        verifyBtn.classList.add('loading');
+        clearMessages();
+
+        // Simulate API call
+        setTimeout(() => {
+            // For demo purposes - replace with actual API call
+            if (code === '123456') {
+                showSuccess('✅ Email berhasil diverifikasi!');
+                
+                setTimeout(() => {
+                    window.location.href = 'login.html?verified=true';
+                }, 2000);
+            } else {
+                showError('Kode verifikasi tidak valid. Silakan coba lagi.');
+                
+                // Clear inputs
+                codeInputs.forEach(input => {
+                    input.value = '';
+                    input.classList.remove('filled');
+                });
+                
+                codeInputs[0].focus();
+            }
+            
+            verifyBtn.classList.remove('loading');
+        }, 2000);
+    });
+
+    // Resend functionality
+    function startResendTimer() {
+        resendTimer = 60;
+        resendBtn.disabled = true;
+        
+        resendInterval = setInterval(() => {
+            resendTimer--;
+            document.getElementById('resendText').innerHTML = `Kirim Ulang (<span class="register-verification-timer">${resendTimer}s</span>)`;
+            
+            if (resendTimer <= 0) {
+                clearInterval(resendInterval);
+                resendBtn.disabled = false;
+                document.getElementById('resendText').textContent = 'Kirim Ulang Kode';
+            }
+        }, 1000);
+    }
+
+    resendBtn.addEventListener('click', function() {
+        // Simulate resend API call
+        showSuccess('Kode verifikasi baru telah dikirim ke email Anda');
+        startResendTimer();
+    });
+
+    // Start initial timer
+    startResendTimer();
+
+    // Focus first input on page load
+    codeInputs[0].focus();
+});
+
+  </script>
+
+</body>
+</html>

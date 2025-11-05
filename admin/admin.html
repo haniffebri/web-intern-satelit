@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Satelit TV Purwokerto</title>
+    <link rel="stylesheet" href="D:\Kuliah\Kuliah\Magang\Satelit\styling\style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="page">
+
+    <!-- Admin Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <!-- Logo -->
+                <div class="navbar_brand">
+                    <a href="index.html">
+                        <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV Logo" class="navbar_logo"/>
+                    </a>
+                </div>
+                <div class="admin-nav">
+                    <span class="admin-welcome">Selamat datang, <strong>Admin</strong></span>
+                    <a href="admin-login.html" class="admin-btn-logout">
+                        <span class="material-icons">logout</span>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="admin-dashboard-container">
+            <!-- Page Header -->
+            <div class="admin-dashboard-header">
+                <h1 class="title title--xl">Dashboard Admin</h1>
+                <p class="lead">Kelola konten dan aktivitas website Satelit TV Purwokerto</p>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="admin-stats-grid">
+                <!-- TOTAL BERITA - LINK KE TAB BERITA -->
+                <a href="content-management.html?tab=berita" class="admin-stat-link">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon admin-stat-icon--news">
+                            <span class="material-icons">article</span>
+                        </div>
+                        <div class="admin-stat-content">
+                            <h3 class="admin-stat-number">124</h3>
+                            <p class="admin-stat-label">Total Berita</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- TOTAL VIDEO - LINK KE TAB VIDEO -->
+                <a href="content-management.html?tab=video" class="admin-stat-link">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon admin-stat-icon--videos">
+                            <span class="material-icons">videocam</span>
+                        </div>
+                        <div class="admin-stat-content">
+                            <h3 class="admin-stat-number">45</h3>
+                            <p class="admin-stat-label">Total Video</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- TOTAL FOTO - LINK KE TAB FOTO -->
+                <a href="content-management.html?tab=foto" class="admin-stat-link">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon admin-stat-icon--photos">
+                            <span class="material-icons">photo</span>
+                        </div>
+                        <div class="admin-stat-content">
+                            <h3 class="admin-stat-number">8</h3>
+                            <p class="admin-stat-label">Total Foto</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- TOTAL INFOGRAFIS - LINK KE TAB INFOGRAFIS -->
+                <a href="content-management.html?tab=infografis" class="admin-stat-link">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon admin-stat-icon--infografis">
+                            <span class="material-icons">photo</span>
+                        </div>
+                        <div class="admin-stat-content">
+                            <h3 class="admin-stat-number">8</h3>
+                            <p class="admin-stat-label">Total Infografis</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- FOTO PENDING - LINK KE REVIEW FOTO -->
+                <a href="approval-foto.html" class="admin-stat-link">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon admin-stat-icon--pending">
+                            <span class="material-icons">schedule</span>
+                        </div>
+                        <div class="admin-stat-content">
+                            <h3 class="admin-stat-number">8</h3>
+                            <p class="admin-stat-label">Foto Pending</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Main Actions -->
+            <div class="admin-dashboard-actions">
+                <h2 class="title title--lg mb-24" style="margin-bottom: 30px;">Menu Utama</h2>
+                
+                <div class="admin-action-grid">
+                    <div class="admin-action-card">
+                        <div class="admin-action-icon">
+                            <span class="material-icons">edit_note</span>
+                        </div>
+                        <div class="admin-action-content">
+                            <div class="admin-action-text">
+                                <h3 class="admin-action-title">Content Management</h3>
+                                <p class="admin-action-description">Kelola berita, foto, dan video. Tambah, edit, atau hapus konten website.</p>
+                            </div>
+                            <a href="content-management.html" class="admin-btn admin-btn--primary">
+                                <span class="material-icons">arrow_forward</span>
+                                Kelola Content
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="admin-action-card">
+                        <div class="admin-action-icon">
+                            <span class="material-icons">approval</span>
+                        </div>
+                        <div class="admin-action-content">
+                            <div class="admin-action-text">
+                                <div class="admin-action-header">
+                                    <h3 class="admin-action-title">Approval Foto User</h3>
+                                    <span class="admin-badge admin-badge--warning">8 pending</span>
+                                </div>
+                                <p class="admin-action-description">Review dan setujui foto yang dikirim oleh user untuk dipublikasikan.</p>
+                            </div>
+                            <a href="approval-foto.html" class="admin-btn admin-btn--accent-red">
+                                <span class="material-icons">rate_review</span>
+                                Review Foto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

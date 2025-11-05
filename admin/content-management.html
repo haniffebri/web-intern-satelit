@@ -1,0 +1,3635 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Management - Admin Satelit TV</title>
+    <link rel="stylesheet" href="D:\Kuliah\Kuliah\Magang\Satelit\styling\style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* ✅ CSS untuk mencegah conflict pagination */
+        .cms-tab-content:not(.active) .cms-pagination {
+            display: none !important;
+        }
+        .cms-tab-content.active .cms-pagination {
+            display: flex !important;
+        }
+        
+    </style>
+</head>
+<body class="page">
+    <!-- Admin Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <div class="navbar_brand">
+                    <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV" class="navbar_logo">
+                </div>
+                <div class="admin-nav">
+                    <a href="admin.html" class="cms-btn-back" data-tooltip="Dashboard">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </a>
+                    <a href="index.html" class="admin-btn-logout" data-tooltip="Logout">
+                        <span class="material-icons">logout</span>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="cms-container">
+            <!-- Page Header -->
+            <div class="cms-header">
+                <div class="cms-breadcrumb">
+                    <a href="admin.html" class="cms-breadcrumb-link">Dashboard</a>
+                    <span class="cms-breadcrumb-separator">/</span>
+                    <span class="cms-breadcrumb-current">Content Management</span>
+                </div>
+                <h1 class="title title--xl">Content Management</h1>
+                <p class="lead">Kelola semua konten website Satelit TV Purwokerto</p>
+            </div>
+
+            <!-- Content Tabs -->
+            <div class="cms-tabs">
+                <button class="cms-tab-btn active" data-tab="berita">
+                    <span class="material-icons">article</span>
+                    <span class="cms-tab-text">Berita</span>
+                    <span class="cms-tab-count">24</span>
+                </button>
+                <button class="cms-tab-btn" data-tab="foto">
+                    <span class="material-icons">photo</span>
+                    <span class="cms-tab-text">Foto</span>
+                    <span class="cms-tab-count">18</span>
+                </button>
+                <button class="cms-tab-btn" data-tab="infografis">
+                    <span class="material-icons">bar_chart</span>
+                    <span class="cms-tab-text">Infografis</span>
+                    <span class="cms-tab-count">5</span>
+                </button>
+                <button class="cms-tab-btn" data-tab="video">
+                    <span class="material-icons">videocam</span>
+                    <span class="cms-tab-text">Video</span>
+                    <span class="cms-tab-count">12</span>
+                </button>
+            </div>
+
+            <!-- Berita Tab -->
+            <div class="cms-tab-content active" id="berita-tab">
+                <!-- Toolbar -->
+                <div class="cms-toolbar">
+                    <div class="cms-toolbar-left">
+                        <button class="cms-btn cms-btn--primary" onclick="showAddModal('berita')">
+                            <span class="material-icons">add</span>
+                            Tambah Berita
+                        </button>
+                        <button class="cms-btn cms-btn--secondary cms-bulk-action" style="display: none;">
+                            <span class="material-icons">delete</span>
+                            Hapus Terpilih
+                        </button>
+                    </div>
+                    <div class="cms-toolbar-right">
+                        <div class="cms-search">
+                            <span class="material-icons">search</span>
+                            <input type="text" placeholder="Cari berita..." class="cms-search-input">
+                        </div>
+                        <div class="cms-filter">
+                            <select class="cms-select">
+                                <option value="">Semua Status</option>
+                                <option value="published">Published</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Table -->
+                <div class="cms-table-wrapper">
+                    <table class="cms-table">
+                        <thead>
+                            <tr>
+                                <th>Artikel</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                                <th>Views</th>
+                                <th class="cms-th-actions">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+<tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news1.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">KPU Tetapkan Jadwal Debat Capres - Cawapres 2024</h4>
+                                            <p class="cms-article-excerpt">Komisi Pemilihan Umum telah menetapkan jadwal dan tema untuk lima kali debat...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">07 Sep 2025</span>
+                                        <span class="cms-date-time">14:30</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        1,245
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="1">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="1">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news1.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">KPU Tetapkan Jadwal Debat Capres - Cawapres 2024</h4>
+                                            <p class="cms-article-excerpt">Komisi Pemilihan Umum telah menetapkan jadwal dan tema untuk lima kali debat...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">07 Sep 2025</span>
+                                        <span class="cms-date-time">14:30</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        1,245
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="1">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="1">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news1.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">KPU Tetapkan Jadwal Debat Capres - Cawapres 2024</h4>
+                                            <p class="cms-article-excerpt">Komisi Pemilihan Umum telah menetapkan jadwal dan tema untuk lima kali debat...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">07 Sep 2025</span>
+                                        <span class="cms-date-time">14:30</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        1,245
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="1">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="1">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news1.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">KPU Tetapkan Jadwal Debat Capres - Cawapres 2024</h4>
+                                            <p class="cms-article-excerpt">Komisi Pemilihan Umum telah menetapkan jadwal dan tema untuk lima kali debat...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">07 Sep 2025</span>
+                                        <span class="cms-date-time">14:30</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        1,245
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="1">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="1">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news1.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">KPU Tetapkan Jadwal Debat Capres - Cawapres 2024</h4>
+                                            <p class="cms-article-excerpt">Komisi Pemilihan Umum telah menetapkan jadwal dan tema untuk lima kali debat...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">07 Sep 2025</span>
+                                        <span class="cms-date-time">14:30</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        1,245
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="1">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="1">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news2.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">Menteri BUMN Resmikan Kantor Baru PT Satelit TV</h4>
+                                            <p class="cms-article-excerpt">Peresmian kantor baru PT Satelit TV menandai komitmen perusahaan untuk berkembang...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">06 Sep 2025</span>
+                                        <span class="cms-date-time">16:15</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        987
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="2">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="2">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news1.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">KPU Tetapkan Jadwal Debat Capres - Cawapres 2024</h4>
+                                            <p class="cms-article-excerpt">Komisi Pemilihan Umum telah menetapkan jadwal dan tema untuk lima kali debat...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">07 Sep 2025</span>
+                                        <span class="cms-date-time">14:30</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        1,245
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="1">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="1">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news2.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">Menteri BUMN Resmikan Kantor Baru PT Satelit TV</h4>
+                                            <p class="cms-article-excerpt">Peresmian kantor baru PT Satelit TV menandai komitmen perusahaan untuk berkembang...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">06 Sep 2025</span>
+                                        <span class="cms-date-time">16:15</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        987
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="2">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="2">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news1.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">KPU Tetapkan Jadwal Debat Capres - Cawapres 2024</h4>
+                                            <p class="cms-article-excerpt">Komisi Pemilihan Umum telah menetapkan jadwal dan tema untuk lima kali debat...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">07 Sep 2025</span>
+                                        <span class="cms-date-time">14:30</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        1,245
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="1">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="1">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news2.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">Menteri BUMN Resmikan Kantor Baru PT Satelit TV</h4>
+                                            <p class="cms-article-excerpt">Peresmian kantor baru PT Satelit TV menandai komitmen perusahaan untuk berkembang...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">06 Sep 2025</span>
+                                        <span class="cms-date-time">16:15</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        987
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="2">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="2">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news1.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">KPU Tetapkan Jadwal Debat Capres - Cawapres 2024</h4>
+                                            <p class="cms-article-excerpt">Komisi Pemilihan Umum telah menetapkan jadwal dan tema untuk lima kali debat...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">07 Sep 2025</span>
+                                        <span class="cms-date-time">14:30</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        1,245
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="1">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="1">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news2.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">Menteri BUMN Resmikan Kantor Baru PT Satelit TV</h4>
+                                            <p class="cms-article-excerpt">Peresmian kantor baru PT Satelit TV menandai komitmen perusahaan untuk berkembang...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">06 Sep 2025</span>
+                                        <span class="cms-date-time">16:15</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        987
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="2">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="2">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news1.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">KPU Tetapkan Jadwal Debat Capres - Cawapres 2024</h4>
+                                            <p class="cms-article-excerpt">Komisi Pemilihan Umum telah menetapkan jadwal dan tema untuk lima kali debat...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">07 Sep 2025</span>
+                                        <span class="cms-date-time">14:30</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--published">Published</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        1,245
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="1">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="1">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Tambah berita 3-24 sesuai kode sebelumnya -->
+                            <tr class="cms-table-row">
+                                <td>
+                                    <div class="cms-article-preview">
+                                        <img src="styling/assets/images/news3.jpg" alt="" class="cms-article-thumb">
+                                        <div class="cms-article-info">
+                                            <h4 class="cms-article-title">Update Terbaru Program Bantuan Sosial 2025</h4>
+                                            <p class="cms-article-excerpt">Pemerintah mengumumkan penyesuaian program bantuan sosial untuk tahun 2025...</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-date">
+                                        <span class="cms-date-main">05 Sep 2025</span>
+                                        <span class="cms-date-time">10:30</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cms-status cms-status--draft">Draft</span>
+                                </td>
+                                <td>
+                                    <div class="cms-views">
+                                        <span class="material-icons">visibility</span>
+                                        654
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="cms-actions">
+                                        <button class="cms-action-btn cms-action-btn--edit" title="Edit" onclick="editBerita(this)" data-id="3">
+                                            <span class="material-icons">edit</span>
+                                        </button>
+                                        <button class="cms-action-btn cms-action-btn--delete" title="Hapus" onclick="deleteBerita(this)" data-id="3">
+                                            <span class="material-icons">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Tambah berita 4-24 sisanya -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination untuk berita -->
+                <div class="cms-pagination">
+                    <div class="cms-pagination-info">
+                        Menampilkan 1-10 dari 24 berita
+                    </div>
+                    <div class="cms-pagination-controls">
+                        <button class="cms-page-btn cms-page-btn--prev" disabled>
+                            <span class="material-icons">chevron_left</span>
+                        </button>
+                        <button class="cms-page-btn active">1</button>
+                        <button class="cms-page-btn">2</button>
+                        <button class="cms-page-btn">3</button>
+                        <button class="cms-page-btn cms-page-btn--next">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto Tab -->
+            <div class="cms-tab-content" id="foto-tab">
+                <div class="cms-toolbar">
+                    <div class="cms-toolbar-left">
+                        <button class="cms-btn cms-btn--primary" onclick="showAddModal('foto')">
+                            <span class="material-icons">add</span>
+                            Upload Foto
+                        </button>
+                        <button class="cms-btn cms-btn--secondary cms-bulk-action" style="display: none;">
+                            <span class="material-icons">delete</span>
+                            Hapus Terpilih
+                        </button>
+                    </div>
+                    <div class="cms-toolbar-right">
+                        <div class="cms-search">
+                            <span class="material-icons">search</span>
+                            <input type="text" placeholder="Cari foto..." class="cms-search-input">
+                        </div>
+                        <div class="cms-filter">
+                            <select class="cms-select">
+                                <option value="">Semua Status</option>
+                                <option value="published">Published</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Grid -->
+                <div class="cms-photo-grid">
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="1"
+                                    data-title="Sunrise di Kawah Wurung"
+                                    data-description="Pemandangan indah sunrise di kawah wurung yang memukau"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Sunrise di Kawah Wurung</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 24 foto • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="2"
+                                    data-title="Festival Budaya Banyumas"
+                                    data-description="Dokumentasi festival budaya banyumas yang meriah"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="2">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Festival Budaya Banyumas</h4>
+                            <p class="cms-photo-meta">06/09/2025 • 18 foto • 892 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Foto" onclick="editFoto(this)" 
+                                    data-id="3"
+                                    data-title="Pasar Tradisional Purwokerto"
+                                    data-description="Suasana ramai pasar tradisional purwokerto"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Foto" onclick="deleteFoto(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Pasar Tradisional Purwokerto</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 12 foto • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination untuk Foto -->
+                <div class="cms-pagination cms-pagination-foto">
+                    <div class="cms-pagination-info">
+                        Menampilkan 1-15 dari 47 foto
+                    </div>
+                    <div class="cms-pagination-controls">
+                        <button class="cms-page-btn cms-page-btn--prev" disabled>
+                            <span class="material-icons">chevron_left</span>
+                        </button>
+                        <button class="cms-page-btn active">1</button>
+                        <button class="cms-page-btn">2</button>
+                        <button class="cms-page-btn">3</button>
+                        <button class="cms-page-btn cms-page-btn--next">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Infografis Tab -->
+            <div class="cms-tab-content" id="infografis-tab">
+                <div class="cms-toolbar">
+                    <div class="cms-toolbar-left">
+                        <button class="cms-btn cms-btn--primary" onclick="showAddModal('infografis')">
+                            <span class="material-icons">add</span>
+                            Upload Infografis
+                        </button>
+                        <button class="cms-btn cms-btn--secondary cms-bulk-action" style="display: none;">
+                            <span class="material-icons">delete</span>
+                            Hapus Terpilih
+                        </button>
+                    </div>
+                    <div class="cms-toolbar-right">
+                        <div class="cms-search">
+                            <span class="material-icons">search</span>
+                            <input type="text" placeholder="Cari infografis..." class="cms-search-input">
+                        </div>
+                        <div class="cms-filter">
+                            <select class="cms-select">
+                                <option value="">Semua Status</option>
+                                <option value="published">Published</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infografis Grid -->
+                <div class="cms-photo-grid">
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=6" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="1"
+                                    data-title="Infografis COVID-19 Terbaru"
+                                    data-description="Data terbaru perkembangan COVID-19 di Indonesia"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="1">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Infografis COVID-19 Terbaru</h4>
+                            <p class="cms-photo-meta">07/09/2025 • 1,245 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=7" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="2"
+                                    data-title="Jadwal Vaksinasi Nasional"
+                                    data-description="Jadwal dan lokasi vaksinasi nasional"
+                                    data-status="published">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="2">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Jadwal Vaksinasi Nasional</h4>
+                            <p class="cms-photo-meta">06/09/2025 • 892 views</p>
+                            <span class="cms-status cms-status--published">Published</span>
+                        </div>
+                    </div>
+
+                    <div class="cms-photo-item">
+                        <div class="cms-photo-preview">
+                            <img src="https://picsum.photos/400/300?random=8" alt="">
+                            <div class="cms-photo-overlay">
+                                <button class="cms-action-btn cms-action-btn--edit" title="Edit Infografis" onclick="editInfografis(this)" 
+                                    data-id="3"
+                                    data-title="Data Statistik Ekonomi Q3"
+                                    data-description="Statistik perkembangan ekonomi kuartal 3"
+                                    data-status="draft">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                                <button class="cms-action-btn cms-action-btn--delete" title="Hapus Infografis" onclick="deleteInfografis(this)" data-id="3">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cms-photo-info">
+                            <h4 class="cms-photo-title">Data Statistik Ekonomi Q3</h4>
+                            <p class="cms-photo-meta">05/09/2025 • 634 views</p>
+                            <span class="cms-status cms-status--draft">Draft</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination untuk Infografis -->
+                <div class="cms-pagination cms-pagination-infografis">
+                    <div class="cms-pagination-info">
+                        Menampilkan 1-5 dari 5 infografis
+                    </div>
+                    <div class="cms-pagination-controls">
+                        <button class="cms-page-btn cms-page-btn--prev-infografis" disabled>
+                            <span class="material-icons">chevron_left</span>
+                        </button>
+                        <button class="cms-page-btn cms-page-btn-infografis active">1</button>
+                        <button class="cms-page-btn cms-page-btn-infografis">2</button>
+                        <button class="cms-page-btn cms-page-btn-infografis">3</button>
+                        <button class="cms-page-btn cms-page-btn--next-infografis">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Tab -->
+            <div class="cms-tab-content" id="video-tab">
+                <div class="cms-toolbar">
+                    <div class="cms-toolbar-left">
+                        <button class="cms-btn cms-btn--primary" onclick="showAddModal('video')">
+                            <span class="material-icons">add</span>
+                            Tambah Video
+                        </button>
+                        <button class="cms-btn cms-btn--secondary cms-bulk-action" style="display: none;">
+                            <span class="material-icons">delete</span>
+                            Hapus Terpilih
+                        </button>
+                    </div>
+                    <div class="cms-toolbar-right">
+                        <div class="cms-search">
+                            <span class="material-icons">search</span>
+                            <input type="text" placeholder="Cari video..." class="cms-search-input">
+                        </div>
+                        <div class="cms-filter">
+                            <select class="cms-select">
+                                <option value="">Semua Status</option>
+                                <option value="published">Published</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Grid -->
+                <div class="cms-video-grid">
+                    <div class="cms-video-item">
+    <div class="cms-video-preview">
+        <div class="cms-video-iframe">
+            <iframe 
+                id="video-iframe-1"
+                width="100%" 
+                height="180" 
+                src="https://www.youtube.com/embed/HWxacECmNjY?si=MHL3jGGn-6-cHrCl" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="cms-video-duration">8:21</div>
+        </div>
+        <div class="cms-video-overlay">
+            <button class="cms-action-btn cms-action-btn--edit" title="Edit Video" onclick="editVideo(this)" 
+                data-id="1"
+                data-title="Wawancara Eksklusif Gubernur Jateng"
+                data-description="Wawancara eksklusif dengan Gubernur Jawa Tengah mengenai program pembangunan infrastruktur"
+                data-status="published"
+                data-youtube-url="https://youtu.be/HWxacECmNjY?si=MHL3jGGn-6-cHrCl">
+                <span class="material-icons">edit</span>
+            </button>
+            <button class="cms-action-btn cms-action-btn--delete" title="Hapus Video" onclick="deleteVideo(this)" 
+                data-id="1">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="cms-video-info">
+        <h4 class="cms-video-title">Wawancara Eksklusif Gubernur Jateng</h4>
+        <p class="cms-video-meta">06/09/2025 • 892 views</p>
+        <span class="cms-status cms-status--published">Published</span>
+    </div>
+</div>
+
+
+
+
+                    <div class="cms-video-item">
+    <div class="cms-video-preview">
+        <div class="cms-video-iframe">
+            <iframe 
+                id="video-iframe-1"
+                width="100%" 
+                height="180" 
+                src="https://www.youtube.com/embed/HWxacECmNjY?si=MHL3jGGn-6-cHrCl" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="cms-video-duration">8:21</div>
+        </div>
+        <div class="cms-video-overlay">
+            <button class="cms-action-btn cms-action-btn--edit" title="Edit Video" onclick="editVideo(this)" 
+                data-id="1"
+                data-title="Wawancara Eksklusif Gubernur Jateng"
+                data-description="Wawancara eksklusif dengan Gubernur Jawa Tengah mengenai program pembangunan infrastruktur"
+                data-status="published"
+                data-youtube-url="https://youtu.be/HWxacECmNjY?si=MHL3jGGn-6-cHrCl">
+                <span class="material-icons">edit</span>
+            </button>
+            <button class="cms-action-btn cms-action-btn--delete" title="Hapus Video" onclick="deleteVideo(this)" 
+                data-id="1">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="cms-video-info">
+        <h4 class="cms-video-title">Wawancara Eksklusif Gubernur Jateng</h4>
+        <p class="cms-video-meta">06/09/2025 • 892 views</p>
+        <span class="cms-status cms-status--published">Published</span>
+    </div>
+</div>
+
+<div class="cms-video-item">
+    <div class="cms-video-preview">
+        <div class="cms-video-iframe">
+            <iframe 
+                id="video-iframe-1"
+                width="100%" 
+                height="180" 
+                src="https://www.youtube.com/embed/HWxacECmNjY?si=MHL3jGGn-6-cHrCl" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="cms-video-duration">8:21</div>
+        </div>
+        <div class="cms-video-overlay">
+            <button class="cms-action-btn cms-action-btn--edit" title="Edit Video" onclick="editVideo(this)" 
+                data-id="1"
+                data-title="Wawancara Eksklusif Gubernur Jateng"
+                data-description="Wawancara eksklusif dengan Gubernur Jawa Tengah mengenai program pembangunan infrastruktur"
+                data-status="published"
+                data-youtube-url="https://youtu.be/HWxacECmNjY?si=MHL3jGGn-6-cHrCl">
+                <span class="material-icons">edit</span>
+            </button>
+            <button class="cms-action-btn cms-action-btn--delete" title="Hapus Video" onclick="deleteVideo(this)" 
+                data-id="1">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="cms-video-info">
+        <h4 class="cms-video-title">Wawancara Eksklusif Gubernur Jateng</h4>
+        <p class="cms-video-meta">06/09/2025 • 892 views</p>
+        <span class="cms-status cms-status--published">Published</span>
+    </div>
+</div>
+
+<div class="cms-video-item">
+    <div class="cms-video-preview">
+        <div class="cms-video-iframe">
+            <iframe 
+                id="video-iframe-1"
+                width="100%" 
+                height="180" 
+                src="https://www.youtube.com/embed/HWxacECmNjY?si=MHL3jGGn-6-cHrCl" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="cms-video-duration">8:21</div>
+        </div>
+        <div class="cms-video-overlay">
+            <button class="cms-action-btn cms-action-btn--edit" title="Edit Video" onclick="editVideo(this)" 
+                data-id="1"
+                data-title="Wawancara Eksklusif Gubernur Jateng"
+                data-description="Wawancara eksklusif dengan Gubernur Jawa Tengah mengenai program pembangunan infrastruktur"
+                data-status="published"
+                data-youtube-url="https://youtu.be/HWxacECmNjY?si=MHL3jGGn-6-cHrCl">
+                <span class="material-icons">edit</span>
+            </button>
+            <button class="cms-action-btn cms-action-btn--delete" title="Hapus Video" onclick="deleteVideo(this)" 
+                data-id="1">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="cms-video-info">
+        <h4 class="cms-video-title">Wawancara Eksklusif Gubernur Jateng</h4>
+        <p class="cms-video-meta">06/09/2025 • 892 views</p>
+        <span class="cms-status cms-status--published">Published</span>
+    </div>
+</div>
+
+<div class="cms-video-item">
+    <div class="cms-video-preview">
+        <div class="cms-video-iframe">
+            <iframe 
+                id="video-iframe-1"
+                width="100%" 
+                height="180" 
+                src="https://www.youtube.com/embed/HWxacECmNjY?si=MHL3jGGn-6-cHrCl" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="cms-video-duration">8:21</div>
+        </div>
+        <div class="cms-video-overlay">
+            <button class="cms-action-btn cms-action-btn--edit" title="Edit Video" onclick="editVideo(this)" 
+                data-id="1"
+                data-title="Wawancara Eksklusif Gubernur Jateng"
+                data-description="Wawancara eksklusif dengan Gubernur Jawa Tengah mengenai program pembangunan infrastruktur"
+                data-status="published"
+                data-youtube-url="https://youtu.be/HWxacECmNjY?si=MHL3jGGn-6-cHrCl">
+                <span class="material-icons">edit</span>
+            </button>
+            <button class="cms-action-btn cms-action-btn--delete" title="Hapus Video" onclick="deleteVideo(this)" 
+                data-id="1">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="cms-video-info">
+        <h4 class="cms-video-title">Wawancara Eksklusif Gubernur Jateng</h4>
+        <p class="cms-video-meta">06/09/2025 • 892 views</p>
+        <span class="cms-status cms-status--published">Published</span>
+    </div>
+</div>
+
+<div class="cms-video-item">
+    <div class="cms-video-preview">
+        <div class="cms-video-iframe">
+            <iframe 
+                id="video-iframe-1"
+                width="100%" 
+                height="180" 
+                src="https://www.youtube.com/embed/HWxacECmNjY?si=MHL3jGGn-6-cHrCl" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="cms-video-duration">8:21</div>
+        </div>
+        <div class="cms-video-overlay">
+            <button class="cms-action-btn cms-action-btn--edit" title="Edit Video" onclick="editVideo(this)" 
+                data-id="1"
+                data-title="Wawancara Eksklusif Gubernur Jateng"
+                data-description="Wawancara eksklusif dengan Gubernur Jawa Tengah mengenai program pembangunan infrastruktur"
+                data-status="published"
+                data-youtube-url="https://youtu.be/HWxacECmNjY?si=MHL3jGGn-6-cHrCl">
+                <span class="material-icons">edit</span>
+            </button>
+            <button class="cms-action-btn cms-action-btn--delete" title="Hapus Video" onclick="deleteVideo(this)" 
+                data-id="1">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="cms-video-info">
+        <h4 class="cms-video-title">Wawancara Eksklusif Gubernur Jateng</h4>
+        <p class="cms-video-meta">06/09/2025 • 892 views</p>
+        <span class="cms-status cms-status--published">Published</span>
+    </div>
+</div>
+
+
+
+
+                   <div class="cms-video-item">
+    <div class="cms-video-preview">
+        <div class="cms-video-iframe">
+            <iframe 
+                id="video-iframe-1"
+                width="100%" 
+                height="180" 
+                src="https://www.youtube.com/embed/HWxacECmNjY?si=MHL3jGGn-6-cHrCl" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="cms-video-duration">8:21</div>
+        </div>
+        <div class="cms-video-overlay">
+            <button class="cms-action-btn cms-action-btn--edit" title="Edit Video" onclick="editVideo(this)" 
+                data-id="1"
+                data-title="Wawancara Eksklusif Gubernur Jateng"
+                data-description="Wawancara eksklusif dengan Gubernur Jawa Tengah mengenai program pembangunan infrastruktur"
+                data-status="published"
+                data-youtube-url="https://youtu.be/HWxacECmNjY?si=MHL3jGGn-6-cHrCl">
+                <span class="material-icons">edit</span>
+            </button>
+            <button class="cms-action-btn cms-action-btn--delete" title="Hapus Video" onclick="deleteVideo(this)" 
+                data-id="1">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="cms-video-info">
+        <h4 class="cms-video-title">Wawancara Eksklusif Gubernur Jateng</h4>
+        <p class="cms-video-meta">06/09/2025 • 892 views</p>
+        <span class="cms-status cms-status--published">Published</span>
+    </div>
+</div>
+
+
+
+
+                    <div class="cms-video-item">
+    <div class="cms-video-preview">
+        <div class="cms-video-iframe">
+            <iframe 
+                id="video-iframe-1"
+                width="100%" 
+                height="180" 
+                src="https://www.youtube.com/embed/HWxacECmNjY?si=MHL3jGGn-6-cHrCl" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="cms-video-duration">8:21</div>
+        </div>
+        <div class="cms-video-overlay">
+            <button class="cms-action-btn cms-action-btn--edit" title="Edit Video" onclick="editVideo(this)" 
+                data-id="1"
+                data-title="Wawancara Eksklusif Gubernur Jateng"
+                data-description="Wawancara eksklusif dengan Gubernur Jawa Tengah mengenai program pembangunan infrastruktur"
+                data-status="published"
+                data-youtube-url="https://youtu.be/HWxacECmNjY?si=MHL3jGGn-6-cHrCl">
+                <span class="material-icons">edit</span>
+            </button>
+            <button class="cms-action-btn cms-action-btn--delete" title="Hapus Video" onclick="deleteVideo(this)" 
+                data-id="1">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="cms-video-info">
+        <h4 class="cms-video-title">Wawancara Eksklusif Gubernur Jateng</h4>
+        <p class="cms-video-meta">06/09/2025 • 892 views</p>
+        <span class="cms-status cms-status--published">Published</span>
+    </div>
+</div>
+
+
+
+
+                    <div class="cms-video-item">
+    <div class="cms-video-preview">
+        <div class="cms-video-iframe">
+            <iframe 
+                id="video-iframe-1"
+                width="100%" 
+                height="180" 
+                src="https://www.youtube.com/embed/HWxacECmNjY?si=MHL3jGGn-6-cHrCl" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="cms-video-duration">8:21</div>
+        </div>
+        <div class="cms-video-overlay">
+            <button class="cms-action-btn cms-action-btn--edit" title="Edit Video" onclick="editVideo(this)" 
+                data-id="1"
+                data-title="Wawancara Eksklusif Gubernur Jateng"
+                data-description="Wawancara eksklusif dengan Gubernur Jawa Tengah mengenai program pembangunan infrastruktur"
+                data-status="published"
+                data-youtube-url="https://youtu.be/HWxacECmNjY?si=MHL3jGGn-6-cHrCl">
+                <span class="material-icons">edit</span>
+            </button>
+            <button class="cms-action-btn cms-action-btn--delete" title="Hapus Video" onclick="deleteVideo(this)" 
+                data-id="1">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="cms-video-info">
+        <h4 class="cms-video-title">Wawancara Eksklusif Gubernur Jateng</h4>
+        <p class="cms-video-meta">06/09/2025 • 892 views</p>
+        <span class="cms-status cms-status--published">Published</span>
+    </div>
+</div>
+
+
+
+
+                    <div class="cms-video-item">
+    <div class="cms-video-preview">
+        <div class="cms-video-iframe">
+            <iframe 
+                id="video-iframe-1"
+                width="100%" 
+                height="180" 
+                src="https://www.youtube.com/embed/HWxacECmNjY?si=MHL3jGGn-6-cHrCl" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="cms-video-duration">8:21</div>
+        </div>
+        <div class="cms-video-overlay">
+            <button class="cms-action-btn cms-action-btn--edit" title="Edit Video" onclick="editVideo(this)" 
+                data-id="1"
+                data-title="Wawancara Eksklusif Gubernur Jateng"
+                data-description="Wawancara eksklusif dengan Gubernur Jawa Tengah mengenai program pembangunan infrastruktur"
+                data-status="published"
+                data-youtube-url="https://youtu.be/HWxacECmNjY?si=MHL3jGGn-6-cHrCl">
+                <span class="material-icons">edit</span>
+            </button>
+            <button class="cms-action-btn cms-action-btn--delete" title="Hapus Video" onclick="deleteVideo(this)" 
+                data-id="1">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+    </div>
+    <div class="cms-video-info">
+        <h4 class="cms-video-title">Wawancara Eksklusif Gubernur Jateng</h4>
+        <p class="cms-video-meta">06/09/2025 • 892 views</p>
+        <span class="cms-status cms-status--published">Published</span>
+    </div>
+</div>
+
+
+
+                </div>
+
+                <!-- Pagination untuk Video -->
+                <div class="cms-pagination cms-pagination-video">
+                    <div class="cms-pagination-info">
+                        Menampilkan 1-2 dari 12 video
+                    </div>
+                    <div class="cms-pagination-controls">
+                        <button class="cms-page-btn cms-page-btn--prev-video" disabled>
+                            <span class="material-icons">chevron_left</span>
+                        </button>
+                        <button class="cms-page-btn cms-page-btn-video active">1</button>
+                        <button class="cms-page-btn cms-page-btn-video">2</button>
+                        <button class="cms-page-btn cms-page-btn--next-video">
+                            <span class="material-icons">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div class="cms-modal-overlay" id="delete-confirmation-modal" style="display: none;">
+        <div class="cms-modal cms-modal--small">
+            <div class="cms-modal-header">
+                <h2 class="cms-modal-title" id="delete-modal-title">Konfirmasi Hapus</h2>
+                <button class="cms-modal-close" onclick="closeDeleteModal()">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            
+            <div class="cms-modal-body">
+                <div class="delete-warning">
+                    <div class="delete-icon">
+                        <span class="material-icons">warning</span>
+                    </div>
+                    <p id="delete-modal-text">Anda yakin ingin menghapus item ini?</p>
+                    <p class="delete-item-title" id="delete-item-title"></p>
+                </div>
+            </div>
+            
+            <div class="cms-modal-actions">
+                <button type="button" class="cms-btn cms-btn--secondary" onclick="closeDeleteModal()">
+                    <span class="material-icons">cancel</span>
+                    Batal
+                </button>
+                <button type="button" class="cms-btn cms-btn--danger" id="confirm-delete-btn" onclick="confirmDelete()">
+                    <span class="material-icons">delete</span>
+                    <span id="delete-btn-text">Hapus</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah/Edit Berita -->
+    <div class="cms-modal-overlay" id="berita-modal" style="display: none;">
+        <div class="cms-modal">
+            <div class="cms-modal-header">
+                <h2 class="cms-modal-title" id="berita-modal-title">Tambah Berita Baru</h2>
+                <button class="cms-modal-close" onclick="closeBeritaModal()">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+
+            <form class="cms-modal-form" id="berita-form">
+                <div class="cms-form-grid">
+                    <div class="cms-form-column">
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Judul Berita *</label>
+                            <input 
+                                type="text" 
+                                class="cms-form-input"
+                                id="berita-title"
+                                placeholder="Masukkan judul berita..."
+                                required
+                            >
+                        </div>
+
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Konten Berita *</label>
+                            <div class="cms-editor-toolbar">
+                                <button type="button" class="cms-editor-btn" data-action="bold">
+                                    <span class="material-icons">format_bold</span>
+                                </button>
+                                <button type="button" class="cms-editor-btn" data-action="italic">
+                                    <span class="material-icons">format_italic</span>
+                                </button>
+                                <button type="button" class="cms-editor-btn" data-action="underline">
+                                    <span class="material-icons">format_underlined</span>
+                                </button>
+                                <div class="cms-editor-divider"></div>
+                                <button type="button" class="cms-editor-btn" data-action="insertUnorderedList">
+                                    <span class="material-icons">format_list_bulleted</span>
+                                </button>
+                                <button type="button" class="cms-editor-btn" data-action="insertOrderedList">
+                                    <span class="material-icons">format_list_numbered</span>
+                                </button>
+                            </div>
+                            <div 
+                                class="cms-rich-editor"
+                                id="berita-content"
+                                contenteditable="true"
+                                placeholder="Tulis konten berita di sini..."
+                            ></div>
+                        </div>
+
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Ringkasan/Excerpt</label>
+                            <textarea 
+                                class="cms-form-textarea"
+                                id="berita-excerpt"
+                                placeholder="Ringkasan singkat berita (opsional)"
+                                rows="3"
+                            ></textarea>
+                            <div class="cms-form-help">Akan ditampilkan di halaman utama dan preview</div>
+                        </div>
+                    </div>
+
+                    <div class="cms-form-column">
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Gambar Berita</label>
+                            <div class="cms-image-upload">
+                                <input type="file" id="berita-image" accept="image/*" class="cms-file-input" multiple>
+                                <div class="cms-upload-area" onclick="document.getElementById('berita-image').click()">
+                                    <div class="cms-upload-placeholder" id="image-placeholder">
+                                        <span class="material-icons">cloud_upload</span>
+                                        <p>Klik untuk upload gambar</p>
+                                        <small>JPG, PNG, WebP • Multiple files (Max 5MB per file)</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="cms-image-preview-container" id="image-preview-container" style="display: none;">
+                                    <div class="cms-image-count" id="image-count"></div>
+                                    <div class="cms-image-grid" id="image-grid"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Tanggal Publikasi</label>
+                            <input 
+                                type="datetime-local" 
+                                class="cms-form-input"
+                                id="berita-date"
+                            >
+                            <div class="cms-form-help">Kosongkan untuk menggunakan waktu sekarang</div>
+                        </div>
+
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Status Publikasi</label>
+                            <div class="cms-radio-group">
+                                <label class="cms-radio">
+                                    <input type="radio" name="status" value="published" checked>
+                                    <span class="cms-radio-mark"></span>
+                                    <span class="cms-radio-label">
+                                        <strong>Published</strong>
+                                        <small>Langsung tampil di website</small>
+                                    </span>
+                                </label>
+                                <label class="cms-radio">
+                                    <input type="radio" name="status" value="draft">
+                                    <span class="cms-radio-mark"></span>
+                                    <span class="cms-radio-label">
+                                        <strong>Draft</strong>
+                                        <small>Simpan sebagai draft</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="cms-modal-actions">
+                            <button type="button" class="cms-btn cms-btn--secondary" onclick="closeBeritaModal()">
+                                <span class="material-icons">cancel</span>
+                                Batal
+                            </button>
+                            <button type="submit" class="cms-btn cms-btn--primary">
+                                <span class="material-icons">save</span>
+                                Simpan Berita
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Upload/Edit Foto -->
+    <div class="cms-modal-overlay" id="foto-modal" style="display: none;">
+        <div class="cms-modal">
+            <div class="cms-modal-header">
+                <h2 class="cms-modal-title" id="foto-modal-title">Upload Foto Baru</h2>
+                <button class="cms-modal-close" onclick="closeFotoModal()">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+
+            <form class="cms-modal-form" id="foto-form">
+                <div class="cms-form-grid">
+                    <div class="cms-form-column">
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Judul Foto *</label>
+                            <input 
+                                type="text" 
+                                class="cms-form-input"
+                                id="foto-title"
+                                placeholder="Masukkan judul foto..."
+                                required
+                            >
+                        </div>
+
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Deskripsi *</label>
+                            <div 
+                                class="cms-rich-editor"
+                                id="foto-description"
+                                contenteditable="true"
+                                placeholder="Tulis deskripsi foto di sini..."
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div class="cms-form-column">
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Upload Foto</label>
+                            <div class="cms-image-upload">
+                                <input type="file" id="foto-images" accept="image/*" class="cms-file-input" multiple>
+                                <div class="cms-upload-area" onclick="document.getElementById('foto-images').click()">
+                                    <div class="cms-upload-placeholder" id="foto-placeholder">
+                                        <span class="material-icons">cloud_upload</span>
+                                        <p>Klik untuk upload foto</p>
+                                        <small>JPG, PNG, WebP • Multiple files (Max 10MB per file)</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="cms-image-preview-container" id="foto-preview-container" style="display: none;">
+                                    <div class="cms-image-count" id="foto-count"></div>
+                                    <div class="cms-image-grid" id="foto-grid"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Tanggal Pengambilan Foto</label>
+                            <input 
+                                type="datetime-local" 
+                                class="cms-form-input"
+                                id="foto-date"
+                            >
+                            <div class="cms-form-help">Kosongkan untuk menggunakan waktu sekarang</div>
+                        </div>
+
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Status Publikasi</label>
+                            <div class="cms-radio-group">
+                                <label class="cms-radio">
+                                    <input type="radio" name="foto-status" value="published" checked>
+                                    <span class="cms-radio-mark"></span>
+                                    <span class="cms-radio-label">
+                                        <strong>Published</strong>
+                                        <small>Langsung tampil di galeri</small>
+                                    </span>
+                                </label>
+                                <label class="cms-radio">
+                                    <input type="radio" name="foto-status" value="draft">
+                                    <span class="cms-radio-mark"></span>
+                                    <span class="cms-radio-label">
+                                        <strong>Draft</strong>
+                                        <small>Simpan sebagai draft</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="cms-modal-actions">
+                            <button type="button" class="cms-btn cms-btn--secondary" onclick="closeFotoModal()">
+                                <span class="material-icons">cancel</span>
+                                Batal
+                            </button>
+                            <button type="submit" class="cms-btn cms-btn--primary">
+                                <span class="material-icons">cloud_upload</span>
+                                <span id="foto-submit-text">Upload Foto</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Upload/Edit Video -->
+<div class="cms-modal-overlay" id="video-modal" style="display: none;">
+    <div class="cms-modal">
+        <div class="cms-modal-header">
+            <h2 class="cms-modal-title" id="video-modal-title">Upload Video Baru</h2>
+            <button class="cms-modal-close" onclick="closeVideoModal()">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+
+        <form class="cms-modal-form" id="video-form">
+            <div class="cms-form-grid">
+                <div class="cms-form-column">
+                    <div class="cms-form-group">
+                        <label class="cms-form-label">Judul Video *</label>
+                        <input 
+                            type="text" 
+                            class="cms-form-input"
+                            id="video-title"
+                            placeholder="Masukkan judul video..."
+                            required
+                        >
+                    </div>
+
+                    <div class="cms-form-group">
+                        <label class="cms-form-label">Deskripsi Video *</label>
+                        <div class="cms-editor-toolbar">
+                            <button type="button" class="cms-editor-btn" data-action="bold">
+                                <span class="material-icons">format_bold</span>
+                            </button>
+                            <button type="button" class="cms-editor-btn" data-action="italic">
+                                <span class="material-icons">format_italic</span>
+                            </button>
+                            <button type="button" class="cms-editor-btn" data-action="underline">
+                                <span class="material-icons">format_underlined</span>
+                            </button>
+                        </div>
+                        <div 
+                            class="cms-rich-editor"
+                            id="video-description"
+                            contenteditable="true"
+                            placeholder="Tulis deskripsi video di sini..."
+                        ></div>
+                    </div>
+                </div>
+
+                <div class="cms-form-column">
+                    <div class="cms-form-group">
+                        <label class="cms-form-label">URL YouTube *</label>
+                        <input 
+                            type="url" 
+                            class="cms-form-input"
+                            id="video-youtube-url"
+                            placeholder="https://www.youtube.com/watch?v=..."
+                            required
+                        >
+                        <div class="cms-form-help">Jika diisi, video akan ditampilkan dari YouTube</div>
+                    </div>
+
+                    <div class="cms-form-group">
+                        <label class="cms-form-label">Tanggal Publikasi</label>
+                        <input 
+                            type="datetime-local" 
+                            class="cms-form-input"
+                            id="video-date"
+                        >
+                        <div class="cms-form-help">Kosongkan untuk menggunakan waktu sekarang</div>
+                    </div>
+
+                    <div class="cms-form-group">
+                        <label class="cms-form-label">Status Publikasi</label>
+                        <div class="cms-radio-group">
+                            <label class="cms-radio">
+                                <input type="radio" name="video-status" value="published" checked>
+                                <span class="cms-radio-mark"></span>
+                                <span class="cms-radio-label">
+                                    <strong>Published</strong>
+                                    <small>Langsung tampil di website</small>
+                                </span>
+                            </label>
+                            <label class="cms-radio">
+                                <input type="radio" name="video-status" value="draft">
+                                <span class="cms-radio-mark"></span>
+                                <span class="cms-radio-label">
+                                    <strong>Draft</strong>
+                                    <small>Simpan sebagai draft</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="cms-modal-actions">
+                        <button type="button" class="cms-btn cms-btn--secondary" onclick="closeVideoModal()">
+                            <span class="material-icons">cancel</span>
+                            Batal
+                        </button>
+                        <button type="submit" class="cms-btn cms-btn--primary">
+                            <span class="material-icons">video_library</span>
+                            <span id="video-submit-text">Upload Video</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    <!-- Modal Upload/Edit Infografis -->
+    <div class="cms-modal-overlay" id="infografis-modal" style="display: none;">
+        <div class="cms-modal">
+            <div class="cms-modal-header">
+                <h2 class="cms-modal-title" id="infografis-modal-title">Upload Infografis Baru</h2>
+                <button class="cms-modal-close" onclick="closeInfografisModal()">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+
+            <form class="cms-modal-form" id="infografis-form">
+                <div class="cms-form-grid">
+                    <div class="cms-form-column">
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Judul Infografis *</label>
+                            <input 
+                                type="text" 
+                                class="cms-form-input"
+                                id="infografis-title"
+                                placeholder="Masukkan judul infografis..."
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="cms-form-column">
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Upload Infografis</label>
+                            <div class="cms-image-upload">
+                                <input type="file" id="infografis-images" accept="image/*" class="cms-file-input" multiple>
+                                <div class="cms-upload-area" onclick="document.getElementById('infografis-images').click()">
+                                    <div class="cms-upload-placeholder" id="infografis-placeholder">
+                                        <span class="material-icons">cloud_upload</span>
+                                        <p>Klik untuk upload infografis</p>
+                                        <small>JPG, PNG, SVG • Multiple files (Max 15MB per file)</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="cms-image-preview-container" id="infografis-preview-container" style="display: none;">
+                                    <div class="cms-image-count" id="infografis-count"></div>
+                                    <div class="cms-image-grid" id="infografis-grid"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Tanggal Publikasi</label>
+                            <input 
+                                type="datetime-local" 
+                                class="cms-form-input"
+                                id="infografis-date"
+                            >
+                            <div class="cms-form-help">Kosongkan untuk menggunakan waktu sekarang</div>
+                        </div>
+
+                        <div class="cms-form-group">
+                            <label class="cms-form-label">Status Publikasi</label>
+                            <div class="cms-radio-group">
+                                <label class="cms-radio">
+                                    <input type="radio" name="infografis-status" value="published" checked>
+                                    <span class="cms-radio-mark"></span>
+                                    <span class="cms-radio-label">
+                                        <strong>Published</strong>
+                                        <small>Langsung tampil di website</small>
+                                    </span>
+                                </label>
+                                <label class="cms-radio">
+                                    <input type="radio" name="infografis-status" value="draft">
+                                    <span class="cms-radio-mark"></span>
+                                    <span class="cms-radio-label">
+                                        <strong>Draft</strong>
+                                        <small>Simpan sebagai draft</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="cms-modal-actions">
+                            <button type="button" class="cms-btn cms-btn--secondary" onclick="closeInfografisModal()">
+                                <span class="material-icons">cancel</span>
+                                Batal
+                            </button>
+                            <button type="submit" class="cms-btn cms-btn--primary">
+                                <span class="material-icons">cloud_upload</span>
+                                <span id="infografis-submit-text">Upload Infografis</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+<script>
+// ✅ GLOBAL VARIABLES
+let selectedImages = [];
+let selectedPhotos = [];
+let selectedInfografis = [];
+let itemToDelete = null;
+
+// Pagination variables
+let currentBeritaPage = 1;
+let currentFotoPage = 1;
+let currentInfografisPage = 1;
+let currentVideoPage = 1;
+
+const beritaPerPage = 10;
+const fotoPerPage = 15;
+const infografisPerPage = 15;
+const videoPerPage = 9;
+
+// ✅ DOM CONTENT LOADED EVENT HANDLER 
+document.addEventListener('DOMContentLoaded', function() {
+    // ✅ Tab switching functionality
+    document.querySelectorAll('.cms-tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.cms-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.cms-tab-content').forEach(c => c.classList.remove('active'));
+            
+            this.classList.add('active');
+            
+            const tabId = this.dataset.tab + '-tab';
+            document.getElementById(tabId).classList.add('active');
+            
+            // Update pagination when switching tabs
+            updatePagination(this.dataset.tab);
+        });
+    });
+
+    // ✅ Search functionality
+    document.querySelectorAll('.cms-search-input').forEach(input => {
+        input.addEventListener('input', function() {
+            console.log('Searching for:', this.value);
+        });
+    });
+
+    // ✅ PASTIKAN SEMUA EVENT LISTENERS AKTIF
+    initializeEventListeners();
+    initializePagination();
+    
+    // Initialize pagination for all tabs
+    updatePagination('berita');
+    
+    // ✅ PERBAIKI CSS GRID UNTUK FOTO - PASTIKAN 5 KOLOM
+    addPhotoGridCSS();
+});
+
+// ✅ TAMBAHKAN CSS UNTUK GRID FOTO 5 KOLOM
+function addPhotoGridCSS() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .cms-photo-grid {
+            display: grid !important;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 20px !important;
+            width: 100% !important;
+        }
+        
+        .cms-photo-item {
+            width: 100% !important;
+            max-width: none !important;
+        }
+        
+        @media (max-width: 1200px) {
+            .cms-photo-grid {
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cms-photo-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cms-photo-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// ✅ INITIALIZE ALL EVENT LISTENERS
+function initializeEventListeners() {
+    // Rich Text Editor Functions
+    document.querySelectorAll('.cms-editor-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const action = this.dataset.action;
+            document.execCommand(action, false, null);
+            this.classList.toggle('active');
+        });
+    });
+    
+    // File upload event listeners
+    const beritaImageInput = document.getElementById('berita-image');
+    if (beritaImageInput) {
+        beritaImageInput.addEventListener('change', handleBeritaImageUpload);
+    }
+    
+    const fotoImageInput = document.getElementById('foto-images');
+    if (fotoImageInput) {
+        fotoImageInput.addEventListener('change', handleFotoImageUpload);
+    }
+    
+    const infografisImageInput = document.getElementById('infografis-images');
+    if (infografisImageInput) {
+        infografisImageInput.addEventListener('change', handleInfografisImageUpload);
+    }
+    
+    // Modal close when clicking outside
+    ['berita-modal', 'foto-modal', 'infografis-modal', 'video-modal'].forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(modalId);
+                }
+            });
+        }
+    });
+    
+    // Form submit handlers
+    initializeFormHandlers();
+}
+
+// ✅ MODAL FUNCTIONS YANG DIPERBAIKI
+function showAddModal(type) {
+    console.log('showAddModal called with type:', type);
+    
+    if (type === 'berita') {
+        document.getElementById('berita-modal-title').textContent = 'Tambah Berita Baru';
+        document.getElementById('berita-form').reset();
+        
+        selectedImages = [];
+        document.getElementById('image-placeholder').style.display = 'flex';
+        document.getElementById('image-preview-container').style.display = 'none';
+        
+        document.getElementById('berita-modal').style.display = 'flex';
+        
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        document.getElementById('berita-date').value = now.toISOString().slice(0,16);
+        
+        setTimeout(() => {
+            document.getElementById('berita-title').focus();
+        }, 100);
+        
+    } else if (type === 'foto') {
+        document.getElementById('foto-modal-title').textContent = 'Upload Foto Baru';
+        document.getElementById('foto-form').reset();
+        document.getElementById('foto-submit-text').textContent = 'Upload Foto';
+        
+        selectedPhotos = [];
+        document.getElementById('foto-placeholder').style.display = 'flex';
+        document.getElementById('foto-preview-container').style.display = 'none';
+        
+        document.getElementById('foto-modal').style.display = 'flex';
+        
+        setTimeout(() => {
+            document.getElementById('foto-title').focus();
+        }, 100);
+        
+    } else if (type === 'infografis') {
+        document.getElementById('infografis-modal-title').textContent = 'Upload Infografis Baru';
+        document.getElementById('infografis-form').reset();
+        document.getElementById('infografis-submit-text').textContent = 'Upload Infografis';
+        
+        selectedInfografis = [];
+        document.getElementById('infografis-placeholder').style.display = 'flex';
+        document.getElementById('infografis-preview-container').style.display = 'none';
+        
+        document.getElementById('infografis-modal').style.display = 'flex';
+        
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        document.getElementById('infografis-date').value = now.toISOString().slice(0,16);
+        
+        setTimeout(() => {
+            document.getElementById('infografis-title').focus();
+        }, 100);
+        
+    } else if (type === 'video') {
+        document.getElementById('video-modal-title').textContent = 'Upload Video Baru';
+        document.getElementById('video-form').reset();
+        document.getElementById('video-submit-text').textContent = 'Upload Video';
+        
+        document.getElementById('video-modal').style.display = 'flex';
+        
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        document.getElementById('video-date').value = now.toISOString().slice(0,16);
+        
+        setTimeout(() => {
+            document.getElementById('video-title').focus();
+        }, 100);
+    }
+}
+
+// ✅ CLOSE MODAL FUNCTIONS
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+    
+    // Reset specific modal data
+    if (modalId === 'berita-modal') {
+        selectedImages = [];
+        document.getElementById('image-placeholder').style.display = 'flex';
+        document.getElementById('image-preview-container').style.display = 'none';
+    } else if (modalId === 'foto-modal') {
+        selectedPhotos = [];
+        document.getElementById('foto-placeholder').style.display = 'flex';
+        document.getElementById('foto-preview-container').style.display = 'none';
+    } else if (modalId === 'infografis-modal') {
+        selectedInfografis = [];
+        document.getElementById('infografis-placeholder').style.display = 'flex';
+        document.getElementById('infografis-preview-container').style.display = 'none';
+    }
+}
+
+// ✅ SPECIFIC CLOSE FUNCTIONS (untuk compatibility)
+function closeBeritaModal() { closeModal('berita-modal'); }
+function closeFotoModal() { closeModal('foto-modal'); }
+function closeInfografisModal() { closeModal('infografis-modal'); }
+function closeVideoModal() { closeModal('video-modal'); }
+
+// ✅ FILE UPLOAD HANDLERS
+function handleBeritaImageUpload(e) {
+    const files = Array.from(e.target.files);
+    
+    files.forEach(file => {
+        if (file.size > 5 * 1024 * 1024) {
+            alert(`File "${file.name}" terlalu besar. Max 5MB`);
+            return;
+        }
+        
+        if (!file.type.startsWith('image/')) {
+            alert(`File "${file.name}" bukan gambar`);
+            return;
+        }
+        
+        selectedImages.push(file);
+    });
+    
+    renderImagePreviews();
+    e.target.value = '';
+}
+
+function handleFotoImageUpload(e) {
+    const files = Array.from(e.target.files);
+    
+    files.forEach(file => {
+        if (file.size > 10 * 1024 * 1024) {
+            alert(`File "${file.name}" terlalu besar. Max 10MB`);
+            return;
+        }
+        
+        if (!file.type.startsWith('image/')) {
+            alert(`File "${file.name}" bukan gambar`);
+            return;
+        }
+        
+        selectedPhotos.push(file);
+    });
+    
+    renderFotoPreview();
+    e.target.value = '';
+}
+
+function handleInfografisImageUpload(e) {
+    const files = Array.from(e.target.files);
+    
+    files.forEach(file => {
+        if (file.size > 15 * 1024 * 1024) {
+            alert(`File "${file.name}" terlalu besar. Max 15MB`);
+            return;
+        }
+        
+        if (!file.type.startsWith('image/')) {
+            alert(`File "${file.name}" bukan gambar`);
+            return;
+        }
+        
+        selectedInfografis.push(file);
+    });
+    
+    renderInfografisPreview();
+    e.target.value = '';
+}
+
+// ✅ FORM SUBMIT HANDLERS
+function initializeFormHandlers() {
+    // Berita Form
+    const beritaForm = document.getElementById('berita-form');
+    if (beritaForm) {
+        beritaForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                title: document.getElementById('berita-title').value,
+                content: document.getElementById('berita-content').innerHTML,
+                excerpt: document.getElementById('berita-excerpt').value,
+                status: document.querySelector('input[name="status"]:checked').value,
+                date: document.getElementById('berita-date').value,
+                images: selectedImages
+            };
+            
+            if (!formData.title.trim()) {
+                alert('Judul berita harus diisi');
+                return;
+            }
+            
+            if (!formData.content.trim()) {
+                alert('Konten berita harus diisi');
+                return;
+            }
+            
+            console.log('Berita Form Data:', formData);
+            alert(`Berita "${formData.title}" berhasil disimpan dengan ${selectedImages.length} gambar!`);
+            closeBeritaModal();
+            
+            // Update pagination after adding new content
+            setTimeout(() => {
+                updatePagination('berita');
+            }, 100);
+        });
+    }
+    
+    // Foto Form
+    const fotoForm = document.getElementById('foto-form');
+    if (fotoForm) {
+        fotoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                title: document.getElementById('foto-title').value,
+                description: document.getElementById('foto-description').innerHTML,
+                status: document.querySelector('input[name="foto-status"]:checked').value,
+                photos: selectedPhotos
+            };
+            
+            if (!formData.title.trim()) {
+                alert('Judul foto harus diisi');
+                return;
+            }
+            
+            if (!formData.description.trim()) {
+                alert('Deskripsi foto harus diisi');
+                return;
+            }
+            
+            console.log('Foto Upload Data:', formData);
+            alert(`Foto "${formData.title}" berhasil disimpan dengan ${selectedPhotos.length} gambar!`);
+            closeFotoModal();
+            
+            // Update pagination after adding new content
+            setTimeout(() => {
+                updatePagination('foto');
+            }, 100);
+        });
+    }
+    
+    // Infografis Form
+    const infografisForm = document.getElementById('infografis-form');
+    if (infografisForm) {
+        infografisForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                title: document.getElementById('infografis-title').value,
+                status: document.querySelector('input[name="infografis-status"]:checked').value,
+                infografis: selectedInfografis
+            };
+            
+            if (!formData.title.trim()) {
+                alert('Judul infografis harus diisi');
+                return;
+            }
+            
+            console.log('Infografis Upload Data:', formData);
+            alert(`Infografis "${formData.title}" berhasil disimpan dengan ${selectedInfografis.length} file!`);
+            closeInfografisModal();
+            
+            // Update pagination after adding new content
+            setTimeout(() => {
+                updatePagination('infografis');
+            }, 100);
+        });
+    }
+    
+    // Video Form
+    const videoForm = document.getElementById('video-form');
+    if (videoForm) {
+        videoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                title: document.getElementById('video-title').value,
+                description: document.getElementById('video-description').innerHTML,
+                youtubeUrl: document.getElementById('video-youtube-url').value,
+                status: document.querySelector('input[name="video-status"]:checked').value,
+                date: document.getElementById('video-date').value
+            };
+            
+            if (!formData.title.trim()) {
+                alert('Judul video harus diisi');
+                return;
+            }
+            
+            if (!formData.description.trim()) {
+                alert('Deskripsi video harus diisi');
+                return;
+            }
+            
+            if (!formData.youtubeUrl.trim()) {
+                alert('URL YouTube harus diisi');
+                return;
+            }
+            
+            if (!isValidYouTubeURL(formData.youtubeUrl)) {
+                alert('URL YouTube tidak valid');
+                return;
+            }
+            
+            console.log('Video Upload Data:', formData);
+            alert(`Video "${formData.title}" berhasil disimpan!`);
+            closeVideoModal();
+            
+            // Update pagination after adding new content
+            setTimeout(() => {
+                updatePagination('video');
+            }, 100);
+        });
+    }
+}
+
+// ✅ RENDER PREVIEW FUNCTIONS
+function renderImagePreviews() {
+    const container = document.getElementById('image-preview-container');
+    const placeholder = document.getElementById('image-placeholder');
+    const countElement = document.getElementById('image-count');
+    const gridElement = document.getElementById('image-grid');
+    const uploadArea = document.querySelector('.cms-upload-area');
+    
+    if (selectedImages.length > 0) {
+        placeholder.style.display = 'none';
+        container.style.display = 'block';
+        if (uploadArea) uploadArea.classList.add('has-files');
+        
+        countElement.innerHTML = `
+        <span class="material-icons" style="vertical-align: middle; margin-right: 4px;">photo_library</span>
+        ${selectedImages.length} gambar dipilih`;
+        
+        gridElement.innerHTML = '';
+        
+        selectedImages.forEach((file, index) => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewDiv = document.createElement('div');
+                previewDiv.className = 'cms-multi-image-preview';
+                previewDiv.innerHTML = `
+                    <img src="${e.target.result}" alt="Preview ${index + 1}">
+                    <button type="button" class="cms-image-remove" onclick="removeSelectedImage(${index})" title="Hapus gambar">
+                        <span class="material-icons" style="font-size: 12px; line-height: 1;">close</span>
+                    </button>
+                `;
+                gridElement.appendChild(previewDiv);
+            };
+            reader.readAsDataURL(file);
+        });
+        
+    } else {
+        placeholder.style.display = 'flex';
+        container.style.display = 'none';
+        if (uploadArea) uploadArea.classList.remove('has-files');
+    }
+}
+
+function renderFotoPreview() {
+    const container = document.getElementById('foto-preview-container');
+    const placeholder = document.getElementById('foto-placeholder');
+    const countElement = document.getElementById('foto-count');
+    const gridElement = document.getElementById('foto-grid');
+    
+    if (selectedPhotos.length > 0) {
+        placeholder.style.display = 'none';
+        container.style.display = 'block';
+        
+        countElement.innerHTML = `
+            <span class="material-icons" style="vertical-align: middle; margin-right: 4px;">photo_library</span>
+            ${selectedPhotos.length} foto dipilih
+        `;
+        
+        gridElement.innerHTML = '';
+        
+        selectedPhotos.forEach((file, index) => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewDiv = document.createElement('div');
+                previewDiv.className = 'cms-multi-image-preview';
+                previewDiv.innerHTML = `
+                    <img src="${e.target.result}" alt="Preview ${index + 1}">
+                    <button type="button" class="cms-image-remove" onclick="removeSelectedPhoto(${index})" title="Hapus foto">
+                        <span class="material-icons" style="font-size: 12px; line-height: 1;">close</span>
+                    </button>
+                `;
+                gridElement.appendChild(previewDiv);
+            };
+            reader.readAsDataURL(file);
+        });
+        
+    } else {
+        placeholder.style.display = 'flex';
+        container.style.display = 'none';
+    }
+}
+
+function renderInfografisPreview() {
+    const container = document.getElementById('infografis-preview-container');
+    const placeholder = document.getElementById('infografis-placeholder');
+    const countElement = document.getElementById('infografis-count');
+    const gridElement = document.getElementById('infografis-grid');
+    
+    if (selectedInfografis.length > 0) {
+        placeholder.style.display = 'none';
+        container.style.display = 'block';
+        
+        countElement.innerHTML = `
+            <span class="material-icons" style="vertical-align: middle; margin-right: 4px;">bar_chart</span>
+            ${selectedInfografis.length} infografis dipilih
+        `;
+        
+        gridElement.innerHTML = '';
+        
+        selectedInfografis.forEach((file, index) => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewDiv = document.createElement('div');
+                previewDiv.className = 'cms-multi-image-preview';
+                previewDiv.innerHTML = `
+                    <img src="${e.target.result}" alt="Preview ${index + 1}">
+                    <button type="button" class="cms-image-remove" onclick="removeSelectedInfografis(${index})" title="Hapus infografis">
+                        <span class="material-icons" style="font-size: 12px; line-height: 1;">close</span>
+                    </button>
+                `;
+                gridElement.appendChild(previewDiv);
+            };
+            reader.readAsDataURL(file);
+        });
+        
+    } else {
+        placeholder.style.display = 'flex';
+        container.style.display = 'none';
+    }
+}
+
+// ✅ REMOVE SELECTED FUNCTIONS
+function removeSelectedImage(index) {
+    selectedImages.splice(index, 1);
+    renderImagePreviews();
+}
+
+function removeSelectedPhoto(index) {
+    selectedPhotos.splice(index, 1);
+    renderFotoPreview();
+}
+
+function removeSelectedInfografis(index) {
+    selectedInfografis.splice(index, 1);
+    renderInfografisPreview();
+}
+
+// ✅ UTILITY FUNCTIONS
+function isValidYouTubeURL(url) {
+    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=|embed\/|v\/)?([a-zA-Z0-9_-]{11})(&.*)?$/;
+    return youtubeRegex.test(url);
+}
+
+// ✅ EDIT/DELETE FUNCTIONS
+function editBerita(button) {
+    const id = button.getAttribute('data-id');
+    const row = button.closest('.cms-table-row');
+    const title = row.querySelector('.cms-article-title').textContent;
+    const excerpt = row.querySelector('.cms-article-excerpt').textContent;
+    
+    document.getElementById('berita-modal-title').textContent = 'Edit Berita';
+    document.getElementById('berita-title').value = title;
+    document.getElementById('berita-content').innerHTML = excerpt;
+    document.getElementById('berita-excerpt').value = excerpt;
+    
+    selectedImages = [];
+    document.getElementById('image-placeholder').style.display = 'flex';
+    document.getElementById('image-preview-container').style.display = 'none';
+    
+    document.getElementById('berita-modal').style.display = 'flex';
+    
+    setTimeout(() => {
+        document.getElementById('berita-title').focus();
+    }, 100);
+}
+
+function deleteBerita(button) {
+    const row = button.closest('.cms-table-row');
+    const title = row.querySelector('.cms-article-title').textContent;
+    const id = button.getAttribute('data-id') || Math.random();
+    
+    itemToDelete = {
+        id: id,
+        title: title,
+        element: row,
+        type: 'berita'
+    };
+    
+    document.getElementById('delete-modal-title').textContent = 'Konfirmasi Hapus Berita';
+    document.getElementById('delete-modal-text').innerHTML = `
+        <div style="text-align: center; padding: 10px;">
+            <p style="margin-bottom: 15px; color: #555;">Anda yakin ingin menghapus berita ini?</p>
+            <strong style="color: #d32f2f; font-size: 16px;">"${title}"</strong>
+        </div>
+    `;
+    document.getElementById('delete-item-title').textContent = '';
+    document.getElementById('delete-btn-text').textContent = 'Hapus Berita';
+    document.getElementById('delete-confirmation-modal').style.display = 'flex';
+}
+
+function editFoto(button) {
+    const id = button.getAttribute('data-id');
+    const title = button.getAttribute('data-title');
+    const description = button.getAttribute('data-description');
+    const status = button.getAttribute('data-status');
+    
+    document.getElementById('foto-modal-title').textContent = 'Edit Foto';
+    document.getElementById('foto-title').value = title;
+    document.getElementById('foto-description').innerHTML = description;
+    document.getElementById('foto-submit-text').textContent = 'Update Foto';
+    
+    // Set radio button status
+    document.querySelector(`input[name="foto-status"][value="${status}"]`).checked = true;
+    
+    selectedPhotos = [];
+    document.getElementById('foto-placeholder').style.display = 'flex';
+    document.getElementById('foto-preview-container').style.display = 'none';
+    
+    document.getElementById('foto-modal').style.display = 'flex';
+    
+    setTimeout(() => {
+        document.getElementById('foto-title').focus();
+    }, 100);
+}
+
+function deleteFoto(button) {
+    const photoItem = button.closest('.cms-photo-item');
+    const title = photoItem.querySelector('.cms-photo-title').textContent;
+    const id = button.getAttribute('data-id') || Math.random();
+    
+    itemToDelete = {
+        id: id,
+        title: title,
+        element: photoItem,
+        type: 'foto'
+    };
+    
+    document.getElementById('delete-modal-title').textContent = 'Konfirmasi Hapus Foto';
+    document.getElementById('delete-modal-text').innerHTML = `
+        <div style="text-align: center; padding: 10px;">
+            <p style="margin-bottom: 15px; color: #555;">Anda yakin ingin menghapus foto ini?</p>
+            <strong style="color: #d32f2f; font-size: 16px;">"${title}"</strong>
+        </div>
+    `;
+    document.getElementById('delete-item-title').textContent = '';
+    document.getElementById('delete-btn-text').textContent = 'Hapus Foto';
+    document.getElementById('delete-confirmation-modal').style.display = 'flex';
+}
+
+// ✅ PERBAIKI FUNGSI EDIT INFOGRAFIS
+function editInfografis(button) {
+    const id = button.getAttribute('data-id');
+    const title = button.getAttribute('data-title');
+    const description = button.getAttribute('data-description');
+    const status = button.getAttribute('data-status');
+    
+    // Set modal title untuk edit mode
+    document.getElementById('infografis-modal-title').textContent = 'Edit Infografis';
+    document.getElementById('infografis-title').value = title;
+    document.getElementById('infografis-submit-text').textContent = 'Update Infografis';
+    
+    // Set radio button status jika ada
+    if (status && document.querySelector(`input[name="infografis-status"][value="${status}"]`)) {
+        document.querySelector(`input[name="infografis-status"][value="${status}"]`).checked = true;
+    }
+    
+    // Reset file selection
+    selectedInfografis = [];
+    document.getElementById('infografis-placeholder').style.display = 'flex';
+    document.getElementById('infografis-preview-container').style.display = 'none';
+    
+    // Show modal
+    document.getElementById('infografis-modal').style.display = 'flex';
+    
+    // Focus on title input
+    setTimeout(() => {
+        document.getElementById('infografis-title').focus();
+    }, 100);
+    
+    console.log(`Editing infografis: ${title} (ID: ${id})`);
+}
+
+function deleteInfografis(button) {
+    const infografisItem = button.closest('.cms-photo-item');
+    const title = infografisItem.querySelector('.cms-photo-title').textContent;
+    const id = button.getAttribute('data-id') || Math.random();
+    
+    itemToDelete = {
+        id: id,
+        title: title,
+        element: infografisItem,
+        type: 'infografis'
+    };
+    
+    document.getElementById('delete-modal-title').textContent = 'Konfirmasi Hapus Infografis';
+    document.getElementById('delete-modal-text').innerHTML = `
+        <div style="text-align: center; padding: 10px;">
+            <p style="margin-bottom: 15px; color: #555;">Anda yakin ingin menghapus infografis ini?</p>
+            <strong style="color: #d32f2f; font-size: 16px;">"${title}"</strong>
+        </div>
+    `;
+    document.getElementById('delete-item-title').textContent = '';
+    document.getElementById('delete-btn-text').textContent = 'Hapus Infografis';
+    document.getElementById('delete-confirmation-modal').style.display = 'flex';
+}
+
+function editVideo(button) {
+    const id = button.getAttribute('data-id');
+    const title = button.getAttribute('data-title');
+    const description = button.getAttribute('data-description');
+    const status = button.getAttribute('data-status');
+    const youtubeUrl = button.getAttribute('data-youtube-url');
+    
+    document.getElementById('video-modal-title').textContent = 'Edit Video';
+    document.getElementById('video-title').value = title;
+    document.getElementById('video-description').innerHTML = description || '';
+    document.getElementById('video-youtube-url').value = youtubeUrl || '';
+    document.getElementById('video-submit-text').textContent = 'Update Video';
+    
+    // Set radio button status
+    document.querySelector(`input[name="video-status"][value="${status}"]`).checked = true;
+    
+    document.getElementById('video-modal').style.display = 'flex';
+    
+    setTimeout(() => {
+        document.getElementById('video-title').focus();
+    }, 100);
+}
+
+function deleteVideo(button) {
+    const videoItem = button.closest('.cms-video-item');
+    const title = videoItem.querySelector('.cms-video-title').textContent;
+    const id = button.getAttribute('data-id') || Math.random();
+    
+    itemToDelete = {
+        id: id,
+        title: title,
+        element: videoItem,
+        type: 'video'
+    };
+    
+    document.getElementById('delete-modal-title').textContent = 'Konfirmasi Hapus Video';
+    document.getElementById('delete-modal-text').innerHTML = `
+        <div style="text-align: center; padding: 10px;">
+            <p style="margin-bottom: 15px; color: #555;">Anda yakin ingin menghapus video ini?</p>
+            <strong style="color: #d32f2f; font-size: 16px;">"${title}"</strong>
+        </div>
+    `;
+    document.getElementById('delete-item-title').textContent = '';
+    document.getElementById('delete-btn-text').textContent = 'Hapus Video';
+    document.getElementById('delete-confirmation-modal').style.display = 'flex';
+}
+
+// ✅ DELETE MODAL FUNCTIONS
+function closeDeleteModal() {
+    document.getElementById('delete-confirmation-modal').style.display = 'none';
+    itemToDelete = null;
+}
+
+function confirmDelete() {
+    if (itemToDelete) {
+        console.log(`Deleting ${itemToDelete.type} with ID: ${itemToDelete.id}`);
+        
+        itemToDelete.element.style.transition = 'all 0.3s ease';
+        itemToDelete.element.style.opacity = '0';
+        itemToDelete.element.style.transform = 'translateX(-100%)';
+        
+        setTimeout(() => {
+            itemToDelete.element.remove();
+            alert(`${itemToDelete.type.charAt(0).toUpperCase() + itemToDelete.type.slice(1)} "${itemToDelete.title}" berhasil dihapus!`);
+            
+            // Update pagination after delete
+            updatePagination(itemToDelete.type);
+            
+            itemToDelete = null;
+            closeDeleteModal();
+        }, 300);
+    }
+}
+
+// ✅ PAGINATION SYSTEM
+function initializePagination() {
+    // Initialize pagination for all tabs
+    updatePagination('berita');
+    updatePagination('foto');
+    updatePagination('infografis');
+    updatePagination('video');
+}
+
+function updatePagination(type) {
+    switch(type) {
+        case 'berita':
+            updateBeritaPagination();
+            break;
+        case 'foto':
+            updateFotoPagination();
+            break;
+        case 'infografis':
+            updateInfografisPagination();
+            break;
+        case 'video':
+            updateVideoPagination();
+            break;
+    }
+}
+
+function updateBeritaPagination() {
+    const beritaRows = document.querySelectorAll('#berita-tab .cms-table-row');
+    const totalItems = beritaRows.length;
+    const totalPages = Math.ceil(totalItems / beritaPerPage);
+    
+    // Show/hide items based on current page
+    beritaRows.forEach((row, index) => {
+        const start = (currentBeritaPage - 1) * beritaPerPage;
+        const end = start + beritaPerPage;
+        
+        if (index >= start && index < end) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+    
+    // Update pagination info
+    const actualEnd = Math.min(currentBeritaPage * beritaPerPage, totalItems);
+    const start = totalItems > 0 ? (currentBeritaPage - 1) * beritaPerPage + 1 : 0;
+    const paginationInfo = document.querySelector('#berita-tab .cms-pagination-info');
+    if (paginationInfo) {
+        paginationInfo.textContent = `Menampilkan ${start}-${actualEnd} dari ${totalItems} berita`;
+    }
+    
+    // Update pagination controls
+    updateBeritaPaginationControls(totalPages);
+}
+
+function updateBeritaPaginationControls(totalPages) {
+    const controlsContainer = document.querySelector('#berita-tab .cms-pagination-controls');
+    if (!controlsContainer) return;
+    
+    // Clear existing page buttons
+    const existingPageButtons = controlsContainer.querySelectorAll('.cms-page-btn:not(.cms-page-btn--prev):not(.cms-page-btn--next)');
+    existingPageButtons.forEach(btn => btn.remove());
+    
+    const prevButton = controlsContainer.querySelector('.cms-page-btn--prev');
+    const nextButton = controlsContainer.querySelector('.cms-page-btn--next');
+    
+    // Create page buttons
+    let startPage = Math.max(1, currentBeritaPage - 2);
+    let endPage = Math.min(totalPages, startPage + 4);
+    
+    if (endPage - startPage < 4) {
+        startPage = Math.max(1, endPage - 4);
+    }
+    
+    for (let i = startPage; i <= endPage; i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `cms-page-btn ${i === currentBeritaPage ? 'active' : ''}`;
+        pageBtn.textContent = i;
+        pageBtn.addEventListener('click', () => {
+            currentBeritaPage = i;
+            updateBeritaPagination();
+        });
+        
+        controlsContainer.insertBefore(pageBtn, nextButton);
+    }
+    
+    // Update navigation buttons
+    if (prevButton) {
+        prevButton.disabled = currentBeritaPage <= 1;
+        prevButton.onclick = () => {
+            if (currentBeritaPage > 1) {
+                currentBeritaPage--;
+                updateBeritaPagination();
+            }
+        };
+    }
+    
+    if (nextButton) {
+        nextButton.disabled = currentBeritaPage >= totalPages;
+        nextButton.onclick = () => {
+            if (currentBeritaPage < totalPages) {
+                currentBeritaPage++;
+                updateBeritaPagination();
+            }
+        };
+    }
+}
+
+function updateFotoPagination() {
+    const fotoItems = document.querySelectorAll('#foto-tab .cms-photo-item');
+    const totalItems = fotoItems.length;
+    const totalPages = Math.ceil(totalItems / fotoPerPage);
+    
+    // Show/hide items based on current page (15 items per page, 5 columns x 3 rows)
+    fotoItems.forEach((item, index) => {
+        const start = (currentFotoPage - 1) * fotoPerPage;
+        const end = start + fotoPerPage;
+        
+        if (index >= start && index < end) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    
+    // Update pagination info
+    const actualEnd = Math.min(currentFotoPage * fotoPerPage, totalItems);
+    const start = totalItems > 0 ? (currentFotoPage - 1) * fotoPerPage + 1 : 0;
+    const paginationInfo = document.querySelector('#foto-tab .cms-pagination-info');
+    if (paginationInfo) {
+        paginationInfo.textContent = `Menampilkan ${start}-${actualEnd} dari ${totalItems} foto`;
+    }
+    
+    // Update pagination controls
+    updateFotoPaginationControls(totalPages);
+}
+
+function updateFotoPaginationControls(totalPages) {
+    const controlsContainer = document.querySelector('#foto-tab .cms-pagination-controls');
+    if (!controlsContainer) return;
+    
+    // Clear existing page buttons
+    const existingPageButtons = controlsContainer.querySelectorAll('.cms-page-btn:not(.cms-page-btn--prev):not(.cms-page-btn--next)');
+    existingPageButtons.forEach(btn => btn.remove());
+    
+    const prevButton = controlsContainer.querySelector('.cms-page-btn--prev');
+    const nextButton = controlsContainer.querySelector('.cms-page-btn--next');
+    
+    // Create page buttons
+    let startPage = Math.max(1, currentFotoPage - 2);
+    let endPage = Math.min(totalPages, startPage + 4);
+    
+    if (endPage - startPage < 4) {
+        startPage = Math.max(1, endPage - 4);
+    }
+    
+    for (let i = startPage; i <= endPage; i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `cms-page-btn ${i === currentFotoPage ? 'active' : ''}`;
+        pageBtn.textContent = i;
+        pageBtn.addEventListener('click', () => {
+            currentFotoPage = i;
+            updateFotoPagination();
+        });
+        
+        controlsContainer.insertBefore(pageBtn, nextButton);
+    }
+    
+    // Update navigation buttons
+    if (prevButton) {
+        prevButton.disabled = currentFotoPage <= 1;
+        prevButton.onclick = () => {
+            if (currentFotoPage > 1) {
+                currentFotoPage--;
+                updateFotoPagination();
+            }
+        };
+    }
+    
+    if (nextButton) {
+        nextButton.disabled = currentFotoPage >= totalPages;
+        nextButton.onclick = () => {
+            if (currentFotoPage < totalPages) {
+                currentFotoPage++;
+                updateFotoPagination();
+            }
+        };
+    }
+}
+
+function updateInfografisPagination() {
+    const infografisItems = document.querySelectorAll('#infografis-tab .cms-photo-item');
+    const totalItems = infografisItems.length;
+    const totalPages = Math.ceil(totalItems / infografisPerPage);
+    
+    // Show/hide items based on current page (15 items per page, 5 columns x 3 rows)
+    infografisItems.forEach((item, index) => {
+        const start = (currentInfografisPage - 1) * infografisPerPage;
+        const end = start + infografisPerPage;
+        
+        if (index >= start && index < end) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    
+    // Update pagination info
+    const actualEnd = Math.min(currentInfografisPage * infografisPerPage, totalItems);
+    const start = totalItems > 0 ? (currentInfografisPage - 1) * infografisPerPage + 1 : 0;
+    const paginationInfo = document.querySelector('#infografis-tab .cms-pagination-info');
+    if (paginationInfo) {
+        paginationInfo.textContent = `Menampilkan ${start}-${actualEnd} dari ${totalItems} infografis`;
+    }
+    
+    // Update pagination controls
+    updateInfografisPaginationControls(totalPages);
+}
+
+function updateInfografisPaginationControls(totalPages) {
+    const controlsContainer = document.querySelector('#infografis-tab .cms-pagination-controls');
+    if (!controlsContainer) return;
+    
+    // Clear existing page buttons
+    const existingPageButtons = controlsContainer.querySelectorAll('.cms-page-btn:not(.cms-page-btn--prev-infografis):not(.cms-page-btn--next-infografis)');
+    existingPageButtons.forEach(btn => btn.remove());
+    
+    const prevButton = controlsContainer.querySelector('.cms-page-btn--prev-infografis');
+    const nextButton = controlsContainer.querySelector('.cms-page-btn--next-infografis');
+    
+    // Create page buttons
+    let startPage = Math.max(1, currentInfografisPage - 2);
+    let endPage = Math.min(totalPages, startPage + 4);
+    
+    if (endPage - startPage < 4) {
+        startPage = Math.max(1, endPage - 4);
+    }
+    
+    for (let i = startPage; i <= endPage; i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `cms-page-btn cms-page-btn-infografis ${i === currentInfografisPage ? 'active' : ''}`;
+        pageBtn.textContent = i;
+        pageBtn.addEventListener('click', () => {
+            currentInfografisPage = i;
+            updateInfografisPagination();
+        });
+        
+        controlsContainer.insertBefore(pageBtn, nextButton);
+    }
+    
+    // Update navigation buttons
+    if (prevButton) {
+        prevButton.disabled = currentInfografisPage <= 1;
+        prevButton.onclick = () => {
+            if (currentInfografisPage > 1) {
+                currentInfografisPage--;
+                updateInfografisPagination();
+            }
+        };
+    }
+    
+    if (nextButton) {
+        nextButton.disabled = currentInfografisPage >= totalPages;
+        nextButton.onclick = () => {
+            if (currentInfografisPage < totalPages) {
+                currentInfografisPage++;
+                updateInfografisPagination();
+            }
+        };
+    }
+}
+
+function updateVideoPagination() {
+    const videoItems = document.querySelectorAll('#video-tab .cms-video-item');
+    const totalItems = videoItems.length;
+    const totalPages = Math.ceil(totalItems / videoPerPage);
+    
+    // Show/hide items based on current page (9 items per page, 3 columns x 3 rows)
+    videoItems.forEach((item, index) => {
+        const start = (currentVideoPage - 1) * videoPerPage;
+        const end = start + videoPerPage;
+        
+        if (index >= start && index < end) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    
+    // Update pagination info
+    const actualEnd = Math.min(currentVideoPage * videoPerPage, totalItems);
+    const start = totalItems > 0 ? (currentVideoPage - 1) * videoPerPage + 1 : 0;
+    const paginationInfo = document.querySelector('#video-tab .cms-pagination-info');
+    if (paginationInfo) {
+        paginationInfo.textContent = `Menampilkan ${start}-${actualEnd} dari ${totalItems} video`;
+    }
+    
+    // Update pagination controls
+    updateVideoPaginationControls(totalPages);
+}
+
+function updateVideoPaginationControls(totalPages) {
+    const controlsContainer = document.querySelector('#video-tab .cms-pagination-controls');
+    if (!controlsContainer) return;
+    
+    // Clear existing page buttons
+    const existingPageButtons = controlsContainer.querySelectorAll('.cms-page-btn:not(.cms-page-btn--prev-video):not(.cms-page-btn--next-video)');
+    existingPageButtons.forEach(btn => btn.remove());
+    
+    const prevButton = controlsContainer.querySelector('.cms-page-btn--prev-video');
+    const nextButton = controlsContainer.querySelector('.cms-page-btn--next-video');
+    
+    // Create page buttons
+    let startPage = Math.max(1, currentVideoPage - 2);
+    let endPage = Math.min(totalPages, startPage + 4);
+    
+    if (endPage - startPage < 4) {
+        startPage = Math.max(1, endPage - 4);
+    }
+    
+    for (let i = startPage; i <= endPage; i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `cms-page-btn cms-page-btn-video ${i === currentVideoPage ? 'active' : ''}`;
+        pageBtn.textContent = i;
+        pageBtn.addEventListener('click', () => {
+            currentVideoPage = i;
+            updateVideoPagination();
+        });
+        
+        controlsContainer.insertBefore(pageBtn, nextButton);
+    }
+    
+    // Update navigation buttons
+    if (prevButton) {
+        prevButton.disabled = currentVideoPage <= 1;
+        prevButton.onclick = () => {
+            if (currentVideoPage > 1) {
+                currentVideoPage--;
+                updateVideoPagination();
+            }
+        };
+    }
+    
+    if (nextButton) {
+        nextButton.disabled = currentVideoPage >= totalPages;
+        nextButton.onclick = () => {
+            if (currentVideoPage < totalPages) {
+                currentVideoPage++;
+                updateVideoPagination();
+            }
+        };
+    }
+}
+
+// ✅ FUNGSI UNTUK MEMBACA URL PARAMETER
+function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+// ✅ FUNGSI UNTUK SWITCH TAB BERDASARKAN PARAMETER
+function switchToTab(tabName) {
+    console.log(`Switching to tab: ${tabName}`);
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.cms-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelectorAll('.cms-tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    // Add active class to target tab
+    const targetBtn = document.querySelector(`[data-tab="${tabName}"]`);
+    const targetContent = document.getElementById(`${tabName}-tab`);
+    
+    if (targetBtn && targetContent) {
+        targetBtn.classList.add('active');
+        targetContent.classList.add('active');
+        
+        // Update pagination for the active tab
+        updatePagination(tabName);
+        
+        // Scroll to tabs section
+        const tabsSection = document.querySelector('.cms-tabs');
+        if (tabsSection) {
+            tabsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        // Show notification
+        showTabNotification(tabName);
+    } else {
+        console.error(`Tab not found: ${tabName}`);
+    }
+}
+
+// ✅ NOTIFIKASI SAAT TAB BERHASIL DIBUKA
+function showTabNotification(tabName) {
+    const notifications = {
+        'berita': 'Tab Berita berhasil dibuka',
+        'foto': 'Tab Foto berhasil dibuka', 
+        'video': 'Tab Video berhasil dibuka',
+        'infografis': 'Tab Infografis berhasil dibuka'
+    };
+    
+    const message = notifications[tabName] || `Tab ${tabName} berhasil dibuka`;
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'tab-notification';
+    notification.innerHTML = `
+        <span class="material-icons">check_circle</span>
+        ${message}
+    `;
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Show animation
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
+}
+
+// ✅ DOM CONTENT LOADED EVENT HANDLER 
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Content Management loaded');
+    
+    // Check URL parameter for tab
+    const tabParam = getURLParameter('tab');
+    if (tabParam) {
+        console.log(`URL parameter found: ${tabParam}`);
+        // Delay to ensure page is fully loaded
+        setTimeout(() => {
+            switchToTab(tabParam);
+        }, );
+    }
+    
+    // ✅ Tab switching functionality
+    document.querySelectorAll('.cms-tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const tabName = this.dataset.tab;
+            switchToTab(tabName);
+            
+            // Update URL without refresh
+            const newUrl = `${window.location.pathname}?tab=${tabName}`;
+            history.replaceState({ tab: tabName }, '', newUrl);
+        });
+    });
+
+    // Initialize all other functions...
+    initializeEventListeners();
+    initializePagination();
+    updatePagination('berita');
+    addPhotoGridCSS();
+});
+
+
+</script>
+
+
+</body>
+</html>
