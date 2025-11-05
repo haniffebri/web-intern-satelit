@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approval Foto User - Admin Satelit TV</title>
+    <link rel="stylesheet" href="D:\Kuliah\Kuliah\Magang\Satelit\styling\style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="page">
+    <!-- Admin Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <div class="navbar_brand">
+                        <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV" class="navbar_logo">
+                </div>
+                <div class="admin-nav">
+                    <a href="admin.html" class="cms-btn-back" data-tooltip="Dashboard">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </a>
+                    <a href="admin-login.html" class="admin-btn-logout" data-tooltip="Logout">
+                        <span class="material-icons">logout</span>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="cms-container">
+            <!-- Page Header -->
+            <div class="cms-header">
+                <div class="cms-breadcrumb">
+                    <a href="admin.html" class="cms-breadcrumb-link">Dashboard</a>
+                    <span class="cms-breadcrumb-separator">/</span>
+                    <span class="cms-breadcrumb-current">Approval Foto User</span>
+                </div>
+                <h1 class="title title--xl">Approval Foto User</h1>
+                <p class="lead">Review dan setujui foto yang dikirim oleh user untuk dipublikasikan</p>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="approval-stats">
+                <div class="approval-stat-card">
+                    <h3 class="approval-stat-number" style="color: #ff9800;" id="stat-pending">15</h3>
+                    <p class="approval-stat-label">Menunggu Review</p>
+                </div>
+                <div class="approval-stat-card">
+                    <h3 class="approval-stat-number" style="color: #10b981;" id="stat-approved">8</h3>
+                    <p class="approval-stat-label">Disetujui</p>
+                </div>
+                <div class="approval-stat-card">
+                    <h3 class="approval-stat-number" style="color: #ef4444;" id="stat-rejected">5</h3>
+                    <p class="approval-stat-label">Ditolak</p>
+                </div>
+                <div class="approval-stat-card">
+                    <h3 class="approval-stat-number" style="color: #3b82f6;" id="stat-total">28</h3>
+                    <p class="approval-stat-label">Total Submisi</p>
+                </div>
+            </div>
+
+            <!-- FILTER DAN SEARCH DALAM SATU BARIS -->
+            <div class="filters-search-container">
+                <!-- Filter Buttons (Kiri) -->
+                <div class="approval-filters">
+                    <button class="filter-btn active" data-filter="all">Semua (28)</button>
+                    <button class="filter-btn" data-filter="pending">Pending (15)</button>
+                    <button class="filter-btn" data-filter="approved">Disetujui (8)</button>
+                    <button class="filter-btn" data-filter="rejected">Ditolak (5)</button>
+                </div>
+
+                <!-- Search Bar (Kanan) -->
+                <div class="search-container">
+                    <div class="search-bar">
+                        <span class="material-icons">search</span>
+                        <input type="text" class="search-input" id="searchInput" placeholder="Cari foto berdasarkan judul atau nama pengirim...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="approval-photo-grid" id="photoGrid">
+                <!-- PENDING CARDS -->
+                <div class="approval-photo-card" data-status="pending" data-title="sunset pantai cilacap" data-author="ahmad fadli">
+                    <div class="approval-photo-header">
+                        <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\foto\bahlil.jpg" alt="Sunset di Pantai Cilacap" class="approval-photo-image">
+                        <div class="approval-photo-overlay">
+                            <span class="approval-status-badge approval-status-badge--pending">Menunggu Review</span>
+                        </div>
+                    </div>
+                    <div class="approval-photo-info">
+                        <h3 class="approval-photo-title">Sunset di Pantai Cilacap</h3>
+                        <div class="approval-photo-meta">
+                            <span>Ahmad Fadli</span>
+                            <span>2 jam lalu</span>
+                        </div>
+                        <p class="approval-photo-description">Pemandangan sunset yang memukau di Pantai Cilacap dengan perpaduan warna langit yang indah.</p>
+                    </div>
+                    <div class="approval-actions">
+                        <button class="approval-btn approval-btn--view" onclick="viewPhoto(1)">
+                            <span class="material-icons">visibility</span>
+                            Lihat
+                        </button>
+                        <button class="approval-btn approval-btn--approve" onclick="approvePhoto(1)">
+                            <span class="material-icons">check</span>
+                            Setujui
+                        </button>
+                        <button class="approval-btn approval-btn--reject" onclick="rejectPhoto(1)">
+                            <span class="material-icons">close</span>
+                            Tolak
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Additional cards would continue with corrected image paths -->
+                
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <div class="material-icons">search_off</div>
+                <h3>Tidak ada foto ditemukan</h3>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-container">
+                <div class="pagination-info" id="paginationInfo">
+                    Menampilkan 1-10 dari 14 berita
+                </div>
+                <div class="pagination" id="pagination">
+                    <button class="page-btn" id="prevBtn" disabled>‹</button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn" id="nextBtn">›</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal View Photo -->
+    <div class="cms-modal-overlay" id="view-photo-modal" style="display: none;">
+        <div class="cms-modal cms-modal--large">
+            <div class="cms-modal-header">
+                <h2 class="cms-modal-title" id="view-photo-title">Lihat Foto</h2>
+                <button class="cms-modal-close" onclick="closeViewModal()">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            
+            <div class="cms-modal-body">
+                <div class="view-photo-content">
+                    <div class="view-photo-image">
+                        <img id="modal-photo-image" src="" alt="" style="width: 100%; max-height: 400px; object-fit: contain; border-radius: 8px;">
+                    </div>
+                    <div class="view-photo-details" style="margin-top: 20px; margin-left: 50px;">
+                        <h3 id="modal-photo-title" style="margin: 0 0 10px 0; color: #1a1a1a;"></h3>
+                        <div id="modal-photo-meta" style="display: flex; gap: 20px; color: #666; margin-bottom: 15px;"></div>
+                        <p id="modal-photo-description" style="color: #555; line-height: 1.6;"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cms-modal-actions">
+                <button type="button" class="cms-btn cms-btn--secondary" onclick="closeViewModal()">
+                    <span class="material-icons">close</span>
+                    Tutup
+                </button>
+                <button type="button" class="cms-btn cms-btn--success" id="modal-approve-btn" style="background: #10b981; color: white;">
+                    <span class="material-icons">check</span>
+                    Setujui
+                </button>
+                <button type="button" class="cms-btn cms-btn--danger" id="modal-reject-btn">
+                    <span class="material-icons">close</span>
+                    Tolak
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // APPROVAL FOTO USER JAVASCRIPT dengan Search & Pagination
+        
+        // Global variables
+        let currentPhotoId = null;
+        let currentPage = 1;
+        let cardsPerPage = 9;
+        let filteredPhotos = [];
+        let allPhotos = [];
+        let currentFilter = 'all';
+        let currentSearch = '';
+        
+        // DOM Ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApprovalPage();
+        });
+        
+        // Initialize approval page
+        function initializeApprovalPage() {
+            allPhotos = Array.from(document.querySelectorAll('.approval-photo-card'));
+            filteredPhotos = [...allPhotos];
+            
+            // Initialize pagination
+            updatePagination();
+            displayCurrentPage();
+            
+            // Filter functionality
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active filter
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    currentFilter = this.dataset.filter;
+                    currentPage = 1;
+                    applyFilters();
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    currentSearch = e.target.value.toLowerCase();
+                    currentPage = 1;
+                    applyFilters();
+                });
+            }
+            
+            // Pagination functionality
+            const pagination = document.getElementById('pagination');
+            if (pagination) {
+                pagination.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('page-btn') && !e.target.disabled) {
+                        const page = e.target.textContent;
+                        if (page === '‹' && currentPage > 1) {
+                            currentPage--;
+                        } else if (page === '›' && currentPage < Math.ceil(filteredPhotos.length / cardsPerPage)) {
+                            currentPage++;
+                        } else if (!isNaN(page)) {
+                            currentPage = parseInt(page);
+                        }
+                        displayCurrentPage();
+                        updatePaginationButtons();
+                    }
+                });
+            }
+            
+            // Close modal when clicking outside
+            const modal = document.getElementById('view-photo-modal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeViewModal();
+                    }
+                });
+            }
+        }
+        
+        // Apply search and filter
+        function applyFilters() {
+            filteredPhotos = allPhotos.filter(card => {
+                // Filter by status
+                const status = card.dataset.status;
+                const statusMatch = currentFilter === 'all' || status === currentFilter;
+                
+                // Filter by search
+                const title = card.dataset.title || '';
+                const author = card.dataset.author || '';
+                const searchMatch = currentSearch === '' || 
+                                  title.includes(currentSearch) || 
+                                  author.includes(currentSearch);
+                
+                return statusMatch && searchMatch;
+            });
+            
+            updatePagination();
+            displayCurrentPage();
+            updateFilterCounts();
+        }
+        
+        // Update pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredPhotos.length / cardsPerPage);
+            const paginationContainer = document.getElementById('pagination');
+            
+            if (!paginationContainer || totalPages <= 1) {
+                if (paginationContainer) paginationContainer.style.display = 'none';
+                return;
+            }
+            
+            paginationContainer.style.display = 'flex';
+            
+            // Clear existing page buttons (except prev/next)
+            const pageButtons = paginationContainer.querySelectorAll('.page-btn:not(#prevBtn):not(#nextBtn)');
+            pageButtons.forEach(btn => btn.remove());
+            
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            // Add page number buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = 'page-btn';
+                pageBtn.textContent = i;
+                if (i === currentPage) {
+                    pageBtn.classList.add('active');
+                }
+                paginationContainer.insertBefore(pageBtn, nextBtn);
+            }
+            
+            updatePaginationButtons();
+        }
+        
+        // Update pagination buttons state
+        function updatePaginationButtons() {
+            const totalPages = Math.ceil(filteredPhotos.length / cardsPerPage);
+            
+            // Update prev/next buttons
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (prevBtn) prevBtn.disabled = currentPage <= 1;
+            if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+            
+            // Update active page button
+            document.querySelectorAll('.page-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent == currentPage) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update pagination info
+            updatePaginationInfo();
+        }
+        
+        // Display current page
+        function displayCurrentPage() {
+            // Hide all photos
+            allPhotos.forEach(photo => {
+                photo.style.display = 'none';
+            });
+            
+            // Calculate start and end indices
+            const startIndex = (currentPage - 1) * cardsPerPage;
+            const endIndex = startIndex + cardsPerPage;
+            
+            // Show photos for current page
+            const photosToShow = filteredPhotos.slice(startIndex, endIndex);
+            photosToShow.forEach(photo => {
+                photo.style.display = 'block';
+            });
+            
+            // Show/hide no results message
+            const noResults = document.getElementById('noResults');
+            if (noResults) {
+                if (filteredPhotos.length === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            }
+            
+            updatePaginationInfo();
+        }
+        
+        // Update pagination info
+        function updatePaginationInfo() {
+            const totalItems = filteredPhotos.length;
+            const startItem = totalItems > 0 ? (currentPage - 1) * cardsPerPage + 1 : 0;
+            const endItem = Math.min(currentPage * cardsPerPage, totalItems);
+            
+            const paginationInfo = document.getElementById('paginationInfo');
+            if (paginationInfo) {
+                if (totalItems === 0) {
+                    paginationInfo.textContent = '';
+                } else {
+                    paginationInfo.textContent = `Menampilkan ${startItem} - ${endItem} dari ${totalItems} foto`;
+                }
+            }
+        }
+        
+        // Update filter button counts
+        function updateFilterCounts() {
+            const pending = allPhotos.filter(card => card.dataset.status === 'pending').length;
+            const approved = allPhotos.filter(card => card.dataset.status === 'approved').length;
+            const rejected = allPhotos.filter(card => card.dataset.status === 'rejected').length;
+            const total = pending + approved + rejected;
+            
+            const filterAll = document.querySelector('[data-filter="all"]');
+            const filterPending = document.querySelector('[data-filter="pending"]');
+            const filterApproved = document.querySelector('[data-filter="approved"]');
+            const filterRejected = document.querySelector('[data-filter="rejected"]');
+            
+            if (filterAll) filterAll.textContent = `Semua (${total})`;
+            if (filterPending) filterPending.textContent = `Pending (${pending})`;
+            if (filterApproved) filterApproved.textContent = `Disetujui (${approved})`;
+            if (filterRejected) filterRejected.textContent = `Ditolak (${rejected})`;
+            
+            // Update stats
+            const statPending = document.getElementById('stat-pending');
+            const statApproved = document.getElementById('stat-approved');
+            const statRejected = document.getElementById('stat-rejected');
+            const statTotal = document.getElementById('stat-total');
+            
+            if (statPending) statPending.textContent = pending;
+            if (statApproved) statApproved.textContent = approved;
+            if (statRejected) statRejected.textContent = rejected;
+            if (statTotal) statTotal.textContent = total;
+        }
+        
+        // View photo function
+        function viewPhoto(id) {
+            currentPhotoId = id;
+            
+            // Get photo data from DOM
+            const photoCard = document.querySelector(`[onclick="viewPhoto(${id})"]`).closest('.approval-photo-card');
+            if (!photoCard) return;
+            
+            const title = photoCard.querySelector('.approval-photo-title')?.textContent || '';
+            const author = photoCard.querySelector('.approval-photo-meta span:first-child')?.textContent || '';
+            const time = photoCard.querySelector('.approval-photo-meta span:last-child')?.textContent || '';
+            const description = photoCard.querySelector('.approval-photo-description')?.textContent || '';
+            const image = photoCard.querySelector('.approval-photo-image')?.src || '';
+            
+            // Fill modal with photo data
+            const modalImage = document.getElementById('modal-photo-image');
+            const modalTitle = document.getElementById('modal-photo-title');
+            const modalMeta = document.getElementById('modal-photo-meta');
+            const modalDescription = document.getElementById('modal-photo-description');
+            
+            if (modalImage) modalImage.src = image;
+            if (modalTitle) modalTitle.textContent = title;
+            if (modalMeta) {
+                modalMeta.innerHTML = `
+                    <span style="display: inline-flex; align-items: center; gap: 4px;">
+                        <span class="material-icons" style="font-size: 18px;">person</span>
+                        <span>${author}</span>
+                    </span>
+                    <span style="display: inline-flex; align-items: center; gap: 4px;">
+                        <span class="material-icons" style="font-size: 18px;">schedule</span>
+                        <span>${time}</span>
+                    </span>
+                `;
+            }
+            if (modalDescription) modalDescription.textContent = description;
+            
+            // Set button actions
+            const approveBtn = document.getElementById('modal-approve-btn');
+            const rejectBtn = document.getElementById('modal-reject-btn');
+            
+            if (approveBtn) approveBtn.onclick = () => approvePhoto(id);
+            if (rejectBtn) rejectBtn.onclick = () => rejectPhoto(id);
+            
+            // Show modal
+            const modal = document.getElementById('view-photo-modal');
+            if (modal) modal.style.display = 'flex';
+        }
+        
+        // Close view modal
+        function closeViewModal() {
+            const modal = document.getElementById('view-photo-modal');
+            if (modal) modal.style.display = 'none';
+            currentPhotoId = null;
+        }
+        
+        // Approve photo function
+        function approvePhoto(id) {
+            const photoCard = document.querySelector(`[onclick="viewPhoto(${id})"]`)?.closest('.approval-photo-card');
+            if (!photoCard) return;
+            
+            const title = photoCard.querySelector('.approval-photo-title')?.textContent || '';
+            
+            if (confirm(`Setujui foto "${title}"?`)) {
+                // Update card status
+                photoCard.dataset.status = 'approved';
+                
+                // Update badge
+                const badge = photoCard.querySelector('.approval-status-badge');
+                if (badge) {
+                    badge.textContent = 'Disetujui';
+                    badge.className = 'approval-status-badge approval-status-badge--approved';
+                }
+                
+                // Update actions
+                const actions = photoCard.querySelector('.approval-actions');
+                if (actions) {
+                    actions.innerHTML = `
+                        <button class="approval-btn approval-btn--view" onclick="viewPhoto(${id})">
+                            <span class="material-icons">visibility</span>
+                            Lihat
+                        </button>
+                        <div style="background: #10b981; color: white; padding: 10px; border-radius: 6px; text-align: center; flex: 2;">
+                            <span class="material-icons" style="vertical-align: middle; margin-right: 6px; font-size: 16px;">check_circle</span>
+                            Disetujui
+                        </div>
+                    `;
+                }
+                
+                // Refresh filters and pagination
+                applyFilters();
+                
+                // Close modal if open
+                const modal = document.getElementById('view-photo-modal');
+                if (modal && modal.style.display === 'flex') {
+                    closeViewModal();
+                }
+                
+                // Show success notification
+                showNotification('success', `Foto "${title}" berhasil disetujui!`);
+            }
+        }
+        
+        // Reject photo function
+        function rejectPhoto(id) {
+            const photoCard = document.querySelector(`[onclick="viewPhoto(${id})"]`)?.closest('.approval-photo-card');
+            if (!photoCard) return;
+            
+            const title = photoCard.querySelector('.approval-photo-title')?.textContent || '';
+            
+            if (confirm(`Tolak foto "${title}"?`)) {
+                // Update card status
+                photoCard.dataset.status = 'rejected';
+                
+                // Update badge
+                const badge = photoCard.querySelector('.approval-status-badge');
+                if (badge) {
+                    badge.textContent = 'Ditolak';
+                    badge.className = 'approval-status-badge approval-status-badge--rejected';
+                }
+                
+                // Update actions
+                const actions = photoCard.querySelector('.approval-actions');
+                if (actions) {
+                    actions.innerHTML = `
+                        <button class="approval-btn approval-btn--view" onclick="viewPhoto(${id})">
+                            <span class="material-icons">visibility</span>
+                            Lihat
+                        </button>
+                        <div style="background: #ef4444; color: white; padding: 10px; border-radius: 6px; text-align: center; flex: 2;">
+                            <span class="material-icons" style="vertical-align: middle; margin-right: 6px; font-size: 16px;">cancel</span>
+                            Ditolak
+                        </div>
+                    `;
+                }
+                
+                // Refresh filters and pagination
+                applyFilters();
+                
+                // Close modal if open
+                const modal = document.getElementById('view-photo-modal');
+                if (modal && modal.style.display === 'flex') {
+                    closeViewModal();
+                }
+                
+                // Show success notification
+                showNotification('error', `Foto "${title}" ditolak!`);
+            }
+        }
+        
+        // Show notification
+        function showNotification(type, message) {
+            const notification = document.createElement('div');
+            notification.className = `notification notification--${type}`;
+            notification.innerHTML = `
+                <span class="material-icons">${type === 'success' ? 'check_circle' : 'error'}</span>
+                ${message}
+            `;
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#10b981' : '#ef4444'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                z-index: 10000;
+                transform: translateX(400px);
+                opacity: 0;
+                transition: all 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+                notification.style.opacity = '1';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

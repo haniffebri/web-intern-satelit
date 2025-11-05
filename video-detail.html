@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video</title>
+    
+    <link rel="icon" type="image/png" href="styling/assets/foto/logo-satelit.png" />
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styling/style.css" />
+</head>
+
+<body class="page">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <div class="navbar_brand">
+                    <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV" class="navbar_logo">
+                </div>
+                <div class="navbar__menu">
+                    <a href="index.html" class="menu__link">Home</a>
+                    <a href="berita.html" class="menu__link">Berita</a>
+                    <a href="foto.html" class="menu__link">Foto</a>
+                    <a href="video.html" class="menu__link">Video</a>
+                    <a href="sbdp.html" class="menu__link">SBDP</a>
+                </div>
+                <div class="navbar__right">
+                    <div class="navbar__search">
+                        <span class="material-icons navbar__search-icon">search</span>
+                        <input type="text" class="navbar__search-input" placeholder="Pencarian">
+                    </div>
+                    <div class="navbar__profile">
+    <a href="login.html" class="navbar__profile-link">
+        <span class="material-icons">account_circle</span>
+    </a>
+</div>
+
+                </div>
+                <!-- ✅ HAMBURGER BUTTON -->
+                <button class="navbar__toggle" id="hamburgerBtn">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ✅ MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+    <!-- ✅ MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV" class="mobile-menu-logo">
+            <button class="mobile-menu-close" id="closeBtn">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-search">
+            <div class="mobile-search-wrapper">
+                <span class="material-icons mobile-search-icon">search</span>
+                <input type="text" class="mobile-search-input" placeholder="Cari berita...">
+            </div>
+        </div>
+        
+        <nav class="mobile-menu-nav">
+            <a href="index.html" class="mobile-menu-link">
+                <span class="material-icons">home</span>
+                Home
+            </a>
+            <a href="berita.html" class="mobile-menu-link">
+                <span class="material-icons">article</span>
+                Berita
+            </a>
+            <a href="foto.html" class="mobile-menu-link">
+                <span class="material-icons">photo_library</span>
+                Foto
+            </a>
+            <a href="video.html" class="mobile-menu-link">
+                <span class="material-icons">play_circle</span>
+                Video
+            </a>
+            <a href="sbdp.html" class="mobile-menu-link">
+                <span class="material-icons">business</span>
+                SBDP
+            </a>
+        </nav>
+        
+        <div class="mobile-menu-login">
+            <h4 class="mobile-login-title">Akun</h4>
+            <a href="login.html" class="mobile-login-btn">
+                <span class="material-icons">login</span>
+                Masuk / Daftar
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Layout dengan 3 kolom -->
+    <div class="layout-rails">
+        <!-- Left Ad Rail -->
+        <div class="ad-rail">
+            <div class="ad-space ad-space--left">
+                <div class="ad-space-content">
+                    <div class="ad-space-icon">
+                        <span class="material-icons">campaign</span>
+                    </div>
+                    <p class="ad-space-text">Space Available</p>
+                    <p class="ad-space-subtext">Your advertisement could be here</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="vd-main-content">
+            <!-- Video Player -->
+            <div class="vd-video-container">
+                <div class="vd-video-player">
+                    <iframe 
+                        src="https://www.youtube.com/embed/G6NFdJ50hXc?autoplay=0&rel=0&modestbranding=1"
+                        title="LIVE: Konferensi Pers Perkembangan Kasus Korupsi E-KTP"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Video Info -->
+            <div class="vd-video-info">
+                <p class="video-meta" style="padding-bottom: 10px;">15 jam lalu</p>
+                <h1 class="vd-video-title">
+                    LIVE: Konferensi Pers Perkembangan Kasus Korupsi E-KTP
+                </h1>
+            </div>
+            <!-- Description Section -->
+            <div class="vd-description-section">
+                <div class="vd-description-content" id="descriptionContent">
+                    <div class="vd-description-text">
+                        <p><strong>Konferensi Pers Live</strong> mengenai perkembangan terkini penanganan kasus korupsi E-KTP yang melibatkan berbagai pihak. Dalam konferensi pers ini, jaksa penyidik dan perwakilan Kementerian memberikan keterangan resmi terkait
+                                    mengenai perkembangan terkini penanganan kasus korupsi E-KTP yang melibatkan berbagai pihak. Dalam konferensi pers ini, jaksa penyidik dan perwakilan Kementerian memberikan keterangan resmi terkait:            
+                                    mengenai perkembangan terkini penanganan kasus korupsi E-KTP yang melibatkan berbagai pihak. Dalam konferensi pers ini, jaksa penyidik dan perwakilan Kementerian memberikan keterangan resmi terkait:
+                        </p>
+            </div>
+
+            <!-- Related Videos Grid -->
+            <div class="vd-related-section">
+                <h3 class="vd-related-title">Video Terkait</h3>
+                <div class="vd-related-grid">
+                    <div class="vd-related-item" onclick="navigateToVideo('1')">
+                        <div class="vd-related-thumbnail">
+                            <img src="https://img.youtube.com/vi/G6NFdJ50hXc/mqdefault.jpg" alt="Video 1">
+                        </div>
+                        <div class="vd-related-content">
+                            <h4>Wawancara Eksklusif Bersama Menteri Pendidikan</h4>
+                            <p class="vd-related-meta">12 menit lalu</p>
+                        </div>
+                    </div>
+
+                    <div class="vd-related-item" onclick="navigateToVideo('2')">
+                        <div class="vd-related-thumbnail">
+                            <img src="https://img.youtube.com/vi/G6NFdJ50hXc/mqdefault.jpg" alt="Video 2">
+                        </div>
+                        <div class="vd-related-content">
+                            <h4>Wawancara Eksklusif Bersama Menteri Pendidikan</h4>
+                            <p class="vd-related-meta">12 menit lalu</p>
+                        </div>
+                    </div>
+
+                    <div class="vd-related-item" onclick="navigateToVideo('3')">
+                        <div class="vd-related-thumbnail">
+                            <img src="https://img.youtube.com/vi/G6NFdJ50hXc/mqdefault.jpg" alt="Video 3">
+                        </div>
+                        <div class="vd-related-content">
+                            <h4>Wawancara Eksklusif Bersama Menteri Pendidikan</h4>
+                            <p class="vd-related-meta">12 menit lalu</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Ad Rail -->
+        <div class="ad-rail">
+            <div class="ad-space ad-space--right">
+                <div class="ad-space-content">
+                    <div class="ad-space-icon">
+                        <span class="material-icons">ads_click</span>
+                    </div>
+                    <p class="ad-space-text">Space Available</p>
+                    <p class="ad-space-subtext">Perfect spot for your brand</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/SatelitTelevisiNusantara" class="social__link" aria-label="Facebook">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/satelittv_purwokerto/" class="social__link" aria-label="Instagram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SATELITTVPURWOKERTO" class="social__link" aria-label="YouTube">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__links">
+                    <div class="links__col links__col--alamat">
+                        <h3 class="links__title">Satelit TV</h3>
+                        <ul class="links__list">
+                            <li><a class="links__item">Jl. Dr. Angka, Glempang, Bancarkembar, Kec. Purwokerto Utara, Kabupaten Banyumas, Jawa Tengah 53114</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>© 2025 Satelit TV.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+// ===== VIDEO DETAIL PAGE JAVASCRIPT - CORRECTED VERSION =====
+
+console.log('🎯 Video detail page JavaScript loading...');
+
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Initializing video detail page components...');
+    
+    // Initialize all components
+    initializeMobileMenu();
+    initializeVideoDetailPage();
+    
+    console.log('✅ All video detail page components initialized successfully');
+});
+
+// ===== MOBILE MENU FUNCTIONALITY =====
+function initializeMobileMenu() {
+    console.log('📱 Initializing mobile menu...');
+    
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const body = document.body;
+    const menuLinks = document.querySelectorAll('.mobile-menu-link');
+
+    // ✅ Check if all elements exist
+    if (!hamburgerBtn || !mobileMenu || !menuOverlay || !closeBtn) {
+        console.warn('⚠️ Mobile menu elements not found - skipping initialization');
+        console.log('Element status:', {
+            hamburgerBtn: !!hamburgerBtn,
+            mobileMenu: !!mobileMenu,
+            menuOverlay: !!menuOverlay,
+            closeBtn: !!closeBtn
+        });
+        return;
+    }
+
+    function openMobileMenu() {
+        mobileMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        body.classList.add('mobile-menu-open');
+        console.log('✅ Mobile menu opened');
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        body.classList.remove('mobile-menu-open');
+        console.log('✅ Mobile menu closed');
+    }
+
+    // Event listeners
+    hamburgerBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('🍔 Hamburger button clicked');
+        openMobileMenu();
+    });
+
+    closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('❌ Close button clicked');
+        closeMobileMenu();
+    });
+
+    menuOverlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('🔍 Overlay clicked');
+        closeMobileMenu();
+    });
+
+    // Close menu when clicking navigation links
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            console.log('🔗 Menu link clicked:', this.textContent.trim());
+            closeMobileMenu();
+        });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const menuActive = mobileMenu.classList.contains('active');
+            if (menuActive) {
+                closeMobileMenu();
+            }
+        }
+    });
+
+    console.log('✅ Mobile menu initialized successfully');
+}
+
+// ===== VIDEO DETAIL PAGE FUNCTIONALITY =====
+function initializeVideoDetailPage() {
+    console.log('🎬 Initializing video detail page functionality...');
+    
+    // Initialize video detail specific features
+    initializeDescriptionToggle();
+    initializeActionButtons();
+    initializeRelatedVideos();
+    
+    console.log('✅ Video detail page functionality initialized');
+}
+
+// ===== DESCRIPTION TOGGLE (CLEANED VERSION) =====
+function initializeDescriptionToggle() {
+    console.log('📝 Initializing description toggle...');
+    
+    const descriptionContent = document.getElementById('descriptionContent');
+    
+    if (!descriptionContent) {
+        console.warn('⚠️ Description content not found');
+        return;
+    }
+    
+    // ❌ REMOVED: toggleDescription function is already defined globally
+    // The HTML doesn't have toggle button elements (showMoreText, showMoreIcon)
+    // but the function exists for future use
+    
+    console.log('✅ Description toggle ready (no toggle button found in HTML)');
+}
+
+// ===== ACTION BUTTONS (CLEANED VERSION) =====
+function initializeActionButtons() {
+    console.log('👍 Initializing action buttons...');
+    
+    // ❌ REMOVED: Like and Save buttons don't exist in current HTML
+    // The HTML doesn't have .vd-like-btn or .vd-save-btn elements
+    // This function is kept for future implementation
+    
+    const likeBtn = document.querySelector('.vd-like-btn');
+    const saveBtn = document.querySelector('.vd-save-btn');
+    
+    if (!likeBtn && !saveBtn) {
+        console.log('ℹ️ No action buttons found in HTML - skipping initialization');
+        return;
+    }
+    
+    if (likeBtn) {
+        likeBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const icon = this.querySelector('i');
+            if (icon) {
+                icon.textContent = this.classList.contains('active') ? 'thumb_up' : 'thumb_up_off_alt';
+            }
+            console.log('👍 Like button toggled');
+        });
+    }
+
+    if (saveBtn) {
+        saveBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const icon = this.querySelector('i');
+            if (icon) {
+                icon.textContent = this.classList.contains('active') ? 'bookmark' : 'bookmark_border';
+            }
+            console.log('📌 Save button toggled');
+        });
+    }
+    
+    console.log('✅ Action buttons initialized');
+}
+
+// ===== RELATED VIDEOS =====
+function initializeRelatedVideos() {
+    console.log('🎬 Initializing related videos...');
+    
+    const relatedItems = document.querySelectorAll('.vd-related-item');
+    
+    if (relatedItems.length === 0) {
+        console.warn('⚠️ No related videos found');
+        return;
+    }
+    
+    relatedItems.forEach((item, index) => {
+        item.addEventListener('click', function() {
+            console.log(`🎬 Related video ${index + 1} clicked`);
+            
+            // Add click effect
+            item.style.transition = 'transform 0.1s ease';
+            item.style.transform = 'scale(0.98)';
+            
+            setTimeout(() => {
+                item.style.transform = '';
+            }, 150);
+        });
+        
+        // Add hover effects
+        item.addEventListener('mouseenter', function() {
+            const thumbnail = item.querySelector('.vd-related-thumbnail img');
+            if (thumbnail) {
+                thumbnail.style.transition = 'transform 0.3s ease';
+                thumbnail.style.transform = 'scale(1.05)';
+            }
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            const thumbnail = item.querySelector('.vd-related-thumbnail img');
+            if (thumbnail) {
+                thumbnail.style.transform = 'scale(1)';
+            }
+        });
+    });
+    
+    console.log(`✅ ${relatedItems.length} related videos initialized`);
+}
+
+// ===== GLOBAL FUNCTIONS (KEEP EXISTING ONES) =====
+
+// ✅ KEEP: Toggle description function (already exists in HTML)
+function toggleDescription() {
+    console.log('📝 Toggle description called');
+    
+    const content = document.getElementById('descriptionContent');
+    const text = document.getElementById('showMoreText');
+    const icon = document.getElementById('showMoreIcon');
+    
+    if (!content) {
+        console.warn('⚠️ Description content not found');
+        return;
+    }
+    
+    if (content.classList.contains('collapsed')) {
+        content.classList.remove('collapsed');
+        if (text) text.textContent = 'Tampilkan Lebih Sedikit';
+        if (icon) icon.textContent = 'expand_less';
+        console.log('✅ Description expanded');
+    } else {
+        content.classList.add('collapsed');
+        if (text) text.textContent = 'Tampilkan Selengkapnya';
+        if (icon) icon.textContent = 'expand_more';
+        console.log('✅ Description collapsed');
+    }
+}
+
+// ✅ KEEP: Copy link function (already exists in HTML)
+function copyLink() {
+    console.log('🔗 Copy link called');
+    
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        console.log('✅ Link copied successfully');
+        showNotification('Link berhasil disalin!', 'success');
+    }).catch(err => {
+        console.error('❌ Failed to copy link:', err);
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = window.location.href;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            console.log('✅ Link copied using fallback method');
+            showNotification('Link berhasil disalin!', 'success');
+        } catch (err) {
+            console.error('❌ Fallback copy failed:', err);
+            showNotification('Gagal menyalin link', 'error');
+        }
+        document.body.removeChild(textArea);
+    });
+}
+
+// ✅ KEEP: Navigate to video function (already exists in HTML)
+function navigateToVideo(id) {
+    console.log(`🎯 Navigating to video ID: ${id}`);
+    
+    if (!id) {
+        console.error('❌ No video ID provided');
+        return;
+    }
+    
+    // Show loading notification
+    showNotification('Memuat video...', 'info', 1500);
+    
+    // Navigate to video detail page with ID parameter
+    setTimeout(() => {
+        window.location.href = `video-detail.html?id=${id}`;
+    }, 500);
+}
+
+// ===== UTILITY FUNCTIONS =====
+function showNotification(message, type = 'info', duration = 3000) {
+    console.log(`📢 Notification: ${message} (${type})`);
+    
+    // Remove existing notification
+    const existingNotification = document.querySelector('.vd-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'vd-notification';
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${getNotificationColor(type)};
+        color: white;
+        padding: 16px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 10000;
+        font-size: 14px;
+        font-weight: 500;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        max-width: 350px;
+        word-wrap: break-word;
+    `;
+    
+    // Add icon based on type
+    const icon = getNotificationIcon(type);
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="material-icons" style="font-size: 18px;">${icon}</span>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Show with animation
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Hide after duration
+    if (duration > 0) {
+        setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, duration);
+    }
+}
+
+function getNotificationColor(type) {
+    switch(type) {
+        case 'success': return '#10b981';
+        case 'error': return '#ef4444';
+        case 'warning': return '#f59e0b';
+        case 'info':
+        default: return '#3b82f6';
+    }
+}
+
+function getNotificationIcon(type) {
+    switch(type) {
+        case 'success': return 'check_circle';
+        case 'error': return 'error';
+        case 'warning': return 'warning';
+        case 'info':
+        default: return 'info';
+    }
+}
+
+// ===== URL PARAMETERS HANDLING =====
+function getVideoIdFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoId = urlParams.get('id');
+    
+    if (videoId) {
+        console.log(`🎬 Current video ID from URL: ${videoId}`);
+        return videoId;
+    }
+    
+    console.log('ℹ️ No video ID in URL parameters');
+    return null;
+}
+
+// ===== PAGE LOAD HANDLING =====
+window.addEventListener('load', function() {
+    const loadTime = performance.now();
+    console.log(`📊 Video detail page loaded in ${loadTime.toFixed(2)}ms`);
+    
+    // Get video ID from URL if available
+    const videoId = getVideoIdFromURL();
+    if (videoId) {
+        console.log(`🎬 Loading video with ID: ${videoId}`);
+        // Here you could load specific video data based on ID
+    }
+});
+
+// ===== ERROR HANDLING =====
+window.addEventListener('error', function(event) {
+    console.error('JavaScript Error on video detail page:', event.error);
+});
+
+window.addEventListener('unhandledrejection', function(event) {
+    console.error('Unhandled Promise Rejection on video detail page:', event.reason);
+});
+
+console.log('✅ Video detail page JavaScript loaded successfully');
+</script>
+
+</body>
+</html>

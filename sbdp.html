@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBDP - Satelit TV Broadcasting Development Program</title>
+    <link rel="stylesheet" href="D:\Kuliah\Kuliah\Magang\Satelit\styling\style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="page sbdp-page">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <div class="navbar_brand">
+                    <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV" class="navbar_logo">
+                </div>
+                <div class="navbar__menu">
+                    <a href="index.html" class="menu__link">Home</a>
+                    <a href="berita.html" class="menu__link">Berita</a>
+                    <a href="foto.html" class="menu__link">Foto</a>
+                    <a href="video.html" class="menu__link">Video</a>
+                    <a href="sbdp.html" class="menu__link">SBDP</a>
+                </div>
+                <div class="navbar__right">
+                    <div class="navbar__search">
+                        <span class="material-icons navbar__search-icon">search</span>
+                        <input type="text" class="navbar__search-input" placeholder="Pencarian">
+                    </div>
+                    <div class="navbar__profile">
+                        <a href="login.html" class="navbar__profile-link">
+                            <span class="material-icons">account_circle</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button class="navbar__toggle" id="hamburgerBtn">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV" class="mobile-menu-logo">
+            <button class="mobile-menu-close" id="closeBtn">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-search">
+            <div class="mobile-search-wrapper">
+                <span class="material-icons mobile-search-icon">search</span>
+                <input type="text" class="mobile-search-input" placeholder="Cari berita...">
+            </div>
+        </div>
+        
+        <nav class="mobile-menu-nav">
+            <a href="index.html" class="mobile-menu-link">
+                <span class="material-icons">home</span>
+                Home
+            </a>
+            <a href="berita.html" class="mobile-menu-link">
+                <span class="material-icons">article</span>
+                Berita
+            </a>
+            <a href="foto.html" class="mobile-menu-link">
+                <span class="material-icons">photo_library</span>
+                Foto
+            </a>
+            <a href="video.html" class="mobile-menu-link">
+                <span class="material-icons">play_circle</span>
+                Video
+            </a>
+            <a href="sbdp.html" class="mobile-menu-link">
+                <span class="material-icons">business</span>
+                SBDP
+            </a>
+        </nav>
+        
+        <div class="mobile-menu-login">
+            <h4 class="mobile-login-title">Akun</h4>
+            <a href="login.html" class="mobile-login-btn">
+                <span class="material-icons">login</span>
+                Masuk / Daftar
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="sbdp-hero">
+        <div class="sbdp-hero-content">
+            <div class="sbdp-logo">
+                <span class="material-icons">tv</span>
+            </div>
+            <h1 class="fade-in-up">SBDP</h1>
+            <p class="subtitle fade-in-up">Satelit TV Broadcasting Development Program</p>
+            <p class="tagline fade-in-up">Program Pengembangan Kompetensi Siswa SMK melalui Praktek Kerja Lapangan (PKL) di Industri Penyiaran Televisi Modern</p>
+            <div class="sbdp-cta-buttons fade-in-up">
+                <a href="#overview" class="sbdp-btn sbdp-btn-primary">
+                    <span class="material-icons">info</span>
+                    Pelajari Program
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="sbdp-overview">
+        <div class="sbdp-container">
+            <h2 class="sbdp-section-title fade-in-up">Program PKL untuk SMK</h2>
+            <p class="sbdp-section-subtitle fade-in-up">
+                SBDP merupakan program pengembangan kompetensi siswa SMK yang dirancang sistematis untuk mempertemukan dunia pendidikan dengan kebutuhan nyata industri penyiaran televisi modern.
+            </p>
+            
+            <div class="sbdp-features-grid">
+                <div class="sbdp-feature-card fade-in-up">
+                    <div class="sbdp-feature-icon">
+                        <span class="material-icons">videocam</span>
+                    </div>
+                    <h3 class="sbdp-feature-title">Produksi Televisi</h3>
+                    <p class="sbdp-feature-description">Mempelajari seluruh proses produksi televisi mulai dari perencanaan, produksi, pasca produksi, hingga distribusi konten di televisi dan platform digital.</p>
+                </div>
+                
+                <div class="sbdp-feature-card fade-in-up">
+                    <div class="sbdp-feature-icon">
+                        <span class="material-icons">groups</span>
+                    </div>
+                    <h3 class="sbdp-feature-title">Kerja Tim Profesional</h3>
+                    <p class="sbdp-feature-description">Siswa terbiasa bekerja dalam tim, menghadapi deadline nyata, dan menghasilkan karya orisinal yang ditayangkan di SatelitTV.</p>
+                </div>
+                
+                <div class="sbdp-feature-card fade-in-up">
+                    <div class="sbdp-feature-icon">
+                        <span class="material-icons">edit</span>
+                    </div>
+                    <h3 class="sbdp-feature-title">Penulisan Naskah</h3>
+                    <p class="sbdp-feature-description">Pembelajaran penulisan naskah untuk berbagai jenis program televisi dengan bimbingan profesional berpengalaman.</p>
+                </div>
+                
+                <div class="sbdp-feature-card fade-in-up">
+                    <div class="sbdp-feature-icon">
+                        <span class="material-icons">movie_edit</span>
+                    </div>
+                    <h3 class="sbdp-feature-title">Editing & Post Production</h3>
+                    <p class="sbdp-feature-description">Menguasai teknik editing dan pasca produksi dengan peralatan dan software standar industri penyiaran.</p>
+                </div>
+                
+                <div class="sbdp-feature-card fade-in-up">
+                    <div class="sbdp-feature-icon">
+                        <span class="material-icons">article</span>
+                    </div>
+                    <h3 class="sbdp-feature-title">Jurnalistik Televisi</h3>
+                    <p class="sbdp-feature-description">Pembelajaran jurnalistik khusus untuk televisi, mulai dari riset, wawancara, hingga penyajian berita yang menarik.</p>
+                </div>
+                
+                <div class="sbdp-feature-card fade-in-up">
+                    <div class="sbdp-feature-icon">
+                        <span class="material-icons">business</span>
+                    </div>
+                    <h3 class="sbdp-feature-title">Manajemen Produksi</h3>
+                    <p class="sbdp-feature-description">Memahami aspek manajemen dalam produksi televisi, termasuk perencanaan, koordinasi, dan kontrol kualitas program.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="sbdp-timeline">
+        <div class="sbdp-container">
+            <h2 class="sbdp-section-title fade-in-up">Timeline Program 5-6 Bulan</h2>
+            <p class="sbdp-section-subtitle fade-in-up">Program PKL yang terstruktur dengan pembagian kegiatan yang jelas dari bulan ke bulan</p>
+            
+            <div class="sbdp-timeline-container">
+                <div class="sbdp-timeline-line"></div>
+                
+                <div class="sbdp-timeline-item fade-in-up">
+                    <div class="sbdp-timeline-content">
+                        <h3 class="sbdp-timeline-month">Bulan 1</h3>
+                        <h4>Pembekalan & Pengenalan</h4>
+                        <ul class="sbdp-timeline-activities">
+                            <li><strong>Minggu 1-2:</strong> Pembekalan dunia industri televisi dan perkembangannya</li>
+                            <li>Pengenalan kerja industri televisi di SatelitTV</li>
+                            <li><strong>Minggu 3-4:</strong> Pembagian kelompok kerja</li>
+                            <li>Pemilihan program produksi</li>
+                            <li>Orientasi fasilitas dan peralatan</li>
+                        </ul>
+                    </div>
+                    <div class="sbdp-timeline-marker"></div>
+                </div>
+                
+                <div class="sbdp-timeline-item fade-in-up">
+                    <div class="sbdp-timeline-content">
+                        <h3 class="sbdp-timeline-month">Bulan 2</h3>
+                        <h4>Produksi Pilot & Evaluasi</h4>
+                        <ul class="sbdp-timeline-activities">
+                            <li><strong>Minggu 1-2:</strong> Produksi pilot program masing-masing kelompok</li>
+                            <li>Pembelajaran praktik produksi televisi</li>
+                            <li><strong>Minggu 3-4:</strong> Evaluasi hasil pilot program</li>
+                            <li>Perbaikan dan produksi program lanjutan</li>
+                            <li>Feedback dari mentor profesional</li>
+                        </ul>
+                    </div>
+                    <div class="sbdp-timeline-marker"></div>
+                </div>
+                
+                <div class="sbdp-timeline-item fade-in-up">
+                    <div class="sbdp-timeline-content">
+                        <h3 class="sbdp-timeline-month">Bulan 3-6</h3>
+                        <h4>Produksi Rutin & Penayangan</h4>
+                        <ul class="sbdp-timeline-activities">
+                            <li>Proses produksi rutin program televisi</li>
+                            <li>Penayangan program di SatelitTV</li>
+                            <li>Evaluasi berkala dan pengayaan</li>
+                            <li>Pengembangan kreativitas dan inovasi</li>
+                            <li>Persiapan portofolio profesional</li>
+                        </ul>
+                    </div>
+                    <div class="sbdp-timeline-marker"></div>
+                </div>
+            </div>
+
+            <!-- Weekly Schedule -->
+            <div style="margin-top: 60px;">
+                <h3 class="sbdp-section-title" style="font-size: 28px; margin-bottom: 40px;">Jadwal Kegiatan Mingguan</h3>
+                <div class="sbdp-features-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div class="sbdp-feature-card fade-in-up">
+                        <div class="sbdp-feature-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                            <span class="material-icons">event</span>
+                        </div>
+                        <h4 class="sbdp-feature-title">Senin</h4>
+                        <p class="sbdp-feature-description">Penentuan tema dan desain produksi (di SatelitTV atau sekolah)</p>
+                    </div>
+                    
+                    <div class="sbdp-feature-card fade-in-up">
+                        <div class="sbdp-feature-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                            <span class="material-icons">search</span>
+                        </div>
+                        <h4 class="sbdp-feature-title">Selasa</h4>
+                        <p class="sbdp-feature-description">Riset dan penulisan naskah (di SatelitTV atau sekolah)</p>
+                    </div>
+                    
+                    <div class="sbdp-feature-card fade-in-up">
+                        <div class="sbdp-feature-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <span class="material-icons">videocam</span>
+                        </div>
+                        <h4 class="sbdp-feature-title">Rabu - Kamis</h4>
+                        <p class="sbdp-feature-description">Proses produksi (lokasi sesuai tema program)</p>
+                    </div>
+                    
+                    <div class="sbdp-feature-card fade-in-up">
+                        <div class="sbdp-feature-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                            <span class="material-icons">movie_edit</span>
+                        </div>
+                        <h4 class="sbdp-feature-title">Jumat</h4>
+                        <p class="sbdp-feature-description">Editing dan post production (di sekolah)</p>
+                    </div>
+                    
+                    <div class="sbdp-feature-card fade-in-up">
+                        <div class="sbdp-feature-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+                            <span class="material-icons">live_tv</span>
+                        </div>
+                        <h4 class="sbdp-feature-title">Sabtu</h4>
+                        <p class="sbdp-feature-description">Final editing, evaluasi, dan penayangan di SatelitTV</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="sbdp-output">
+        <div class="sbdp-container">
+            <h2 class="sbdp-section-title fade-in-up" style="color: white;">Benefit untuk Siswa</h2>
+            <p class="sbdp-section-subtitle fade-in-up" style="color: rgba(255,255,255,0.8);">
+                Program SBDP memberikan pengalaman langsung dan keterampilan industri yang berharga untuk masa depan siswa
+            </p>
+            
+            <div class="sbdp-output-grid">
+                <div class="sbdp-output-card fade-in-up">
+                    <div class="sbdp-output-icon">
+                        <span class="material-icons">work</span>
+                    </div>
+                    <h3 class="sbdp-output-title">Pengalaman Industri Langsung</h3>
+                    <p class="sbdp-output-description">
+                        Mendapat pengalaman kerja langsung di industri penyiaran dengan lingkungan kerja profesional dan standar industri.
+                    </p>
+                    <div class="sbdp-output-duration">
+                        <span class="material-icons">schedule</span>
+                        5-6 bulan intensif
+                    </div>
+                </div>
+                
+                <div class="sbdp-output-card fade-in-up">
+                    <div class="sbdp-output-icon">
+                        <span class="material-icons">school</span>
+                    </div>
+                    <h3 class="sbdp-output-title">Pembelajaran Terkonsep Industri</h3>
+                    <p class="sbdp-output-description">
+                        Kurikulum yang disesuaikan dengan kebutuhan industri dengan metode pembelajaran praktis dan aplikatif.
+                    </p>
+                    <div class="sbdp-output-duration">
+                        <span class="material-icons">trending_up</span>
+                        Skill enhancement
+                    </div>
+                </div>
+                
+                <div class="sbdp-output-card fade-in-up">
+                    <div class="sbdp-output-icon">
+                        <span class="material-icons">folder</span>
+                    </div>
+                    <h3 class="sbdp-output-title">Portofolio Profesional</h3>
+                    <p class="sbdp-output-description">
+                        Hasil karya siswa ditayangkan di SatelitTV dan media sosial (YouTube, Instagram, TikTok) sebagai portofolio.
+                    </p>
+                    <div class="sbdp-output-duration">
+                        <span class="material-icons">public</span>
+                        Published content
+                    </div>
+                </div>
+                
+                <div class="sbdp-output-card fade-in-up">
+                    <div class="sbdp-output-icon">
+                        <span class="material-icons">psychology</span>
+                    </div>
+                    <h3 class="sbdp-output-title">Soft Skills Development</h3>
+                    <p class="sbdp-output-description">
+                        Mengembangkan teamwork, kedisiplinan, manajemen waktu, kreativitas, dan adaptasi dengan deadline industri.
+                    </p>
+                    <div class="sbdp-output-duration">
+                        <span class="material-icons">groups</span>
+                        Team collaboration
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="sbdp-pricing">
+        <div class="sbdp-container">
+            <h2 class="sbdp-section-title fade-in-up">Investasi Program SBDP</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div class="sbdp-pricing-card scale-in" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+                    <div class="sbdp-pricing-content">
+                        <h3>Biaya Masuk</h3>
+                        <div class="sbdp-price">Rp 100.000</div>
+                        <p class="sbdp-price-period">sekali bayar per siswa</p>
+                        
+                        <ul class="sbdp-price-features">
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                Seragam rompi program
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                ID Card peserta program
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                Perlengkapan program lainnya
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="sbdp-pricing-card scale-in">
+                    <div class="sbdp-pricing-content">
+                        <h3>Biaya Program</h3>
+                        <div class="sbdp-price">Rp 250.000</div>
+                        <p class="sbdp-price-period">per siswa per bulan</p>
+                        
+                        <ul class="sbdp-price-features">
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                Bimbingan profesional industri
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                Fasilitas produksi lengkap
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                Penayangan hasil karya
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                Sertifikat program
+                            </li>
+                        </ul>
+                        
+                        <a href="#" class="sbdp-btn sbdp-btn-primary" style="background: white; color: #1e40af; margin-top: 20px;">
+                            <span class="material-icons">contact_mail</span>
+                            Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; padding: 30px; background: rgba(59, 130, 246, 0.1); border-radius: 16px;">
+                <p style="font-size: 16px; color: #1e40af; margin: 0;">
+                    <span class="material-icons" style="vertical-align: middle; margin-right: 8px;">info</span>
+                    Biaya dibayarkan melalui mekanisme yang disepakati bersama antara pihak sekolah dan SatelitTV
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="sbdp-cta" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);">
+        <div class="sbdp-container">
+            <h2 class="fade-in-up">Persyaratan Program</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0;">
+                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 16px; backdrop-filter: blur(10px);">
+                    <h3 style="margin: 0 0 20px 0; display: flex; align-items: center; gap: 10px;">
+                        <span class="material-icons">school</span>
+                        Untuk SMK
+                    </h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
+                            <span class="material-icons" style="color: #10b981;">check_circle</span>
+                            Siswa PKL dari Kelas Industri SMK
+                        </li>
+                        <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
+                            <span class="material-icons" style="color: #10b981;">check_circle</span>
+                            Jumlah peserta sesuai kapasitas kelas
+                        </li>
+                        <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
+                            <span class="material-icons" style="color: #10b981;">check_circle</span>
+                            Komitmen mengikuti program 5-6 bulan
+                        </li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 16px; backdrop-filter: blur(10px);">
+                    <h3 style="margin: 0 0 20px 0; display: flex; align-items: center; gap: 10px;">
+                        <span class="material-icons">handshake</span>
+                        Dukungan Sekolah
+                    </h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
+                            <span class="material-icons" style="color: #10b981;">check_circle</span>
+                            Koordinasi baik dengan SatelitTV
+                        </li>
+                        <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
+                            <span class="material-icons" style="color: #10b981;">check_circle</span>
+                            Dukungan fasilitas sekolah
+                        </li>
+                        <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
+                            <span class="material-icons" style="color: #10b981;">check_circle</span>
+                            Kesepakatan pembayaran program
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="sbdp-cta-buttons fade-in-up">
+                <a href="#" class="sbdp-btn sbdp-btn-primary" style="background: white; color: #1e40af;">
+                    <span class="material-icons">contact_mail</span>
+                    Daftar Program
+                </a>
+                <a href="#" class="sbdp-btn sbdp-btn-secondary">
+                    <span class="material-icons">download</span>
+                    Download Brosur
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 0px;">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/SatelitTelevisiNusantara" class="social__link" aria-label="Facebook">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/satelittv_purwokerto/" class="social__link" aria-label="Instagram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@SATELITTVPURWOKERTO" class="social__link" aria-label="YouTube">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__links">
+                    <div class="links__col">
+                        <h3 class="links__title"></h3>
+                        <ul class="links__list">
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                        </ul>
+                    </div>
+                    <div class="links__col">
+                        <h3 class="links__title"></h3>
+                        <ul class="links__list">
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                            <li><a href="#" class="links__item"></a></li>
+                        </ul>
+                    </div>
+                    <div class="links__col links__col--alamat">
+                        <h3 class="links__title">Satelit TV</h3>
+                        <ul class="links__list">
+                            <li><a class="links__item">Jl. Dr. Angka, Glempang, Bancarkembar, Kec. Purwokerto Utara, Kabupaten Banyumas, Jawa Tengah 53114</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>© 2025 Satelit TV.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+// ===== SBDP PAGE JAVASCRIPT - CORRECTED VERSION =====
+
+console.log('🎯 SBDP page JavaScript loading...');
+
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Initializing SBDP page components...');
+    
+    // Initialize all components
+    initializeMobileMenu();
+    initializeScrollAnimations();
+    initializeSmoothScrolling();
+    initializeSearchFunctionality();
+    
+    // Initialize animations on page load
+    handleScrollAnimations();
+    
+    console.log('✅ All SBDP page components initialized successfully');
+});
+
+// ===== MOBILE MENU FUNCTIONALITY =====
+function initializeMobileMenu() {
+    console.log('📱 Initializing mobile menu...');
+    
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const body = document.body;
+    const menuLinks = document.querySelectorAll('.mobile-menu-link');
+
+    // ✅ Check if all elements exist
+    if (!hamburgerBtn || !mobileMenu || !menuOverlay || !closeBtn) {
+        console.warn('⚠️ Mobile menu elements not found - skipping initialization');
+        console.log('Element status:', {
+            hamburgerBtn: !!hamburgerBtn,
+            mobileMenu: !!mobileMenu,
+            menuOverlay: !!menuOverlay,
+            closeBtn: !!closeBtn
+        });
+        return;
+    }
+
+    function openMobileMenu() {
+        mobileMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        body.classList.add('mobile-menu-open');
+        console.log('✅ Mobile menu opened');
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        body.classList.remove('mobile-menu-open');
+        console.log('✅ Mobile menu closed');
+    }
+
+    // Event listeners
+    hamburgerBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('🍔 Hamburger button clicked');
+        openMobileMenu();
+    });
+
+    closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('❌ Close button clicked');
+        closeMobileMenu();
+    });
+
+    menuOverlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('🔍 Overlay clicked');
+        closeMobileMenu();
+    });
+
+    // Close menu when clicking navigation links
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            console.log('🔗 Menu link clicked:', this.textContent.trim());
+            closeMobileMenu();
+        });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const menuActive = mobileMenu.classList.contains('active');
+            if (menuActive) {
+                closeMobileMenu();
+            }
+        }
+    });
+
+    console.log('✅ Mobile menu initialized successfully');
+}
+
+// ===== SCROLL ANIMATIONS =====
+function initializeScrollAnimations() {
+    console.log('🎬 Initializing scroll animations...');
+    
+    // Add CSS for animations if not already present
+    addAnimationCSS();
+    
+    // Initialize scroll handler
+    window.addEventListener('scroll', handleScrollAnimations);
+    window.addEventListener('load', handleScrollAnimations);
+    
+    console.log('✅ Scroll animations initialized');
+}
+
+function addAnimationCSS() {
+    // Check if styles already exist
+    if (document.getElementById('sbdp-animations')) return;
+    
+    const style = document.createElement('style');
+    style.id = 'sbdp-animations';
+    style.textContent = `
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Stagger animation for feature cards */
+        .sbdp-feature-card:nth-child(1) { transition-delay: 0.1s; }
+        .sbdp-feature-card:nth-child(2) { transition-delay: 0.2s; }
+        .sbdp-feature-card:nth-child(3) { transition-delay: 0.3s; }
+        .sbdp-feature-card:nth-child(4) { transition-delay: 0.4s; }
+        .sbdp-feature-card:nth-child(5) { transition-delay: 0.5s; }
+        .sbdp-feature-card:nth-child(6) { transition-delay: 0.6s; }
+        
+        /* Timeline animations */
+        .sbdp-timeline-item:nth-child(odd) .sbdp-timeline-content {
+            transform: translateX(-50px);
+        }
+        
+        .sbdp-timeline-item:nth-child(even) .sbdp-timeline-content {
+            transform: translateX(50px);
+        }
+        
+        .sbdp-timeline-item.visible .sbdp-timeline-content {
+            transform: translateX(0);
+        }
+    `;
+    
+    document.head.appendChild(style);
+    console.log('✅ Animation CSS added');
+}
+
+function handleScrollAnimations() {
+    const elements = document.querySelectorAll('.fade-in-up, .scale-in');
+    const windowHeight = window.innerHeight;
+    const elementVisible = 150;
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        
+        if (elementTop < windowHeight - elementVisible) {
+            element.classList.add('visible');
+        }
+    });
+    
+    // Special handling for timeline items
+    const timelineItems = document.querySelectorAll('.sbdp-timeline-item');
+    timelineItems.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        if (itemTop < windowHeight - elementVisible) {
+            item.classList.add('visible');
+        }
+    });
+}
+
+// ===== SMOOTH SCROLLING =====
+function initializeSmoothScrolling() {
+    console.log('🔗 Initializing smooth scrolling...');
+    
+    // Get all anchor links that start with #
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    
+    anchorLinks.forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Skip if href is just "#"
+            if (href === '#') return;
+            
+            e.preventDefault();
+            
+            const target = document.querySelector(href);
+            if (target) {
+                console.log('🎯 Scrolling to:', href);
+                
+                // Calculate offset for navbar
+                const navbarHeight = 80; // Adjust based on your navbar height
+                const targetPosition = target.offsetTop - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            } else {
+                console.warn('⚠️ Target not found for:', href);
+            }
+        });
+    });
+    
+    console.log(`✅ Smooth scrolling initialized for ${anchorLinks.length} links`);
+}
+
+// ===== SEARCH FUNCTIONALITY =====
+function initializeSearchFunctionality() {
+    console.log('🔍 Initializing search functionality...');
+    
+    const navbarSearchInput = document.querySelector('.navbar__search-input');
+    const mobileSearchInput = document.querySelector('.mobile-search-input');
+    
+    // Add search functionality to navbar
+    if (navbarSearchInput) {
+        navbarSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch(this.value);
+            }
+        });
+        console.log('✅ Navbar search initialized');
+    }
+    
+    // Add search functionality to mobile
+    if (mobileSearchInput) {
+        mobileSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch(this.value);
+            }
+        });
+        console.log('✅ Mobile search initialized');
+    }
+    
+    console.log('✅ Search functionality initialized');
+}
+
+function performSearch(query) {
+    if (!query || query.trim() === '') {
+        showNotification('Masukkan kata kunci pencarian', 'warning');
+        return;
+    }
+    
+    console.log('🔍 Searching for:', query);
+    
+    // In a real application, this would redirect to search results
+    showNotification(`Mencari: "${query}"`, 'info');
+    
+    // Example: redirect to search page
+    // window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+}
+
+// ===== UTILITY FUNCTIONS =====
+function showNotification(message, type = 'info') {
+    console.log(`📢 Notification: ${message} (${type})`);
+    
+    // Remove existing notification
+    const existingNotification = document.querySelector('.sbdp-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'sbdp-notification';
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${getNotificationColor(type)};
+        color: white;
+        padding: 16px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 10000;
+        font-size: 14px;
+        font-weight: 500;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        max-width: 350px;
+        word-wrap: break-word;
+    `;
+    
+    // Add icon based on type
+    const icon = getNotificationIcon(type);
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="material-icons" style="font-size: 18px;">${icon}</span>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Show with animation
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Hide after 3 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+function getNotificationColor(type) {
+    switch(type) {
+        case 'success': return '#10b981';
+        case 'error': return '#ef4444';
+        case 'warning': return '#f59e0b';
+        case 'info':
+        default: return '#3b82f6';
+    }
+}
+
+function getNotificationIcon(type) {
+    switch(type) {
+        case 'success': return 'check_circle';
+        case 'error': return 'error';
+        case 'warning': return 'warning';
+        case 'info':
+        default: return 'info';
+    }
+}
+
+// ===== ENHANCED SCROLL BEHAVIOR =====
+function initializeEnhancedScrolling() {
+    // Add scroll-to-top functionality
+    let scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    if (!scrollToTopBtn) {
+        scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.id = 'scrollToTop';
+        scrollToTopBtn.innerHTML = '<span class="material-icons">keyboard_arrow_up</span>';
+        scrollToTopBtn.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1e40af;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        `;
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        document.body.appendChild(scrollToTopBtn);
+    }
+    
+    // Show/hide scroll-to-top button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.style.opacity = '1';
+            scrollToTopBtn.style.transform = 'scale(1)';
+        } else {
+            scrollToTopBtn.style.opacity = '0';
+            scrollToTopBtn.style.transform = 'scale(0.8)';
+        }
+    });
+}
+
+// ===== INTERSECTION OBSERVER API FOR BETTER PERFORMANCE =====
+function initializeIntersectionObserver() {
+    if (!window.IntersectionObserver) {
+        console.warn('⚠️ IntersectionObserver not supported, falling back to scroll events');
+        return;
+    }
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                // Unobserve the element once it's visible (optional optimization)
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all animation elements
+    const animationElements = document.querySelectorAll('.fade-in-up, .scale-in, .sbdp-timeline-item');
+    animationElements.forEach(element => {
+        observer.observe(element);
+    });
+    
+    console.log(`✅ IntersectionObserver initialized for ${animationElements.length} elements`);
+}
+
+// ===== CTA BUTTON INTERACTIONS =====
+function initializeCTAButtons() {
+    const ctaButtons = document.querySelectorAll('.sbdp-btn');
+    
+    ctaButtons.forEach(button => {
+        // Add hover effects
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.15)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+        });
+        
+        // Add click effect
+        button.addEventListener('click', function(e) {
+            // If it's a placeholder link (#), show notification
+            if (this.getAttribute('href') === '#') {
+                e.preventDefault();
+                
+                const buttonText = this.textContent.trim();
+                if (buttonText.includes('Hubungi Kami') || buttonText.includes('Daftar Program')) {
+                    showNotification('Fitur hubungi kami akan segera tersedia', 'info');
+                } else if (buttonText.includes('Download Brosur')) {
+                    showNotification('Brosur akan segera tersedia untuk diunduh', 'info');
+                } else {
+                    showNotification('Fitur ini akan segera tersedia', 'info');
+                }
+            }
+        });
+    });
+    
+    console.log(`✅ CTA button interactions initialized for ${ctaButtons.length} buttons`);
+}
+
+// ===== INITIALIZE ENHANCED FEATURES =====
+function initializeEnhancedFeatures() {
+    // Initialize enhanced scrolling
+    initializeEnhancedScrolling();
+    
+    // Initialize Intersection Observer if supported
+    initializeIntersectionObserver();
+    
+    // Initialize CTA button interactions
+    initializeCTAButtons();
+    
+    console.log('✅ Enhanced features initialized');
+}
+
+// ===== MAIN INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize enhanced features after a short delay
+    setTimeout(() => {
+        initializeEnhancedFeatures();
+    }, 100);
+});
+
+// ===== ERROR HANDLING =====
+window.addEventListener('error', function(event) {
+    console.error('JavaScript Error on SBDP page:', event.error);
+});
+
+window.addEventListener('unhandledrejection', function(event) {
+    console.error('Unhandled Promise Rejection on SBDP page:', event.reason);
+});
+
+// ===== PERFORMANCE MONITORING =====
+window.addEventListener('load', function() {
+    const loadTime = performance.now();
+    console.log(`📊 SBDP page loaded in ${loadTime.toFixed(2)}ms`);
+});
+
+console.log('✅ SBDP page JavaScript loaded successfully');
+</script>
+
+</body>
+</html>

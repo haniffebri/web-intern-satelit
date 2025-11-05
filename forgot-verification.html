@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi Reset Password</title>
+    <link rel="stylesheet" href="D:\Kuliah\Kuliah\Magang\Satelit\styling\style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-container">
+            
+            <!-- Password Reset Verification Card -->
+            <div class="password-reset-verification-container">
+                
+                <!-- Header -->
+                <div class="password-reset-verification-logo-section">
+                    <a href="index.html" class="password-reset-verification-logo">
+                        <div class="password-reset-verification-logo-icon">📺</div>
+                        SATELIT<span style="color: #667eea;">TV</span>
+                    </a>
+                </div>
+
+                <!-- Icon & Title -->
+                <div class="password-reset-verification-icon">
+                    <span class="material-icons">lock_reset</span>
+                </div>
+                
+                <h1 class="password-reset-verification-title">Verifikasi Reset Password</h1>
+                <p class="password-reset-verification-subtitle">Masukkan kode verifikasi 6 digit yang telah dikirim ke email:</p>
+                <p class="password-reset-verification-email-display" id="userEmail">example@email.com</p>
+
+                <!-- Error/Success Messages -->
+                <div class="password-reset-verification-error-message" id="errorMessage"></div>
+                <div class="password-reset-verification-success-message" id="successMessage"></div>
+
+                <!-- Verification Code Form -->
+                <form class="password-reset-verification-form" id="passwordResetVerificationForm">
+                    <div class="password-reset-verification-code-input-section">
+                        <label class="password-reset-verification-code-label">Kode Verifikasi</label>
+                        <div class="password-reset-verification-code-inputs">
+                            <input type="text" maxlength="1" class="password-reset-verification-code-input" data-index="0">
+                            <input type="text" maxlength="1" class="password-reset-verification-code-input" data-index="1">
+                            <input type="text" maxlength="1" class="password-reset-verification-code-input" data-index="2">
+                            <input type="text" maxlength="1" class="password-reset-verification-code-input" data-index="3">
+                            <input type="text" maxlength="1" class="password-reset-verification-code-input" data-index="4">
+                            <input type="text" maxlength="1" class="password-reset-verification-code-input" data-index="5">
+                        </div>
+                    </div>
+
+                    <!-- Verify Button -->
+                    <button type="submit" class="password-reset-verification-verify-btn" id="verifyBtn">
+                        <div class="password-reset-verification-spinner"></div>
+                        <span class="password-reset-verification-btn-text">
+                            <span class="material-icons">verified_user</span>
+                            Verifikasi Kode
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Resend Section -->
+                <div class="password-reset-verification-resend-section">
+                    <p class="password-reset-verification-resend-text">Tidak menerima kode?</p>
+                    <button class="password-reset-verification-resend-btn" id="resendBtn">
+                        <span class="material-icons">refresh</span>
+                        Kirim Ulang Kode <span class="password-reset-verification-timer" id="timer"></span>
+                    </button>
+                </div>
+
+                <!-- Back to Forgot Password -->
+                <a href="forgot.html" class="password-reset-verification-back-link">
+                    <span class="material-icons">arrow_back</span>
+                    Kembali ke Lupa Password
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password Reset Verification JavaScript - SIMPLIFIED FOR FRONTEND DEMO
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.password-reset-verification-code-input');
+            const form = document.getElementById('passwordResetVerificationForm');
+            const verifyBtn = document.getElementById('verifyBtn');
+            const resendBtn = document.getElementById('resendBtn');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            let resendTimer = 60;
+
+            // Auto-focus and navigation between inputs
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', (e) => {
+                    if (e.target.value.length === 1 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                    
+                    if (e.target.value) {
+                        input.classList.add('filled');
+                    } else {
+                        input.classList.remove('filled');
+                    }
+                    
+                    checkAllInputs();
+                });
+
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+
+                input.addEventListener('paste', (e) => {
+                    e.preventDefault();
+                    const paste = e.clipboardData.getData('text');
+                    const pasteArray = paste.split('');
+                    
+                    pasteArray.forEach((char, i) => {
+                        if (inputs[index + i] && /^[0-9]$/.test(char)) {
+                            inputs[index + i].value = char;
+                            inputs[index + i].classList.add('filled');
+                        }
+                    });
+                    
+                    checkAllInputs();
+                });
+            });
+
+            function checkAllInputs() {
+                const allFilled = Array.from(inputs).every(input => input.value.length === 1);
+                verifyBtn.disabled = !allFilled;
+            }
+
+            // ✅ SIMPLIFIED FORM SUBMISSION - LANGSUNG REDIRECT
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show brief loading animation
+                verifyBtn.classList.add('loading');
+                
+                // Direct redirect setelah 500ms untuk smooth UX
+                setTimeout(() => {
+                    window.location.href = 'forgot-fill-password.html';
+                }, 500);
+            });
+
+            // Resend functionality (untuk demo)
+            function startResendTimer() {
+                resendBtn.disabled = true;
+                const timerElement = document.getElementById('timer');
+                
+                const countdown = setInterval(() => {
+                    timerElement.textContent = `(${resendTimer}s)`;
+                    resendTimer--;
+                    
+                    if (resendTimer < 0) {
+                        clearInterval(countdown);
+                        resendBtn.disabled = false;
+                        timerElement.textContent = '';
+                        resendTimer = 60;
+                    }
+                }, 1000);
+            }
+
+            resendBtn.addEventListener('click', function() {
+                showSuccess('Kode verifikasi baru telah dikirim!');
+                startResendTimer();
+            });
+
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+
+            function showSuccess(message) {
+                successMessage.textContent = message;
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }
+
+            // Auto-focus first input
+            inputs[0].focus();
+            
+            // Start initial timer
+            startResendTimer();
+
+            // Get email from URL or localStorage (untuk demo)
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email') || localStorage.getItem('resetEmail') || 'your-email@domain.com';
+            document.getElementById('userEmail').textContent = email;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Satelit TV Purwokerto</title>
+    <link rel="stylesheet" href="D:\Kuliah\Kuliah\Magang\Satelit\styling\style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="page">
+    <!-- Admin Login Container -->
+    <div class="admin-login-wrapper">
+        <div class="admin-login-container">
+            <!-- Admin Login Card -->
+            <div class="admin-login-card">
+                <!-- Header Section -->
+                <div class="admin-login-header">
+                    <h1 class="admin-login-title">Admin Panel</h1>
+                    <p class="admin-login-subtitle">Satelit TV Purwokerto</p>
+                </div>
+
+                <!-- Login Form -->
+                <form class="admin-login-form" action="admin.html" method="post">
+                    <div class="admin-form-group">
+                        <div class="admin-input-wrapper">
+                            <span class="admin-input-icon material-icons">email</span>
+                            <input 
+                                type="email" 
+                                id="admin-email"
+                                name="email"
+                                class="admin-input"
+                                placeholder="Email"
+                                required
+                                autocomplete="email"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <div class="admin-input-wrapper">
+                            <span class="admin-input-icon material-icons">lock</span>
+                            <input 
+                                type="password" 
+                                id="admin-password"
+                                name="password"
+                                class="admin-input"
+                                placeholder="Password"
+                                required
+                                autocomplete="current-password"
+                            >
+                            <button type="button" class="admin-password-toggle" onclick="togglePassword()">
+                                <span class="material-icons">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="admin-login-btn">
+                        <span class="material-icons">login</span>
+                        Login as Admin
+                    </button>
+                </form>
+
+                <!-- Footer Links -->
+                <div class="admin-login-footer">
+                    <a href="admin-forgot-password.html" class="admin-forgot-link">
+                        <span class="material-icons">help_outline</span>
+                        Lupa Password?
+                    </a>
+                    <div class="admin-divider"></div>
+                    <a href="D:\Kuliah\Kuliah\Magang\Satelit\index.html" class="admin-back-link">
+                        <span class="material-icons">arrow_back</span>
+                        Kembali ke Website
+                    </a>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="admin-security-notice">
+                <div class="security-icon">
+                    <span class="material-icons">security</span>
+                </div>
+                <div class="security-text">
+                    <p><strong>Akses Terbatas</strong></p>
+                    <p>Halaman ini hanya untuk administrator yang berwenang</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('admin-password');
+            const toggleIcon = document.querySelector('.admin-password-toggle .material-icons');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = 'visibility';
+            }
+        }
+
+        // Auto-focus email field on load (corrected from username to email)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('admin-email').focus();
+        });
+
+        // Form validation
+        document.querySelector('.admin-login-form').addEventListener('submit', function(e) {
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            
+            if (!email || !password) {
+                e.preventDefault();
+                alert('Mohon isi email dan password');
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

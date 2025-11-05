@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+
+    <link rel="icon" type="image/png" href="styling/assets/foto/logo-satelit.png" />
+
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styling/style.css" />
+    <!-- Profile Specific CSS -->
+    <link rel="stylesheet" href="styling/profile.css" />
+  </head>
+
+  <body class="page profile-page">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar__inner">
+                <div class="navbar_brand">
+                    <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV" class="navbar_logo">
+                </div>
+                <div class="navbar__menu">
+                    <a href="index.html" class="menu__link">Home</a>
+                    <a href="berita.html" class="menu__link">Berita</a>
+                    <a href="foto.html" class="menu__link">Foto</a>
+                    <a href="video.html" class="menu__link">Video</a>
+                    <a href="sbdp.html" class="menu__link">SBDP</a>
+                </div>
+                <div class="navbar__right">
+                    <div class="navbar__search">
+                        <span class="material-icons navbar__search-icon">search</span>
+                        <input type="text" class="navbar__search-input" placeholder="Pencarian">
+                    </div>
+                    <div class="navbar__profile">
+    <a href="profile.html" class="navbar__profile-link">
+        <span class="material-icons">account_circle</span>
+    </a>
+</div>
+
+                </div>
+                <!-- ✅ HAMBURGER BUTTON -->
+                <button class="navbar__toggle" id="hamburgerBtn">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ✅ MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+    <!-- ✅ MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <img src="D:\Kuliah\Kuliah\Magang\Satelit\styling\assets\video\logo-satelit.gif" alt="Satelit TV" class="mobile-menu-logo">
+            <button class="mobile-menu-close" id="closeBtn">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-search">
+            <div class="mobile-search-wrapper">
+                <span class="material-icons mobile-search-icon">search</span>
+                <input type="text" class="mobile-search-input" placeholder="Cari berita...">
+            </div>
+        </div>
+        
+        <nav class="mobile-menu-nav">
+            <a href="index.html" class="mobile-menu-link">
+                <span class="material-icons">home</span>
+                Home
+            </a>
+            <a href="berita.html" class="mobile-menu-link">
+                <span class="material-icons">article</span>
+                Berita
+            </a>
+            <a href="foto.html" class="mobile-menu-link">
+                <span class="material-icons">photo_library</span>
+                Foto
+            </a>
+            <a href="video.html" class="mobile-menu-link">
+                <span class="material-icons">play_circle</span>
+                Video
+            </a>
+            <a href="#" class="mobile-menu-link">
+                <span class="material-icons">business</span>
+                SBDP
+            </a>
+        </nav>
+        
+        <div class="mobile-menu-login">
+            <h4 class="mobile-login-title">Akun</h4>
+            <a href="login.html" class="mobile-login-btn">
+                <span class="material-icons">login</span>
+                Masuk / Daftar
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="profile-main">
+      <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+          <div class="profile-header-content">
+            <div class="profile-info">
+              <h1 class="profile-name" id="displayName">John Doe</h1>
+              <p class="profile-email" id="displayEmail">john.doe@example.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+          <!-- Edit Profile Card -->
+          <div class="profile-card">
+            <div class="profile-card-header">
+              <div class="profile-card-title">
+                <span class="material-icons">person</span>
+                <span>Informasi Profil</span>
+              </div>
+              <button class="profile-edit-btn" onclick="toggleEditMode()" id="editButton">
+                <span class="material-icons">edit</span>
+                <span>Edit</span>
+              </button>
+            </div>
+
+            <div class="profile-card-body">
+              <form class="profile-form" id="profileForm">
+                <!-- Name Field -->
+                <div class="profile-form-group">
+                  <label class="profile-form-label">
+                    <span class="material-icons">person</span>
+                    <span>Nama Lengkap</span>
+                  </label>
+                  <div class="profile-input-wrapper">
+                    <input 
+                      type="text" 
+                      class="profile-form-input" 
+                      id="nameInput"
+                      value="John Doe"
+                      readonly
+                      placeholder="Masukkan nama lengkap"
+                    />
+                    </div>
+                  <p class="profile-form-help">Nama ini akan ditampilkan di profil publik Anda</p>
+                </div>
+
+                <!-- Email Field -->
+                <div class="profile-form-group">
+                  <label class="profile-form-label">
+                    <span class="material-icons">email</span>
+                    <span>Alamat Email</span>
+                  </label>
+                  <div class="profile-input-wrapper">
+                    <input 
+                      type="email" 
+                      class="profile-form-input" 
+                      id="emailInput"
+                      value="john.doe@example.com"
+                      readonly
+                      placeholder="nama@email.com"
+                    />
+                    </div>
+                  <p class="profile-form-help">Email digunakan untuk login dan notifikasi</p>
+                </div>
+
+                <!-- Form Actions (Hidden by default) -->
+                <div class="profile-form-actions" id="formActions" style="display: none;">
+                  <button type="button" class="profile-btn profile-btn--secondary" onclick="cancelEdit()">
+                    <span class="material-icons">close</span>
+                    <span>Batal</span>
+                  </button>
+                  <button type="submit" class="profile-btn profile-btn--primary">
+                    <span class="material-icons">save</span>
+                    <span>Simpan Perubahan</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Password Reset Card -->
+          <div class="profile-card">
+            <div class="profile-card-header">
+              <div class="profile-card-title">
+                <span class="material-icons">lock</span>
+                <span>Keamanan Akun</span>
+              </div>
+            </div>
+
+            <div class="profile-card-body">
+              <div class="profile-security-info">
+                <div class="profile-security-item">
+                  <div class="profile-security-icon">
+                    <span class="material-icons">password</span>
+                  </div>
+                  <div class="profile-security-content">
+                    <h4>Password</h4>
+                  </div>
+                  <button class="profile-btn profile-btn--outline" onclick="openPasswordModal()">
+                    <span class="material-icons">edit</span>
+                    <span>Ubah Password</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Password Reset Modal -->
+    <div class="profile-modal-overlay" id="passwordModal" style="display: none;">
+      <div class="profile-modal">
+        <div class="profile-modal-header">
+          <h3>Ubah Password</h3>
+          <button class="profile-modal-close" onclick="closePasswordModal()">
+            <span class="material-icons">close</span>
+          </button>
+        </div>
+
+        <div class="profile-modal-body">
+          <form class="profile-password-form" id="passwordForm">
+            <div class="profile-form-group">
+              <label class="profile-form-label">Password Lama</label>
+              <div class="profile-input-wrapper"  style="padding-bottom: 8px;">
+                <input 
+                  type="password" 
+                  class="profile-form-input" 
+                  id="currentPassword"
+                  placeholder="Masukkan password lama"
+                  required
+                />
+                <button type="button" class="profile-password-toggle" onclick="togglePasswordVisibility('currentPassword')">
+                  <span class="material-icons">visibility</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="profile-form-group">
+              <label class="profile-form-label">Password Baru</label>
+              <div class="profile-input-wrapper">
+                <input 
+                  type="password" 
+                  class="profile-form-input" 
+                  id="newPassword"
+                  placeholder="Masukkan password baru"
+                  required
+                />
+                <button type="button" class="profile-password-toggle" onclick="togglePasswordVisibility('newPassword')">
+                  <span class="material-icons">visibility</span>
+                </button>
+              </div>
+              <div class="profile-password-strength">
+                <p class="profile-password-strength-text" id="passwordStrengthText" style="padding-bottom: 5px;">Minimal 8 karakter</p>
+              </div>
+            </div>
+
+            <div class="profile-form-group">
+              <label class="profile-form-label">Konfirmasi Password Baru</label>
+              <div class="profile-input-wrapper">
+                <input 
+                  type="password" 
+                  class="profile-form-input" 
+                  id="confirmPassword"
+                  placeholder="Konfirmasi password baru"
+                  required
+                />
+                <button type="button" class="profile-password-toggle" onclick="togglePasswordVisibility('confirmPassword')">
+                  <span class="material-icons">visibility</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="profile-modal-actions">
+              <button type="button" class="profile-btn profile-btn--secondary" onclick="closePasswordModal()">
+                <span>Batal</span>
+              </button>
+              <button type="submit" class="profile-btn profile-btn--primary">
+                <span>Ubah Password</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="profile-toast" id="successToast" style="display: none;">
+      <div class="profile-toast-content">
+        <span class="material-icons">check_circle</span>
+        <span id="toastMessage">Profil berhasil diperbarui!</span>
+      </div>
+    </div>
+
+    <!-- Toast Notification Change Password -->
+  <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      
+      <!-- Logo & Slogan -->
+      <div class="footer__brand">
+
+        <!-- Social Links -->
+        <div class="footer__social">
+          <a href="https://www.facebook.com/SatelitTelevisiNusantara" class="social__link" aria-label="Facebook">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+  </svg>
+</a>
+<a href="https://www.instagram.com/satelittv_purwokerto/" class="social__link" aria-label="Instagram">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </svg>
+</a>
+<a href="https://www.youtube.com/@SATELITTVPURWOKERTO" class="social__link" aria-label="YouTube">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </svg>
+</a>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="footer__links">
+
+        <div class="links__col">
+          <h3 class="links__title"></h3>
+          <ul class="links__list">
+            <li><a href="#" class="links__item"></a></li>
+            <li><a href="#" class="links__item"></a></li>
+            <li><a href="#" class="links__item"></a></li>
+            <li><a href="#" class="links__item"></a></li>
+          </ul>
+        </div>
+
+        <div class="links__col">
+          <h3 class="links__title"></h3>
+          <ul class="links__list">
+            <li><a href="#" class="links__item"></a></li>
+            <li><a href="#" class="links__item"></a></li>
+            <li><a href="#" class="links__item"></a></li>
+            <li><a href="#" class="links__item"></a></li>
+          </ul>
+        </div>
+
+        <div class="links__col links__col--alamat">
+          <h3 class="links__title">Satelit TV</h3>
+          <ul class="links__list">
+            <li><a class="links__item">Jl. Dr. Angka, Glempang, Bancarkembar, Kec. Purwokerto Utara, Kabupaten Banyumas, Jawa Tengah 53114</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="footer__bottom">
+      <p>© 2025 Satelit TV.</p>
+    </div>
+  </div>
+</footer>
+
+    <script>
+// ===== PROFILE PAGE JAVASCRIPT - CORRECTED VERSION =====
+
+console.log('🎯 Profile page JavaScript loading...');
+
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Initializing profile page components...');
+    
+    // Initialize all profile functionality
+    initializeProfile();
+    initializeMobileMenu();
+    initializeSearchFunctionality();
+    
+    console.log('✅ All profile page components initialized successfully');
+});
+
+// ===== PROFILE FUNCTIONALITY =====
+function initializeProfile() {
+    console.log('👤 Initializing profile functionality...');
+    
+    // Create toast container if not exists
+    createToastContainer();
+    
+    // Initialize toast system
+    initializeToastSystem();
+    
+    // Add fade-in animation to cards
+    animateProfileCards();
+    
+    // Setup form handlers
+    setupFormHandlers();
+    
+    // Initialize password strength checker
+    initializePasswordStrength();
+    
+    console.log('✅ Profile functionality initialized');
+}
+
+function createToastContainer() {
+    if (!document.getElementById('toastContainer')) {
+        const toastContainer = document.createElement('div');
+        toastContainer.id = 'toastContainer';
+        toastContainer.className = 'toast-container';
+        toastContainer.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            pointer-events: none;
+        `;
+        document.body.appendChild(toastContainer);
+        console.log('✅ Toast container created');
+    }
+}
+
+function animateProfileCards() {
+    const cards = document.querySelectorAll('.profile-card');
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+}
+
+function setupFormHandlers() {
+    // Profile form submission
+    const profileForm = document.getElementById('profileForm');
+    if (profileForm) {
+        profileForm.addEventListener('submit', handleProfileUpdate);
+        console.log('✅ Profile form handler attached');
+    }
+
+    // Password form submission
+    const passwordForm = document.getElementById('passwordForm');
+    if (passwordForm) {
+        passwordForm.addEventListener('submit', handlePasswordChange);
+        console.log('✅ Password form handler attached');
+    }
+    
+    // Real-time validation
+    setupRealtimeValidation();
+}
+
+function setupRealtimeValidation() {
+    const emailInput = document.getElementById('emailInput');
+    const nameInput = document.getElementById('nameInput');
+    
+    if (emailInput) {
+        emailInput.addEventListener('input', function(e) {
+            const email = e.target.value;
+            const isValid = validateEmail(email);
+            
+            if (email && !isValid) {
+                e.target.style.borderColor = '#ef4444';
+            } else {
+                e.target.style.borderColor = '#e5e7eb';
+            }
+        });
+    }
+
+    if (nameInput) {
+        nameInput.addEventListener('input', function(e) {
+            const name = e.target.value;
+            const isValid = validateName(name);
+            
+            if (name && !isValid) {
+                e.target.style.borderColor = '#ef4444';
+            } else {
+                e.target.style.borderColor = '#e5e7eb';
+            }
+        });
+    }
+}
+
+// ===== PROFILE EDITING FUNCTIONS =====
+window.toggleEditMode = function() {
+    console.log('✏️ Toggling edit mode...');
+    
+    const nameInput = document.getElementById('nameInput');
+    const emailInput = document.getElementById('emailInput');
+    const formActions = document.getElementById('formActions');
+    const editButton = document.getElementById('editButton');
+    
+    if (!nameInput || !emailInput || !formActions || !editButton) {
+        console.error('❌ Edit mode elements not found');
+        return;
+    }
+    
+    const isReadonly = nameInput.readOnly;
+    
+    if (isReadonly) {
+        // Enable edit mode
+        nameInput.readOnly = false;
+        emailInput.readOnly = false;
+        nameInput.focus();
+        
+        formActions.style.display = 'flex';
+        editButton.innerHTML = '<span class="material-icons">close</span><span>Batal</span>';
+        editButton.style.background = '#ef4444';
+        
+        console.log('✅ Edit mode enabled');
+    } else {
+        // Cancel edit mode
+        cancelEdit();
+    }
+};
+
+window.cancelEdit = function() {
+    console.log('❌ Canceling edit mode...');
+    
+    const nameInput = document.getElementById('nameInput');
+    const emailInput = document.getElementById('emailInput');
+    const formActions = document.getElementById('formActions');
+    const editButton = document.getElementById('editButton');
+    const displayName = document.getElementById('displayName');
+    const displayEmail = document.getElementById('displayEmail');
+    
+    if (!nameInput || !emailInput || !formActions || !editButton) {
+        console.error('❌ Cancel edit elements not found');
+        return;
+    }
+    
+    // Reset values to original
+    if (displayName) nameInput.value = displayName.textContent;
+    if (displayEmail) emailInput.value = displayEmail.textContent;
+    
+    // Disable edit mode
+    nameInput.readOnly = true;
+    emailInput.readOnly = true;
+    
+    formActions.style.display = 'none';
+    editButton.innerHTML = '<span class="material-icons">edit</span><span>Edit</span>';
+    editButton.style.background = '#3b82f6';
+    
+    console.log('✅ Edit mode canceled');
+};
+
+function handleProfileUpdate(e) {
+    e.preventDefault();
+    console.log('💾 Processing profile update...');
+    
+    const nameInput = document.getElementById('nameInput');
+    const emailInput = document.getElementById('emailInput');
+    const submitButton = e.target.querySelector('button[type="submit"]');
+    
+    if (!nameInput || !emailInput || !submitButton) {
+        console.error('❌ Profile update elements not found');
+        return;
+    }
+    
+    // Validate inputs
+    if (!validateName(nameInput.value)) {
+        showToast('Nama harus antara 2-50 karakter', 'error');
+        nameInput.focus();
+        return;
+    }
+    
+    if (!validateEmail(emailInput.value)) {
+        showToast('Format email tidak valid', 'error');
+        emailInput.focus();
+        return;
+    }
+    
+    // Add loading state
+    submitButton.classList.add('loading');
+    submitButton.innerHTML = '<span class="material-icons">hourglass_empty</span><span>Menyimpan...</span>';
+    submitButton.disabled = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+        // Update display values
+        const displayName = document.getElementById('displayName');
+        const displayEmail = document.getElementById('displayEmail');
+        
+        if (displayName) displayName.textContent = nameInput.value;
+        if (displayEmail) displayEmail.textContent = emailInput.value;
+        
+        // Exit edit mode
+        cancelEdit();
+        
+        // Remove loading state
+        submitButton.classList.remove('loading');
+        submitButton.innerHTML = '<span class="material-icons">save</span><span>Simpan Perubahan</span>';
+        submitButton.disabled = false;
+        
+        // Show success toast
+        showToast('Profil berhasil diperbarui!', 'success');
+        
+        console.log('✅ Profile updated successfully');
+    }, 1500);
+}
+
+// ===== PASSWORD MODAL FUNCTIONS =====
+window.openPasswordModal = function() {
+    console.log('🔐 Opening password modal...');
+    
+    const modal = document.getElementById('passwordModal');
+    if (!modal) {
+        console.error('❌ Password modal not found');
+        return;
+    }
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    // Focus on first input
+    setTimeout(() => {
+        const firstInput = document.getElementById('currentPassword');
+        if (firstInput) firstInput.focus();
+    }, 100);
+    
+    console.log('✅ Password modal opened');
+};
+
+window.closePasswordModal = function() {
+    console.log('❌ Closing password modal...');
+    
+    const modal = document.getElementById('passwordModal');
+    if (!modal) {
+        console.error('❌ Password modal not found');
+        return;
+    }
+    
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    
+    // Reset form
+    const form = document.getElementById('passwordForm');
+    if (form) {
+        form.reset();
+        resetPasswordStrength();
+    }
+    
+    console.log('✅ Password modal closed');
+};
+
+window.togglePasswordVisibility = function(inputId) {
+    const input = document.getElementById(inputId);
+    if (!input) {
+        console.error(`❌ Password input ${inputId} not found`);
+        return;
+    }
+    
+    const button = input.nextElementSibling;
+    const icon = button ? button.querySelector('.material-icons') : null;
+    
+    if (input.type === 'password') {
+        input.type = 'text';
+        if (icon) icon.textContent = 'visibility_off';
+    } else {
+        input.type = 'password';
+        if (icon) icon.textContent = 'visibility';
+    }
+    
+    console.log(`👁️ Password visibility toggled for ${inputId}`);
+};
+
+function handlePasswordChange(e) {
+    e.preventDefault();
+    console.log('🔐 Processing password change...');
+    
+    const currentPassword = document.getElementById('currentPassword');
+    const newPassword = document.getElementById('newPassword');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const submitButton = e.target.querySelector('button[type="submit"]');
+    
+    if (!currentPassword || !newPassword || !confirmPassword || !submitButton) {
+        console.error('❌ Password form elements not found');
+        return;
+    }
+    
+    // Enhanced validation
+    if (!currentPassword.value.trim()) {
+        showToast('Harap masukkan password saat ini', 'error');
+        currentPassword.focus();
+        return;
+    }
+    
+    if (!newPassword.value.trim()) {
+        showToast('Harap masukkan password baru', 'error');
+        newPassword.focus();
+        return;
+    }
+    
+    if (newPassword.value !== confirmPassword.value) {
+        showToast('Konfirmasi password tidak cocok', 'error');
+        confirmPassword.focus();
+        return;
+    }
+    
+    if (newPassword.value.length < 8) {
+        showToast('Password baru minimal 8 karakter', 'warning');
+        newPassword.focus();
+        return;
+    }
+    
+    if (currentPassword.value === newPassword.value) {
+        showToast('Password baru harus berbeda dengan password saat ini', 'warning');
+        newPassword.focus();
+        return;
+    }
+    
+    // Add loading state
+    submitButton.classList.add('loading');
+    submitButton.innerHTML = '<span>Mengubah Password...</span>';
+    submitButton.disabled = true;
+    
+    // Show processing notification
+    showToast('Sedang memproses perubahan password...', 'info', null, 2000);
+    
+    // Simulate API call
+    setTimeout(() => {
+        // Remove loading state
+        submitButton.classList.remove('loading');
+        submitButton.innerHTML = '<span>Ubah Password</span>';
+        submitButton.disabled = false;
+        
+        // Always success for demo
+        closePasswordModal();
+        
+        showToast(
+            'Password berhasil diubah. Pastikan untuk menyimpan password baru dengan aman.',
+            'success',
+            '🎉 Password Berhasil Diubah!',
+            6000
+        );
+        
+        // Security tip
+        setTimeout(() => {
+            showToast(
+                'Untuk keamanan tambahan, logout dari semua device dan login ulang.',
+                'info',
+                '💡 Tips Keamanan',
+                5000
+            );
+        }, 1500);
+        
+        console.log('✅ Password changed successfully');
+    }, 2000);
+}
+
+// ===== PASSWORD STRENGTH CHECKER =====
+function initializePasswordStrength() {
+    const newPasswordInput = document.getElementById('newPassword');
+    if (newPasswordInput) {
+        newPasswordInput.addEventListener('input', checkPasswordStrength);
+        console.log('✅ Password strength checker initialized');
+    }
+}
+
+function checkPasswordStrength() {
+    const password = document.getElementById('newPassword').value;
+    const strengthText = document.getElementById('passwordStrengthText');
+    
+    if (!strengthText) return;
+    
+    let strength = 0;
+    let message = '';
+    
+    if (password.length >= 8) strength += 1;
+    if (/[a-z]/.test(password)) strength += 1;
+    if (/[A-Z]/.test(password)) strength += 1;
+    if (/[0-9]/.test(password)) strength += 1;
+    if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+    
+    switch (strength) {
+        case 0:
+        case 1:
+            message = 'Password terlalu lemah';
+            strengthText.style.color = '#ef4444';
+            break;
+        case 2:
+            message = 'Password lemah';
+            strengthText.style.color = '#f59e0b';
+            break;
+        case 3:
+            message = 'Password cukup kuat';
+            strengthText.style.color = '#3b82f6';
+            break;
+        case 4:
+        case 5:
+            message = 'Password sangat kuat';
+            strengthText.style.color = '#10b981';
+            break;
+    }
+    
+    strengthText.textContent = message;
+}
+
+function resetPasswordStrength() {
+    const strengthText = document.getElementById('passwordStrengthText');
+    if (strengthText) {
+        strengthText.textContent = 'Minimal 8 karakter';
+        strengthText.style.color = '#6b7280';
+    }
+}
+
+// ===== TOAST NOTIFICATION SYSTEM =====
+function initializeToastSystem() {
+    // Create global toast system
+    window.toastSystem = new ToastNotification();
+    window.showToast = function(message, type = 'success', title = null, duration = 5000) {
+        return window.toastSystem.show(message, type, title, duration);
+    };
+    
+    console.log('✅ Toast notification system initialized');
+}
+
+class ToastNotification {
+    constructor() {
+        this.container = document.getElementById('toastContainer');
+        this.toasts = [];
+        this.maxToasts = 5;
+    }
+
+    show(message, type = 'success', title = null, duration = 5000) {
+        if (this.toasts.length >= this.maxToasts) {
+            this.remove(this.toasts[0]);
+        }
+
+        const toast = this.create(message, type, title, duration);
+        this.container.appendChild(toast);
+        this.toasts.push(toast);
+
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 100);
+
+        if (duration > 0) {
+            setTimeout(() => {
+                this.remove(toast);
+            }, duration);
+        }
+
+        return toast;
+    }
+
+    create(message, type, title, duration) {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.style.cssText = `
+            background: ${this.getBackgroundColor(type)};
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            pointer-events: auto;
+            max-width: 350px;
+            word-wrap: break-word;
+        `;
+
+        const icons = {
+            success: 'check_circle',
+            error: 'error',
+            warning: 'warning',
+            info: 'info'
+        };
+
+        const defaultTitles = {
+            success: 'Berhasil!',
+            error: 'Error!',
+            warning: 'Peringatan!',
+            info: 'Informasi'
+        };
+
+        const finalTitle = title || defaultTitles[type];
+        const icon = icons[type] || 'info';
+
+        toast.innerHTML = `
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+                <span class="material-icons" style="font-size: 20px;">${icon}</span>
+                <div style="flex: 1;">
+                    <h4 style="margin: 0 0 4px 0; font-weight: 600; font-size: 14px;">${finalTitle}</h4>
+                    <p style="margin: 0; font-size: 13px; opacity: 0.9;">${message}</p>
+                </div>
+                <button onclick="toastSystem.remove(this.parentElement.parentElement)" style="background: none; border: none; color: white; cursor: pointer; padding: 0; margin-left: 8px;">
+                    <span class="material-icons" style="font-size: 18px;">close</span>
+                </button>
+            </div>
+        `;
+
+        return toast;
+    }
+
+    getBackgroundColor(type) {
+        switch(type) {
+            case 'success': return '#10b981';
+            case 'error': return '#ef4444';
+            case 'warning': return '#f59e0b';
+            case 'info': return '#3b82f6';
+            default: return '#3b82f6';
+        }
+    }
+
+    remove(toast) {
+        if (!toast || !toast.parentElement) return;
+
+        toast.style.transform = 'translateX(100%)';
+        
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.parentElement.removeChild(toast);
+            }
+            this.toasts = this.toasts.filter(t => t !== toast);
+        }, 300);
+    }
+
+    success(message, title = null, duration = 5000) {
+        return this.show(message, 'success', title, duration);
+    }
+
+    error(message, title = null, duration = 5000) {
+        return this.show(message, 'error', title, duration);
+    }
+
+    warning(message, title = null, duration = 5000) {
+        return this.show(message, 'warning', title, duration);
+    }
+
+    info(message, title = null, duration = 5000) {
+        return this.show(message, 'info', title, duration);
+    }
+}
+
+// ===== MOBILE MENU FUNCTIONALITY =====
+function initializeMobileMenu() {
+    console.log('📱 Initializing mobile menu...');
+    
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const body = document.body;
+    const menuLinks = document.querySelectorAll('.mobile-menu-link');
+
+    if (!hamburgerBtn || !mobileMenu || !menuOverlay || !closeBtn) {
+        console.log('⚠️ Mobile menu elements not found - skipping initialization');
+        return;
+    }
+
+    function openMobileMenu() {
+        mobileMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        body.classList.add('mobile-menu-open');
+        console.log('✅ Mobile menu opened');
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        body.classList.remove('mobile-menu-open');
+        console.log('✅ Mobile menu closed');
+    }
+
+    // Event listeners
+    hamburgerBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openMobileMenu();
+    });
+
+    closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeMobileMenu();
+    });
+
+    menuOverlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeMobileMenu();
+    });
+
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+
+    console.log('✅ Mobile menu initialized');
+}
+
+// ===== SEARCH FUNCTIONALITY =====
+function initializeSearchFunctionality() {
+    const navbarSearchInput = document.querySelector('.navbar__search-input');
+    const mobileSearchInput = document.querySelector('.mobile-search-input');
+    
+    if (navbarSearchInput) {
+        navbarSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch(this.value);
+            }
+        });
+    }
+    
+    if (mobileSearchInput) {
+        mobileSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch(this.value);
+            }
+        });
+    }
+    
+    console.log('🔍 Search functionality initialized');
+}
+
+function performSearch(query) {
+    if (!query || query.trim() === '') {
+        showToast('Masukkan kata kunci pencarian', 'warning');
+        return;
+    }
+    
+    console.log('🔍 Searching for:', query);
+    showToast(`Mencari: "${query}"`, 'info');
+}
+
+// ===== VALIDATION FUNCTIONS =====
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+function validateName(name) {
+    return name && name.length >= 2 && name.length <= 50;
+}
+
+// ===== EVENT LISTENERS =====
+// Close modal when clicking overlay
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('profile-modal-overlay')) {
+        closePasswordModal();
+    }
+});
+
+// ESC key to close modal
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('passwordModal');
+        if (modal && modal.style.display === 'flex') {
+            closePasswordModal();
+        }
+    }
+});
+
+// ===== ERROR HANDLING =====
+window.addEventListener('error', function(event) {
+    console.error('JavaScript Error on profile page:', event.error);
+});
+
+window.addEventListener('unhandledrejection', function(event) {
+    console.error('Unhandled Promise Rejection on profile page:', event.reason);
+});
+
+console.log('✅ Profile page JavaScript loaded successfully');
+</script>
+
+
+  </body>
+</html>
